@@ -8,11 +8,12 @@ CREATE TABLE products (
   id int not null AUTO_INCREMENT,
   name varchar(150) not null,
   product_line varchar(350),
-  customerlimit int,
+  price varchar(10) not null,
+  customer_limit int,
   liked binary,
-  category1 varchar(150),
-  category2 varchar(150),
-  category3 varchar(150),
+  category_1 varchar(150),
+  category_2 varchar(150),
+  category_3 varchar(150),
   PRIMARY KEY (id)
 );
 
@@ -20,8 +21,10 @@ CREATE TABLE stores (
   id int not null AUTO_INCREMENT,
   name varchar(150) not null,
   address varchar(250) not null,
-  zip int(5) not null,
-  phone int(10) not null,
+  city varchar(150) not null,
+  state varchar(2) not null,
+  zip varchar(10) not null,
+  phone varchar(30) not null,
   details varchar(350) not null,
   PRIMARY KEY (id)
 );
