@@ -81,6 +81,16 @@ const getInventory = (pid, sid, callback) => {
   );
 };
 
+const updateWishlist = (newStatus, pid, callback) => {
+  database.query(
+    'update products set liked = ? where id = ?',
+    [newStatus, pid],
+    (error, results) => {
+      callback(error, results);
+    },
+  );
+};
+
 module.exports = {
   insertProduct,
   insertStore,
@@ -90,4 +100,5 @@ module.exports = {
   getProduct,
   getStore,
   getInventory,
+  updateWishlist,
 };
