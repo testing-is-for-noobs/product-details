@@ -21,33 +21,24 @@ server.get('/:pid/product-details', (req, res) => {
 });
 
 server.get('/:pid/product-details/inventory', (req, res) => {
-  db.getProduct(req.params.pid, (error, product) => {
-    if (error) {
-      console.log(error);
-      res.status(404).send('getProduct error');
+  const product_id = req.params.pid;
+  db.getStore(req.body.zip, (err, store) => {
+    if (err) {
+      console.log(err);
+      res.status(404).send('getStore error');
     } else {
-      console.log(product);
-      const product_id = product[0].id;
-      console.log(req.body);
-      db.getStore(req.body.zip, (err, store) => {
-        if (err) {
-          console.log(err);
-          res.status(404).send('getStore error');
+      console.log(store);
+      const store_id = store[0].id;
+      db.getInventory(product_id, store_id, (inverror, inventory) => {
+        if (inverror) {
+          console.log(inverror);
+          res.status(404).send('getInventory error');
         } else {
-          console.log(store);
-          const store_id = store[0].id;
-          db.getInventory(product_id, store_id, (inverror, inventory) => {
-            if (inverror) {
-              console.log(inverror);
-              res.status(404).send('getInventory error');
-            } else {
-              const response = [
-                store[0],
-                inventory[0],
-              ];
-              res.status(200).send(response);
-            }
-          });
+          const response = [
+            store[0],
+            inventory[0],
+          ];
+          res.status(200).send(response);
         }
       });
     }
