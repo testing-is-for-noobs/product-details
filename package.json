@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sql": "mysql -u root < schema.sql"
+    "server": "nodemon server/index.js -w server -w database",
+    "seed": "mysql -u root < ./server/database/schema.sql && node ./server/database/seed.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ucb15erickao/product-details.git"
   },
   "keywords": [],
-  "author": "ucberic",
+  "author": "Eric",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ucb15erickao/product-details/issues"

@@ -9,8 +9,10 @@ CREATE TABLE products (
   name varchar(150) not null,
   product_line varchar(350),
   price varchar(10) not null,
-  customer_limit int,
-  liked binary,
+  rating int(1) not null,
+  review_count int(5) not null,
+  customer_limit int(2) not null,
+  liked int(1) not null,
   category_1 varchar(150),
   category_2 varchar(150),
   category_3 varchar(150),
@@ -31,9 +33,9 @@ CREATE TABLE stores (
 
 CREATE TABLE inventory (
   id int not null AUTO_INCREMENT,
-  description varchar(250) not null,
-  product_id int,
-  store_id int,
+  inventory int(3) not null,
+  product_id int(3) not null,
+  store_id int(2) not null,
   foreign key (product_id) references products(id),
   foreign key (store_id) references stores(id),
   PRIMARY KEY (id)

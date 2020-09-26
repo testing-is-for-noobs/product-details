@@ -22,6 +22,11 @@ server.get('/:pid/product-details', (req, res) => {
 
 server.get('/:pid/product-details/inventory');
 
-server.put('/:pid/product-details/wishlist');
+server.put('/:pid/product-details/wishlist', () => {
+
+});
 
 const PORT = 8080;
+server.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
+});
