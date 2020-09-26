@@ -27,12 +27,16 @@ server.get('/:pid/product-details/inventory', (req, res) => {
       res.status(404).send('getProduct error');
     } else {
       console.log(product);
+      const product_id = product[0].id;
+      console.log(req.body);
       db.getStore(req.body.zip, (err, store) => {
         if (err) {
           console.log(err);
           res.status(404).send('getStore error');
         } else {
-          db.getInventory(product[0].id, store[0].id, (inverror, inventory) => {
+          console.log(store);
+          const store_id = store[0].id;
+          db.getInventory(product_id, store_id, (inverror, inventory) => {
             if (inverror) {
               console.log(inverror);
               res.status(404).send('getInventory error');
@@ -58,9 +62,10 @@ server.put('/:pid/product-details/wishlist', (req, res) => {
     } else {
       console.log(product);
       let updatedStatus = 0;
-      if (product.liked === 0) {
+      if (product[0].liked === 0) {
         updatedStatus = 1;
       }
+      console.log('updatedStatus:', updatedStatus);
       db.updateWishlist(updatedStatus, req.params.pid, (putError, result) => {
         if (error) {
           console.log(putError);

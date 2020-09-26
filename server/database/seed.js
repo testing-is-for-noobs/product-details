@@ -31,7 +31,7 @@ for (let i = 1; i <= 20; i += 1) {
     address: faker.address.streetAddress(),
     city: faker.address.city(),
     state: faker.address.stateAbbr(),
-    zip: faker.address.zipCode('xxxxx'),
+    zip: faker.address.zipCode("#####"),
     phone: faker.phone.phoneNumber(),
     details: faker.image.imageUrl(),
   };
