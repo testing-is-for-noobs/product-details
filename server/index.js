@@ -20,7 +20,9 @@ server.get('/:pid/product-details', (req, res) => {
   });
 });
 
-server.get('/:pid/product-details/inventory');
+server.get('/:pid/product-details/inventory', (req, res) => {
+  //
+});
 
 server.put('/:pid/product-details/wishlist', () => {
 

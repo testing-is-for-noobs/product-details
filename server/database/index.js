@@ -61,6 +61,26 @@ const getProduct = (pid, callback) => {
   );
 };
 
+const getStore = (zip, callback) => {
+  database.query(
+    'select * from stores where zip = ?',
+    [zip],
+    (error, results) => {
+      callback(error, results);
+    },
+  );
+};
+
+const getInventory = (pid, sid, callback) => {
+  database.query(
+    'select * from inventory where product_id = ? and store_id = ?',
+    [pid, sid],
+    (error, results) => {
+      callback(error, results);
+    },
+  );
+};
+
 module.exports = {
   insertProduct,
   insertStore,
@@ -68,4 +88,6 @@ module.exports = {
   getAllStores,
   insertInventory,
   getProduct,
+  getStore,
+  getInventory,
 };

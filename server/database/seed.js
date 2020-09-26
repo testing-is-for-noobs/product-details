@@ -6,9 +6,9 @@ for (let i = 1; i <= 100; i += 1) {
     id: i,
     name: `LEGO® ${faker.commerce.productName()}`,
     product_line: faker.commerce.productMaterial(),
-    price: faker.commerce.price(),
+    price: faker.random.number({ min: 0, max: 12000, precision: 0.01 }),
     rating: Math.random() * 5,
-    review_count:faker.random.number({ min: 0, max: 12000 }),
+    review_count: faker.random.number({ min: 0, max: 12000 }),
     customer_limit: faker.random.number({ min: 1, max: 10 }),
     liked: faker.random.number({ min: 0, max: 1 }),
     category_1: faker.commerce.productMaterial(),
@@ -68,7 +68,7 @@ db.getAllProducts((error, products) => {
               if (inverror) {
                 console.log(`inventory insertion error: ${inverror}`);
               } else {
-                console.log(`successful inventory insertion for Product #${currentProduct.id}, Store #${currentStore.id}`);
+                // console.log(`successful inventory insertion for Product #${currentProduct.id}, Store #${currentStore.id}`);
               }
             });
           }
