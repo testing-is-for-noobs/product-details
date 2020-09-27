@@ -1,37 +1,33 @@
 const express = require('express');
-const server = express();
-
-server.use(express.static(__dirname + '/../client/dist'));
-
 const bodyParser = require('body-parser');
-server.use(bodyParser.json());
-
 const db = require('./database');
+
+const server = express();
+server.use(express.static(__dirname + '/../client/dist'));
+server.use(bodyParser.json());
 
 server.get('/:pid/product-details', (req, res) => {
   db.getProduct(req.params.pid, (error, product) => {
     if (error) {
-      console.log(error);
+      console.log('getProduct error:', error);
       res.status(404);
     } else {
-      console.log(product);
+      console.log('getProduct:', product);
       res.status(200).send(product);
     }
   });
 });
 
 server.get('/:pid/product-details/inventory', (req, res) => {
-  const product_id = req.params.pid;
   db.getStore(req.body.zip, (err, store) => {
     if (err) {
-      console.log(err);
+      console.log('getInventory getStore error:', err);
       res.status(404).send('getStore error');
     } else {
-      console.log(store);
-      const store_id = store[0].id;
-      db.getInventory(product_id, store_id, (inverror, inventory) => {
+      console.log('getInventory getStore:', store);
+      db.getInventory(req.params.pid, store[0].id, (inverror, inventory) => {
         if (inverror) {
-          console.log(inverror);
+          console.log('getInventory:', inverror);
           res.status(404).send('getInventory error');
         } else {
           const response = [
@@ -48,21 +44,21 @@ server.get('/:pid/product-details/inventory', (req, res) => {
 server.put('/:pid/product-details/wishlist', (req, res) => {
   db.getProduct(req.params.pid, (error, product) => {
     if (error) {
-      console.log(error);
+      console.log('put getProduct error:', error);
       res.status(404);
     } else {
-      console.log(product);
+      console.log('put getProduct:', product);
       let updatedStatus = 0;
       if (product[0].liked === 0) {
         updatedStatus = 1;
       }
       console.log('updatedStatus:', updatedStatus);
       db.updateWishlist(updatedStatus, req.params.pid, (putError, result) => {
-        if (error) {
-          console.log(putError);
+        if (putError) {
+          console.log('putError:', putError);
           res.status(404);
         } else {
-          console.log(result);
+          console.log('put result:', result);
           res.status(200).send('wishlist status updated');
         }
       });

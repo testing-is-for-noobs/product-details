@@ -8,7 +8,7 @@ for (let i = 1; i <= 100; i += 1) {
     product_line: faker.commerce.productMaterial(),
     price: faker.random.number({ min: 0, max: 12000, precision: 0.01 }),
     rating: Math.random() * 5,
-    online_stock: faker.random.number({ min: 0, max: 1 }),
+    online_inventory: faker.random.number({ min: 0, max: 1 }),
     review_count: faker.random.number({ min: 0, max: 12000 }),
     customer_limit: faker.random.number({ min: 1, max: 20 }),
     liked: faker.random.number({ min: 0, max: 1 }),
@@ -25,6 +25,30 @@ for (let i = 1; i <= 100; i += 1) {
   });
 }
 
+const urlprefix = 'https://fec-lego.s3-us-west-1.amazonaws.com/Store+Details/store+';
+const images = [
+  `${urlprefix}1.png`,
+  `${urlprefix}2.png`,
+  `${urlprefix}3.png`,
+  `${urlprefix}4.png`,
+  `${urlprefix}5.png`,
+  `${urlprefix}6.png`,
+  `${urlprefix}7.png`,
+  `${urlprefix}8.png`,
+  `${urlprefix}9.png`,
+  `${urlprefix}10.png`,
+  `${urlprefix}11.png`,
+  `${urlprefix}12.png`,
+  `${urlprefix}13.png`,
+  `${urlprefix}14.png`,
+  `${urlprefix}15.png`,
+  `${urlprefix}16.png`,
+  `${urlprefix}17.png`,
+  `${urlprefix}18.png`,
+  `${urlprefix}19.png`,
+  `${urlprefix}20.png`,
+];
+
 for (let i = 1; i <= 20; i += 1) {
   const fakeStore = {
     id: i,
@@ -32,9 +56,9 @@ for (let i = 1; i <= 20; i += 1) {
     address: faker.address.streetAddress(),
     city: faker.address.city(),
     state: faker.address.stateAbbr(),
-    zip: faker.address.zipCode("#####"),
+    zip: faker.address.zipCode('#####'),
     phone: faker.phone.phoneNumber(),
-    details: faker.image.imageUrl(),
+    details: images[i - 1],
   };
   db.insertStore(fakeStore, (error) => {
     if (error) {
@@ -55,9 +79,9 @@ db.getAllProducts((error, products) => {
       } else {
         let count = 0;
         for (let i = 0; i < products.length; i += 1) {
-          let currentProduct = products[i];
+          const currentProduct = products[i];
           for (let j = 0; j < stores.length; j += 1) {
-            let currentStore = stores[j];
+            const currentStore = stores[j];
             count += 1;
             const inventory = {
               id: count,
@@ -68,8 +92,6 @@ db.getAllProducts((error, products) => {
             db.insertInventory(inventory, (inverror) => {
               if (inverror) {
                 console.log(`inventory insertion error: ${inverror}`);
-              } else {
-                // console.log(`successful inventory insertion for Product #${currentProduct.id}, Store #${currentStore.id}`);
               }
             });
           }

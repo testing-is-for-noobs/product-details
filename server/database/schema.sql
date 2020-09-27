@@ -10,7 +10,7 @@ CREATE TABLE products (
   product_line varchar(350),
   price decimal(10, 2) not null,
   rating decimal(3, 2) not null,
-  online_stock int(1) not null,
+  online_inventory int(1) not null,
   review_count int(5) not null,
   customer_limit int(2) not null,
   liked int(1) not null,
