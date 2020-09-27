@@ -1,0 +1,47 @@
+{
+  "name": "product-details",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "react": "webpack -w",
+    "server": "nodemon server/index.js -w server -w database",
+    "seed": "mysql -u root < ./server/database/schema.sql && node ./server/database/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ucb15erickao/product-details.git"
+  },
+  "author": "Eric",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ucb15erickao/product-details/issues"
+  },
+  "homepage": "https://github.com/ucb15erickao/product-details#readme",
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.21.1",
+    "eslint-plugin-react-hooks": "^4.1.2"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "enzyme": "^3.11.0",
+    "express": "^4.17.1",
+    "faker": "^5.1.0",
+    "jest": "^26.4.2",
+    "mysql": "^2.18.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.44.2"
+  }
+}
