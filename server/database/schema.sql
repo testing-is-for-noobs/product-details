@@ -8,6 +8,7 @@ CREATE TABLE products (
   id int not null AUTO_INCREMENT,
   name varchar(150) not null,
   product_line varchar(350),
+  tag int(1) not null,
   price decimal(10, 2) not null,
   rating decimal(3, 2) not null,
   online_inventory int(1) not null,
