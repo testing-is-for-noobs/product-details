@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
-import Tag from './components/tag.jsx';
-import Availability from './components/availability.jsx';
+import Tag from './components/Tag.jsx';
+import Availability from './components/Availability.jsx';
+import AddToBag from './components/AddToBag.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class App extends React.Component {
         </div>
         <h1 id="price">${this.state.product.price}</h1>
         <Availability onlineInv={this.state.product.online_inventory} />
+        <AddToBag limit={this.state.product.customer_limit} />
       </div>
     );
   }
