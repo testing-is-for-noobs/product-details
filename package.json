@@ -46,5 +46,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "yarn": "^1.22.10"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ]
   }
 }
