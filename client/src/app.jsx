@@ -34,7 +34,7 @@ class App extends React.Component {
         <p id="product-line">{this.state.product.product_line}</p>
         <h1 id="product-title">{this.state.product.name}</h1>
         <div className="reviews">
-          <div className="stars"></div>
+          <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <a className="review-text">
               <span className="review-count">{this.state.product.review_count}</span> Reviews
             </a>
