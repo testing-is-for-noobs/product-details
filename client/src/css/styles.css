@@ -35,7 +35,7 @@ body {
 
 .productLine {
   padding: 0;
-  margin: 32px 0;
+  margin: 32px 0 3px 0;
   font-family: 'Cera Pro Bold';
   font-weight: 900;
   font-size: 50px;
@@ -45,10 +45,10 @@ body {
 
 .productTitle {
   font-weight: 500;
+  margin-bottom: 18px;
 }
 
 .stars {
-  margin-top: 0;
   display: inline-block;
   height: 18px;
   width: 115px;
@@ -79,14 +79,14 @@ body {
   font-family: 'Cera Pro Bold';
   font-weight: 550;
   font-size: 30px;
-  margin-top: 8%;
+  margin-top: 5%;
   margin-bottom: 5px;
 }
 
 .availability {
   font-family: 'Quicksand';
   font-weight: 500;
-  font-size: 13px;
+  font-size: 14px;
   color: #008537;
   margin-bottom: 32px;
 }
@@ -103,7 +103,7 @@ body {
   width: 45px;
   border: 1px solid #E0E0E0;
   color: black;
-  font-family: 'Nunito';
+  font-family: 'Quicksand';
   font-weight: 300;
   font-size: 28px;
   line-height: 0%;
@@ -136,12 +136,20 @@ body {
 
 .customerLimit {
   position: absolute;
-  left: 188px;
+  left: 192px;
   display: inline-block;
+  padding-top: 12px;
+  font-family: 'Nunito';
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
 
 .info {
-  font-family: sans-serif;
+  vertical-align: top;
+  line-height: 108%;
+  padding-left: 5px;
+  font-family: 'Times New Roman';
   font-size: 18px;
   color: #757575;
 }

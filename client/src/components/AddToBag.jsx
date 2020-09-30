@@ -9,7 +9,7 @@ const AddToBag = ({ limit, quantity, changeHandler }) => {
       <input type="text" value={quantity} className={styles.bagInput} onChange={(e) => { changeHandler(e.target.value); }} />
       <button type="button" className={`${styles.bagAdjust} ${styles.plus}`}>+</button>
       <div className={styles.customerLimit}>
-        {`Limit ${customerLimit} `}
+        {`Limit ${customerLimit}`}
         <span className={styles.info}>&#9432;</span>
       </div>
       <button type="submit" className={styles.addToBag}>Add to Bag</button>
