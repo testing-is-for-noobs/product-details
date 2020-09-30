@@ -19,7 +19,10 @@ body {
 }
 
 .container {
-  width: 30%;
+  position: absolute;
+  top: 270px;
+  left: 67%;
+  width: 23.5%;
   background-color: #FFFFFF;
   padding: 18px;
 }
@@ -120,7 +123,7 @@ body {
 }
 
 .plus {
-  left: 130px;
+  left: 122px;
   border-radius: 0 5px 5px 0;
 }
 
@@ -134,7 +137,7 @@ body {
 
 .bagInput {
   position: absolute;
-  left: 71px;
+  left: 63px;
   height: 37px;
   width: 55px;
   border-top: 1px solid #E0E0E0;
@@ -176,7 +179,26 @@ body {
   font-family: 'Cera Pro Medium';
   background-color: #FD8024;
   width: 100%;
-  padding: 15px;
-  border-radius: 5px;
-  border: 0px;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid #FD8024;
+}
+
+.wishlist {
+  margin-block-start: 1.32em;
+  height: 32px;
+  background-color: whitesmoke;
+}
+
+.circle {
+  background-color: grey;
+}
+
+.heart {
+  background-color: blue;
+}
+
+.wishlistText {
+  display: inline-block;
+  background-color: grey;
 }

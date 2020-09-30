@@ -3,7 +3,6 @@ import styles from '../css/styles.css';
 
 const AddToBag = ({ limit, quantity, changeHandler }) => {
   const customerLimit = limit;
-  console.log(quantity);
   return (
     <div className={styles.bag}>
       {quantity > 1

@@ -6,6 +6,7 @@ import Tag from './Tag.jsx';
 import Reviews from './Reviews.jsx';
 import Availability from './Availability.jsx';
 import AddToBag from './AddToBag.jsx';
+import Wishlist from './Wishlist.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class App extends React.Component {
           quantity={quantityField}
           changeHandler={this.inputQuantity}
         />
+        <Wishlist liked={product.liked} />
       </div>
     );
   }
