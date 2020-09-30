@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Cera Pro Bold';
+  src: url('./fonts/Cera-Pro-Bold.woff2');
+  src: url('./fonts/Cera-Pro-Bold.woff');
+}
+
+@font-face {
+  font-family: 'Cera Pro Medium';
+  src: url('./fonts/Cera-Pro-Medium.woff2');
+  src: url('./fonts/Cera-Pro-Medium.woff');
+}
+
+body {
+  font-family: 'Cera Pro Medium', sans-serif;
+  background-color: #F8F8F8;
+}
+
+.container {
+  width: 30%;
+  background-color: #FFFFFF;
+  padding: 18px;
+}
+
+.tag {
+  box-sizing: inherit;
+  display: inline-block;
+  padding: 0.19rem 0.625rem;
+  background-color: #FFCF00;
+  font-size: 0.75rem;
+  line-height: 1.1875rem;
+}
+
+.productLine {
+  padding: 0;
+  margin: 32px 0 3px 0;
+  font-family: 'Cera Pro Bold';
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 0.1em;
+  font-style: italic;
+}
+
+.productTitle {
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.stars {
+  display: inline-block;
+  height: 18px;
+  width: 115px;
+  padding-left: 0;
+  padding-bottom: 2px;
+  vertical-align: text-bottom;
+  font-size: 18px;
+  letter-spacing: 5px;
+  color: #FFCF00;
+}
+
+.reviewText {
+  vertical-align: -18%;
+  color: #006DB7;
+  padding-left: 18px;
+  font-size: 15px;
+}
+
+.reviewText:hover {
+  cursor: pointer;
+}
+
+.reviewCount {
+  letter-spacing: 0.75px;
+}
+
+.price {
+  font-family: 'Cera Pro Bold';
+  font-weight: 550;
+  font-size: 30px;
+  margin-top: 5%;
+  margin-bottom: 5px;
+}
+
+.availability {
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-size: 14px;
+  color: #008537;
+  margin-bottom: 32px;
+}
+
+.bag {
+  font-family: 'Quicksand';
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.bagAdjust {
+  position: absolute;
+  height: 41px;
+  width: 45px;
+  border: 1px solid #E0E0E0;
+  color: black;
+  font-family: 'Quicksand';
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 0%;
+  background-color: white;
+}
+
+.minus {
+  border-radius: 5px 0 0 5px;
+}
+
+.plus {
+  left: 130px;
+  border-radius: 0 5px 5px 0;
+}
+
+.bagInput {
+  position: absolute;
+  left: 71px;
+  height: 37px;
+  width: 55px;
+  border-top: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
+  border-left: 0px;
+  border-right: 0px;
+  text-align: center;
+  font-family: 'Cera Pro Medium';
+  font-size: 15px;
+  line-height: 0%;
+}
+
+.customerLimit {
+  position: absolute;
+  left: 192px;
+  display: inline-block;
+  padding-top: 12px;
+  font-family: 'Nunito';
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.info {
+  vertical-align: top;
+  line-height: 108%;
+  padding-left: 5px;
+  font-family: 'Times New Roman';
+  font-size: 18px;
+  color: #757575;
+}
+
+.info:hover {
+  cursor: pointer;
+}
+
+.addToBag {
+  margin-block-start: 4.5em;
+  font-family: 'Cera Pro Medium';
+  background-color: #FD8024;
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: 0px;
+}
