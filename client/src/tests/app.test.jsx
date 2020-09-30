@@ -1,6 +1,6 @@
 import React from 'react';
-import App from '../app';
 import { shallow } from 'enzyme';
+import App from '../components/App';
 
 describe('App', () => {
   it('state begins with product ID 1', () => {

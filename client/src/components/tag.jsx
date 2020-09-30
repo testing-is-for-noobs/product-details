@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from '../css/styles.css';
 
-const Tag = (props) => {
+const Tag = ({ tag }) => {
   const tags = ['New', 'Exclusives', 'Hard to find'];
-  if (props.tag !== 0) {
+  if (tag !== 0) {
     return (
-      <div id="tag">{tags[props.tag - 1]}</div>
+      <div className={styles.tag}>{tags[tag - 1]}</div>
     );
   }
   return (

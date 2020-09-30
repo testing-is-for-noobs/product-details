@@ -1,6 +1,6 @@
 import React from 'react';
-import Tag from '../components/tag';
 import { shallow } from 'enzyme';
+import Tag from '../components/Tag';
 
 describe('Tag', () => {
   it('tag div text renders correctly', () => {
