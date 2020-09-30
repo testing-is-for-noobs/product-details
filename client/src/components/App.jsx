@@ -3,9 +3,9 @@ import axios from 'axios';
 
 import styles from '../css/styles.css';
 import Tag from './Tag.jsx';
+import Reviews from './Reviews.jsx';
 import Availability from './Availability.jsx';
 import AddToBag from './AddToBag.jsx';
-import Reviews from './Reviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,10 +33,12 @@ class App extends React.Component {
   }
 
   inputQuantity(q) {
-    const { quantityField } = this.state;
     this.setState({
       quantityField: q,
-    }, () => { console.log(quantityField); });
+    }, () => {
+      const { quantityField } = this.state;
+      console.log(quantityField);
+    });
   }
 
   render() {
