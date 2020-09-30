@@ -29,7 +29,7 @@
 }
 
 body {
-  font-family: 'Cera Pro Medium', sans-serif;
+  font-family: 'Cera Pro Medium';
   background-color: #F8F8F8;
 }
 
@@ -81,7 +81,7 @@ body {
 .reviewText {
   vertical-align: -18%;
   color: #006DB7;
-  padding-left: 18px;
+  padding-left: 12px;
   font-size: 14px;
 }
 
@@ -240,8 +240,52 @@ body {
 
 .wishlistText {
   padding-left: 2px;
-  display: inline-block;
+  display: inline-flex;
   font-family: 'Cera Pro Medium';
   font-size: 12px;
   vertical-align: middle;
+}
+
+.stock {
+  font-family: 'Cera Pro Medium';
+  font-size: 16px;
+  margin-block-start: 1.5em;
+  width: 100%;
+  height: 63px;
+  text-align: left;
+  background-color: white;
+  border-left: 0;
+  border-right: 0;
+  border-top: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.stockText {
+  color: #2C2C2C;
+  display: inline-flex;
+}
+
+.expander {
+  color: #2C2C2C;
+  font-size: 18px;
+  position: absolute;
+  right: 32px;
+  display: inline-flex;
+}
+
+.similar {
+  margin-block-start: 0.88em;
+  font-family: 'Cera Pro Regular';
+  font-size: 14px;
+  margin-block-end: 0.32em;
+}
+
+.categories {
+  margin-block-start: 0.75em;
+  color: #006DB7;
+  font-family: 'Cera Pro Medium';
+}
+
+.category {
+  padding-left: 15px;
 }

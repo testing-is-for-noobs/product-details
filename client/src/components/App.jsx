@@ -7,6 +7,8 @@ import Reviews from './Reviews.jsx';
 import Availability from './Availability.jsx';
 import AddToBag from './AddToBag.jsx';
 import Wishlist from './Wishlist.jsx';
+import Stock from './Stock.jsx';
+import Similar from './Similar.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,9 +17,11 @@ class App extends React.Component {
       pid: 1,
       product: {},
       quantityField: 1,
+      stockExpansion: false,
     };
     this.inputQuantity = this.inputQuantity.bind(this);
     this.adjustQuantity = this.adjustQuantity.bind(this);
+    this.expander = this.expander.bind(this);
   }
 
   componentDidMount() {
@@ -50,7 +54,7 @@ class App extends React.Component {
       quantityField: newQuantity,
     }, () => {
       const { quantityField } = this.state;
-      console.log('new quantityField:', quantityField);
+      console.log('adjusted quantityField:', quantityField);
     });
   }
 
@@ -59,19 +63,33 @@ class App extends React.Component {
       quantityField: q,
     }, () => {
       const { quantityField } = this.state;
-      console.log(quantityField);
+      console.log('input quantityField:', quantityField);
     });
   }
 
+  expander() {
+    const { stockExpansion } = this.state;
+    const updatedStatus = !stockExpansion;
+    this.setState({
+      stockExpansion: updatedStatus,
+    }, () => { console.log('updated stockExpansion state:', updatedStatus); });
+  }
+
   render() {
-    const { product, quantityField } = this.state;
+    const { product, quantityField, stockExpansion } = this.state;
     return (
       <div className={styles.container}>
         <Tag tag={product.tag} />
-        <p className={styles.productLine}>{product.product_line}</p>
-        <h1 className={styles.productTitle}>{product.name}</h1>
+        <p className={styles.productLine}>
+          {product.product_line}
+        </p>
+        <h1 className={styles.productTitle}>
+          {product.name}
+        </h1>
         <Reviews rating={product.rating} count={product.review_count} />
-        <h1 className={styles.price}>{`$${product.price}`}</h1>
+        <h1 className={styles.price}>
+          {`$${product.price}`}
+        </h1>
         <Availability onlineInv={product.online_inventory} />
         <AddToBag
           limit={product.customer_limit}
@@ -80,6 +98,8 @@ class App extends React.Component {
           buttonHandler={this.adjustQuantity}
         />
         <Wishlist liked={product.liked} />
+        <Stock status={stockExpansion} expander={this.expander} />
+        <Similar cat1={product.category_1} cat2={product.category_2} cat3={product.category_3} />
       </div>
     );
   }
