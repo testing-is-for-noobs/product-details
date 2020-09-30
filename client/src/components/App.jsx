@@ -17,6 +17,7 @@ class App extends React.Component {
       quantityField: 1,
     };
     this.inputQuantity = this.inputQuantity.bind(this);
+    this.adjustQuantity = this.adjustQuantity.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,26 @@ class App extends React.Component {
       .catch((error) => {
         console.log('get error:', error);
       });
+  }
+
+  adjustQuantity(buttonText) {
+    console.log('buttonText:', buttonText);
+    const { quantityField } = this.state;
+    let newQuantity = quantityField;
+    console.log('previousQuantity:', newQuantity);
+
+    if (buttonText === '+') {
+      newQuantity += 1;
+    } else if (buttonText === '-') {
+      newQuantity -= 1;
+    }
+
+    this.setState({
+      quantityField: newQuantity,
+    }, () => {
+      const { quantityField } = this.state;
+      console.log('new quantityField:', quantityField);
+    });
   }
 
   inputQuantity(q) {
@@ -56,6 +77,7 @@ class App extends React.Component {
           limit={product.customer_limit}
           quantity={quantityField}
           changeHandler={this.inputQuantity}
+          buttonHandler={this.adjustQuantity}
         />
         <Wishlist liked={product.liked} />
       </div>

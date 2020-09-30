@@ -4,15 +4,15 @@ import styles from '../css/styles.css';
 const Wishlist = ({ liked }) => {
   const chicken = '';
   return (
-    <div className={styles.wishlist}>
-      <button type="button">
+    <div>
+      <button type="button" className={styles.wishlist}>
         <div className={styles.circle}>
           <div className={styles.heart}>
             {liked}
           </div>
         </div>
+        <div className={styles.wishlistText}>Add to Wishlist</div>
       </button>
-      <div className={styles.wishlistText}>Add to Wishlist</div>
     </div>
   );
 };
