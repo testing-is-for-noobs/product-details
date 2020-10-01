@@ -40,7 +40,7 @@ body {
   width: 23.5%;
   background-color: #FFFFFF;
   padding: 18px;
-  margin-block-end: 2em;
+  margin-block-end: 52em;
 }
 
 .tag {
@@ -311,10 +311,10 @@ body {
 }
 
 .similar {
-  margin-block-start: 0.88em;
+  margin-block-start: 1.08em;
   font-family: 'Cera Pro Regular';
   font-size: 14px;
-  margin-block-end: 0.32em;
+  margin-block-end: 0.5em;
 }
 
 .categories {

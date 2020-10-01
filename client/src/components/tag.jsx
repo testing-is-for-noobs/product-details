@@ -9,7 +9,7 @@ const Tag = ({ tag }) => {
     );
   }
   return (
-    <div>nothing</div>
+    <div> </div>
   );
 };
 
