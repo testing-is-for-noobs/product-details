@@ -281,18 +281,17 @@ body {
   display: inline-flex;
 }
 
-.store {
+.storeHeader {
   margin-block-start: 0.18em;
   display: inline-block;
   width: 100%;
   padding-bottom: 18px;
-  border-bottom: 1px solid #E0E0E0;
 }
 
-.storeText {
+.storeHeaderText {
   font-family: 'Cera Pro Regular';
   font-size: 14px;
-  padding-left: 8px;
+  padding-left: 5px;
 }
 
 .changeStore {
@@ -303,6 +302,30 @@ body {
   color: #006DB7;
   font-family: 'Cera Pro Regular';
   font-size: 14px;
+}
+
+.store {
+  border-bottom: 1px solid #E0E0E0;
+  padding-left: 5px;
+  padding-bottom: 18px;
+}
+
+.storeTitle {
+  font-family: 'Cera Pro Medium';
+  color: black;
+  font-size: 14px;
+}
+
+.storeStock {
+  font-family: 'Cera Pro Medium';
+  font-size: 10px;
+  color: #757575;
+}
+
+.storeDetails {
+  font-family: 'Cera Pro Regular';
+  font-size: 12px;
+  color: #757575;
 }
 
 .changeStore:hover {

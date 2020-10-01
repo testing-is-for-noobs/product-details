@@ -18,6 +18,8 @@ class App extends React.Component {
       product: {},
       quantityField: 1,
       stockExpansion: 0,
+      sid: Math.floor(Math.random() * 20),
+      store: {},
     };
     this.inputQuantity = this.inputQuantity.bind(this);
     this.adjustQuantity = this.adjustQuantity.bind(this);
@@ -26,16 +28,24 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const { pid } = this.state;
+    const { pid, sid } = this.state;
     axios.get(`${pid}/product-details`)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           product: response.data[0],
-        }, () => { console.log('state.products updated'); });
+        }, () => { console.log('state.product updated'); });
       })
       .catch((error) => {
-        console.log('get error:', error);
+        console.log('get product error:', error);
+      });
+    axios.get(`${sid}`)
+      .then((res) => {
+        this.setState({
+          store: res.data,
+        }, () => { console.log('state.store updated'); });
+      })
+      .catch((err) => {
+        console.log('get store error:', err);
       });
   }
 
@@ -86,7 +96,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { product, quantityField, stockExpansion } = this.state;
+    const { product, quantityField, store, stockExpansion } = this.state;
     return (
       <div className={styles.container}>
         <Tag tag={product.tag} />
@@ -108,7 +118,12 @@ class App extends React.Component {
           buttonHandler={this.adjustQuantity}
         />
         <Wishlist liked={product.liked} />
-        <Stock status={stockExpansion} expander={this.expander} storeChanger={this.changeStore} />
+        <Stock
+          store={store}
+          status={stockExpansion}
+          expander={this.expander}
+          storeChanger={this.changeStore}
+        />
         <Similar cat1={product.category_1} cat2={product.category_2} cat3={product.category_3} />
       </div>
     );

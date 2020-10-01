@@ -18,6 +18,18 @@ server.get('/:pid/product-details', (req, res) => {
   });
 });
 
+server.get('/:sid', (req, res) => {
+  db.getAllStores((error, stores) => {
+    if (error) {
+      console.log('getProduct error:', error);
+      res.status(404);
+    } else {
+      console.log('getInitialStore:', stores[req.params.sid]);
+      res.status(200).send(stores[req.params.sid]);
+    }
+  });
+});
+
 server.get('/:pid/product-details/inventory', (req, res) => {
   db.getStore(req.body.zip, (err, store) => {
     if (err) {
