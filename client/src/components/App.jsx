@@ -34,13 +34,16 @@ class App extends React.Component {
       .then((response) => {
         axios.get(`${sid}/${pid}`)
           .then((res) => {
+            console.log(res);
             this.setState({
               product: response.data[0],
               store: res.data.store,
               storeInventory: res.data.inventory,
             }, () => { console.log('store & product updated'); });
           })
-          .catch();
+          .catch((storeInvError) => {
+            console.log('storeInvError:', storeInvError);
+          });
       })
       .catch((err) => {
         console.log('get store error:', err);
@@ -95,6 +98,7 @@ class App extends React.Component {
 
   render() {
     const { product, quantityField, store, stockExpansion, storeInventory } = this.state;
+    console.log('inventory:', storeInventory);
     return (
       <div className={styles.container}>
         <Tag tag={product.tag} />

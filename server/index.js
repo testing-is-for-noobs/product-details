@@ -28,9 +28,10 @@ server.get('/:sid/:pid', (req, res) => {
         if (inverror) {
           console.log(inverror);
         } else {
+          console.log('inventory!!!:', inventory[0].inventory);
           const response = {
             store: stores[req.params.sid],
-            inventory,
+            inventory: inventory[0].inventory,
           };
           console.log('getInitialStoreInv:', response);
           res.status(200).send(response);

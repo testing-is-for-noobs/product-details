@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../css/styles.css';
 
-const Stock = ({ status, expander, storeChanger, store }) => {
+const Stock = ({ status, expander, storeChanger, store, inventory }) => {
   if (status === 0) {
     return (
       <div>
@@ -25,9 +25,15 @@ const Stock = ({ status, expander, storeChanger, store }) => {
           <div className={styles.changeStore} onClick={storeChanger}>Change Store Location</div>
         </div>
         <div className={styles.store}>
-    <div className={styles.storeTitle}>{store.name}</div>
-          <div className={styles.storeStock}>{store.zip}</div>
+          <div className={styles.storeTitle}>{store.name}</div>
+          {inventory > 0 && (
+            <div className={styles.storeStock}>In Stock at this time</div>
+          )}
+          {inventory <= 0 && (
+            <div className={styles.storeStock}>Out of Stock</div>
+          )}
           <div className={styles.storeDetails}>{store.address}</div>
+          <div className={styles.storeStock}>{store.zip}</div>
         </div>
       </div>
     );
