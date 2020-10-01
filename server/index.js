@@ -18,14 +18,24 @@ server.get('/:pid/product-details', (req, res) => {
   });
 });
 
-server.get('/:sid', (req, res) => {
+server.get('/:sid/:pid', (req, res) => {
   db.getAllStores((error, stores) => {
     if (error) {
       console.log('getProduct error:', error);
       res.status(404);
     } else {
-      console.log('getInitialStore:', stores[req.params.sid]);
-      res.status(200).send(stores[req.params.sid]);
+      db.getInventory(req.params.pid, req.params.sid, (inverror, inventory) => {
+        if (inverror) {
+          console.log(inverror);
+        } else {
+          const response = {
+            store: stores[req.params.sid],
+            inventory,
+          };
+          console.log('getInitialStoreInv:', response);
+          res.status(200).send(response);
+        }
+      });
     }
   });
 });
