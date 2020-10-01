@@ -2,20 +2,21 @@ const faker = require('faker');
 const db = require('./index.js');
 
 for (let i = 1; i <= 100; i += 1) {
+  const pline = `${faker.commerce.productMaterial()}™`;
   const fakeProduct = {
     id: i,
     name: `LEGO® ${faker.commerce.productName()}`,
-    product_line: faker.commerce.productMaterial(),
+    product_line: pline,
     tag: faker.random.number({ min: 0, max: 3 }),
     price: faker.random.number({ min: 0, max: 1000, precision: 0.01 }),
     online_inventory: faker.random.number({ min: 0, max: 1 }),
     rating: Math.random() * 5,
-    review_count: faker.random.number({ min: 0, max: 12000 }),
+    review_count: faker.random.number({ min: 0, max: 1000 }),
     customer_limit: faker.random.number({ min: 1, max: 20 }),
     liked: faker.random.number({ min: 0, max: 1 }),
-    category_1: faker.commerce.productMaterial(),
-    category_2: faker.commerce.productMaterial(),
-    category_3: faker.commerce.productMaterial(),
+    category_1: pline,
+    category_2: faker.commerce.productAdjective(),
+    category_3: `${faker.commerce.department()}®`,
   };
   db.insertProduct(fakeProduct, (error) => {
     if (error) {

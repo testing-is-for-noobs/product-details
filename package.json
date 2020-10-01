@@ -45,7 +45,6 @@
     "enzyme-adapter-react-16": "^1.15.5",
     "express": "^4.17.1",
     "faker": "^5.1.0",
-    "modules": "^0.4.0",
     "mysql": "^2.18.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

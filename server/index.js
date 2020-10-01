@@ -18,6 +18,29 @@ server.get('/:pid/product-details', (req, res) => {
   });
 });
 
+server.get('/:sid/:pid', (req, res) => {
+  db.getAllStores((error, stores) => {
+    if (error) {
+      console.log('getProduct error:', error);
+      res.status(404);
+    } else {
+      db.getInventory(req.params.pid, req.params.sid, (inverror, inventory) => {
+        if (inverror) {
+          console.log(inverror);
+        } else {
+          console.log('inventory!!!:', inventory[0].inventory);
+          const response = {
+            store: stores[req.params.sid],
+            inventory: inventory[0].inventory,
+          };
+          console.log('getInitialStoreInv:', response);
+          res.status(200).send(response);
+        }
+      });
+    }
+  });
+});
+
 server.get('/:pid/product-details/inventory', (req, res) => {
   db.getStore(req.body.zip, (err, store) => {
     if (err) {
