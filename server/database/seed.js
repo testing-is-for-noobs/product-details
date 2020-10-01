@@ -14,8 +14,8 @@ for (let i = 1; i <= 100; i += 1) {
     customer_limit: faker.random.number({ min: 1, max: 20 }),
     liked: faker.random.number({ min: 0, max: 1 }),
     category_1: faker.commerce.productMaterial(),
-    category_2: faker.commerce.productMaterial(),
-    category_3: faker.commerce.productMaterial(),
+    category_2: faker.commerce.productAdjective(),
+    category_3: faker.commerce.department(),
   };
   db.insertProduct(fakeProduct, (error) => {
     if (error) {

@@ -17,11 +17,12 @@ class App extends React.Component {
       pid: 1,
       product: {},
       quantityField: 1,
-      stockExpansion: false,
+      stockExpansion: 0,
     };
     this.inputQuantity = this.inputQuantity.bind(this);
     this.adjustQuantity = this.adjustQuantity.bind(this);
     this.expander = this.expander.bind(this);
+    this.changeStore = this.changeStore.bind(this);
   }
 
   componentDidMount() {
@@ -69,10 +70,19 @@ class App extends React.Component {
 
   expander() {
     const { stockExpansion } = this.state;
-    const updatedStatus = !stockExpansion;
+    let updatedStatus = 0;
+    if (stockExpansion === 0) {
+      updatedStatus = 1;
+    }
     this.setState({
       stockExpansion: updatedStatus,
     }, () => { console.log('updated stockExpansion state:', updatedStatus); });
+  }
+
+  changeStore() {
+    this.setState({
+      stockExpansion: -1,
+    }, () => { console.log('updated stockExpansion state: -1'); });
   }
 
   render() {
@@ -98,7 +108,7 @@ class App extends React.Component {
           buttonHandler={this.adjustQuantity}
         />
         <Wishlist liked={product.liked} />
-        <Stock status={stockExpansion} expander={this.expander} />
+        <Stock status={stockExpansion} expander={this.expander} storeChanger={this.changeStore} />
         <Similar cat1={product.category_1} cat2={product.category_2} cat3={product.category_3} />
       </div>
     );

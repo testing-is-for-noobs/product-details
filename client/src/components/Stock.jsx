@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from '../css/styles.css';
 
-const Stock = ({ status, expander }) => {
-  if (!status) {
+const Stock = ({ status, expander, storeChanger }) => {
+  if (status === 0) {
     return (
       <div>
         <button type="button" className={styles.stock} onClick={expander}>
@@ -12,12 +12,30 @@ const Stock = ({ status, expander }) => {
       </div>
     );
   }
+  if (status === 1) {
+    return (
+      <div>
+        <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>
+          <div className={styles.stockText}>Check Store Stock</div>
+          <div className={styles.expander}>-</div>
+        </button>
+        <div className={styles.store}>
+          <span className={styles.storeText}>Closest Store</span>
+          <div className={styles.info}>i</div>
+          <div className={styles.changeStore} onClick={storeChanger}>Change Store Location</div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
-      <button type="button" className={styles.stock} onClick={expander}>
+      <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>
         <div className={styles.stockText}>Check Store Stock</div>
-        <div className={styles.expander}>+</div>
+        <div className={styles.expander}>-</div>
       </button>
+      <div className={styles.store}>
+        <span className={styles.storeText}>Enter your address to find a store near you.</span>
+      </div>
     </div>
   );
 };
