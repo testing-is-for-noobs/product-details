@@ -35,6 +35,10 @@ module.exports = {
         test: /\.(png|woff|woff2|eot|ttf|svg|otf)$/,
         loader: 'url-loader',
       },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        loader: 'file-loader',
+      },
     ],
   },
 };

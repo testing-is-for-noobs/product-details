@@ -62,6 +62,10 @@ body {
   font-style: italic;
 }
 
+.productLine:hover {
+  cursor: pointer;
+}
+
 .productTitle {
   font-weight: 500;
   margin-bottom: 12px;
@@ -192,6 +196,8 @@ body {
 
 .info:hover {
   cursor: pointer;
+  color: rgb(0, 109, 183);
+  border-color: rgb(0, 109, 183);
 }
 
 .addToBag {
@@ -201,7 +207,12 @@ body {
   width: 100%;
   padding: 16px;
   border-radius: 4px;
-  border: 1px solid #FD8024;
+  border: 2px solid #FD8024;
+}
+
+.addToBag:hover {
+  background-color: white;
+  cursor: pointer;
 }
 
 .wishlist {
@@ -304,33 +315,56 @@ body {
   font-size: 14px;
 }
 
+.changeStore:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .store {
   border-bottom: 1px solid #E0E0E0;
-  padding-left: 5px;
+  padding-left: 32px;
   padding-bottom: 18px;
 }
 
 .storeTitle {
   font-family: 'Cera Pro Medium';
-  color: black;
-  font-size: 14px;
+  color: #2c2c2c;
+  font-size: 16px;
 }
 
 .storeStock {
+  margin-block-start: 0.32em;
   font-family: 'Cera Pro Medium';
-  font-size: 10px;
-  color: #757575;
-}
-
-.storeDetails {
-  font-family: 'Cera Pro Regular';
   font-size: 12px;
   color: #757575;
 }
 
-.changeStore:hover {
+.storeDetails {
+  margin-block-start: 0.32em;
+  font-family: 'Cera Pro Regular';
+  font-size: 15px;
+  color: #757575;
+}
+
+.seeStore {
+  margin-block-start: 1.32em;
+  color: #006DB7;
+  font-family: 'Cera Pro Medium';
+  font-size: 14px;
+}
+
+.seeStore:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.storeSearch {
+  width: 80%;
+}
+
+.searchButton {
+  display: inline-block;
+  width: 10%;
 }
 
 .similar {

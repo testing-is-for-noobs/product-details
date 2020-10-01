@@ -33,7 +33,9 @@ const Stock = ({ status, expander, storeChanger, store, inventory }) => {
             <div className={styles.storeStock}>Out of Stock</div>
           )}
           <div className={styles.storeDetails}>{store.address}</div>
-          <div className={styles.storeStock}>{store.zip}</div>
+          <div className={styles.storeDetails}>{`${store.city} ${store.state}`}</div>
+          <div className={styles.storeDetails}>{store.zip}</div>
+          <div className={styles.seeStore}>See Store Details</div>
         </div>
       </div>
     );
@@ -47,6 +49,10 @@ const Stock = ({ status, expander, storeChanger, store, inventory }) => {
       <div className={styles.storeHeader}>
         <span className={styles.storeHeaderText}>Enter your address to find a store near you.</span>
       </div>
+      <input className={styles.storeSearch} placeholder="Enter a city and state or zip code" />
+      <button className={styles.searchButton} type="button">
+        Search
+      </button>
     </div>
   );
 };
