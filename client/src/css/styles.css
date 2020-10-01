@@ -359,12 +359,23 @@ body {
 }
 
 .storeSearch {
-  width: 80%;
+  width: 82%;
+  height: 50px;
+  border-right: 0;
+  border-left: 1px solid #E0E0E0;
+  border-top: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
+  padding-left: 18px;
+  font-family: 'Cera Pro Regular';
+  font-size: 16px;
 }
 
 .searchButton {
   display: inline-block;
-  width: 10%;
+  width: 12%;
+  height: 54px;
+  border: 1px solid rgb(0, 109, 183);
+  background-color: white;
 }
 
 .similar {

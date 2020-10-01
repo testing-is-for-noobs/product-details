@@ -51,7 +51,7 @@ const Stock = ({ status, expander, storeChanger, store, inventory }) => {
       </div>
       <input className={styles.storeSearch} placeholder="Enter a city and state or zip code" />
       <button className={styles.searchButton} type="button">
-        Search
+        Find
       </button>
     </div>
   );
