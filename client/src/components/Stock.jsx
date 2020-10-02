@@ -20,8 +20,8 @@ const Stock = ({ status, expander, storeChanger, store, inventory }) => {
           <div className={styles.expander}>-</div>
         </button>
         <div className={styles.storeHeader}>
-          <span className={styles.storeHeaderText}>Closest Store</span>
-          <div className={styles.info}>i</div>
+          <div className={styles.storeHeaderText}>Closest Store</div>
+          <div className={`${styles.info} ${styles.storeInfo}`}>i</div>
           <div className={styles.changeStore} onClick={storeChanger}>Change Store Location</div>
         </div>
         <div className={styles.store}>
@@ -33,15 +33,14 @@ const Stock = ({ status, expander, storeChanger, store, inventory }) => {
             <div className={styles.storeStock}>Out of Stock</div>
           )}
           <div className={styles.storeDetails}>{store.address}</div>
-          <div className={styles.storeDetails}>{`${store.city} ${store.state}`}</div>
-          <div className={styles.storeDetails}>{store.zip}</div>
+          <div className={styles.storeDetails}>{`${store.city}, ${store.state} ${store.zip}`}</div>
           <div className={styles.seeStore}>See Store Details</div>
         </div>
       </div>
     );
   }
   return (
-    <div>
+    <div className={styles.searchPanel}>
       <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>
         <div className={styles.stockText}>Check Store Stock</div>
         <div className={styles.expander}>-</div>

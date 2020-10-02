@@ -2,13 +2,13 @@ import React from 'react';
 import axios from 'axios';
 
 import styles from '../css/styles.css';
-import Tag from './Tag.jsx';
-import Reviews from './Reviews.jsx';
-import Availability from './Availability.jsx';
-import AddToBag from './AddToBag.jsx';
-import Wishlist from './Wishlist.jsx';
-import Stock from './Stock.jsx';
-import Similar from './Similar.jsx';
+import Tag from './Tag';
+import Reviews from './Reviews';
+import Availability from './Availability';
+import AddToBag from './AddToBag';
+import Wishlist from './Wishlist';
+import Stock from './Stock';
+import Similar from './Similar';
 
 class App extends React.Component {
   constructor(props) {
@@ -98,7 +98,6 @@ class App extends React.Component {
 
   render() {
     const { product, quantityField, store, stockExpansion, storeInventory } = this.state;
-    console.log('inventory:', storeInventory);
     return (
       <div className={styles.container}>
         <Tag tag={product.tag} />
