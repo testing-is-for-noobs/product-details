@@ -359,6 +359,10 @@ body {
   text-decoration: underline;
 }
 
+.selectContainer {
+  position: relative
+}
+
 .storeSelect {
   position: relative;
   color: #2c2c2c;
@@ -400,7 +404,7 @@ body {
 }
 
 .dropdown {
-  position: relative;
+  position: absolute;
   z-index:1000;
   width: 99.5%;
   background-color: white;

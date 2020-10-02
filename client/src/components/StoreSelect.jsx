@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../css/styles.css';
 
 const StoreSelect = ({ stores, toggleDrop, storeMenu }) => (
-  <div>
+  <div className={styles.selectContainer}>
     <button type="button" className={styles.storeSelect} onClick={toggleDrop}>
       {storeMenu === 'minimized' && (
         <div className={`${styles.storeSelectArrow} ${styles.down}`}>
