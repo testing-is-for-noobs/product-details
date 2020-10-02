@@ -69,7 +69,7 @@ body {
 
 .productTitle {
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 25px;
 }
 
 .stars {
@@ -85,9 +85,9 @@ body {
 }
 
 .reviewText {
-  vertical-align: -18%;
+  vertical-align: 5%;
   color: #006DB7;
-  padding-left: 12px;
+  padding-left: 18px;
   font-size: 14px;
 }
 
