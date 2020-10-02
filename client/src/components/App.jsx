@@ -25,7 +25,7 @@ class App extends React.Component {
       pid: 1,
       product: {},
       quantityField: 1,
-      stockExpansion: 0,
+      stockExpansion: 'minimized',
       sid: Math.floor(Math.random() * 20),
       store: {},
       storeInventory: 0,
@@ -35,6 +35,7 @@ class App extends React.Component {
     this.updateWishlist = this.updateWishlist.bind(this);
     this.expander = this.expander.bind(this);
     this.changeStore = this.changeStore.bind(this);
+    this.toggleDrop = this.toggleDrop.bind(this);
   }
 
   componentDidMount() {
@@ -43,27 +44,23 @@ class App extends React.Component {
       .then((response) => {
         axios.get(`${sid}/${pid}`)
           .then((res) => {
-            console.log('store data:', res.data.store);
+            // console.log('store data:', res.data.store);
             this.setState({
               product: response.data[0],
               store: res.data.store,
               storeInventory: res.data.inventory,
-            }, () => { console.log('componentDidMount success'); });
+            }, () => { console.log('component mounted'); });
           })
           .catch((storeInvError) => {
             console.log('storeInvError:', storeInvError);
           });
       })
-      .catch((err) => {
-        console.log('get store error:', err);
-      });
+      .catch((err) => { console.log('get store error:', err); });
   }
 
   adjustQuantity(buttonText) {
-    console.log('buttonText:', buttonText);
     const { quantityField } = this.state;
     let newQuantity = quantityField;
-    console.log('previousQuantity:', newQuantity);
 
     if (buttonText === '+') {
       newQuantity += 1;
@@ -73,19 +70,22 @@ class App extends React.Component {
 
     this.setState({
       quantityField: newQuantity,
-    }, () => {
-      const { quantityField } = this.state;
-      console.log('adjusted quantityField:', quantityField);
-    });
+    }, () => { console.log('quantityField adjusted:', newQuantity); });
   }
 
-  inputQuantity(q) {
+  inputQuantity(userInput) {
+    const { product, quantityField } = this.state;
+    let newQuantity = Number(userInput);
+    if (isNaN(newQuantity)) {
+      newQuantity = quantityField;
+    } else if (newQuantity > product.customer_limit) {
+      newQuantity = product.customer_limit;
+    } else if (newQuantity < 1) {
+      newQuantity = 1;
+    }
     this.setState({
-      quantityField: q,
-    }, () => {
-      const { quantityField } = this.state;
-      console.log('input quantityField:', quantityField);
-    });
+      quantityField: newQuantity,
+    }, () => { console.log('quantityField updated:', newQuantity); });
   }
 
   updateWishlist() {
@@ -102,9 +102,9 @@ class App extends React.Component {
 
   expander() {
     const { stockExpansion } = this.state;
-    let updatedStatus = 0;
-    if (stockExpansion === 0) {
-      updatedStatus = 1;
+    let updatedStatus = 'minimized';
+    if (stockExpansion === 'minimized') {
+      updatedStatus = 'expanded';
     }
     this.setState({
       stockExpansion: updatedStatus,
@@ -113,8 +113,12 @@ class App extends React.Component {
 
   changeStore() {
     this.setState({
-      stockExpansion: -1,
-    }, () => { console.log('updated stockExpansion state: -1'); });
+      stockExpansion: 'change store',
+    }, () => { console.log('updated stockExpansion state: change store'); });
+  }
+
+  toggleDrop() {
+    //
   }
 
   render() {
@@ -148,6 +152,7 @@ class App extends React.Component {
           status={stockExpansion}
           expander={this.expander}
           storeChanger={this.changeStore}
+          toggleDrop={this.toggleDrop}
         />
         <Similar cat1={product.category_1} cat2={product.category_2} cat3={product.category_3} />
       </div>

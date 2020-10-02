@@ -3,7 +3,7 @@ import styles from '../css/styles.css';
 import StoreSelect from './StoreSelect';
 
 const Stock = ({ status, expander, storeChanger, store, inventory, stores }) => {
-  if (status === 0) {
+  if (status === 'minimized') {
     return (
       <div>
         <button type="button" className={styles.stock} onClick={expander}>
@@ -13,7 +13,7 @@ const Stock = ({ status, expander, storeChanger, store, inventory, stores }) => 
       </div>
     );
   }
-  if (status === 1) {
+  if (status === 'expanded') {
     return (
       <div>
         <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>

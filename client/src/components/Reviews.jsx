@@ -14,9 +14,6 @@ const Reviews = (props) => {
     );
   }
   const ratingDecimal = rating - Math.floor(rating);
-  if (ratingDecimal) {
-    console.log('ratingDecimal:', ratingDecimal);
-  }
   if (ratingDecimal >= 0.25 && ratingDecimal <= 0.75) {
     starbar.push(
       <svg display="block" width="100%" height="100%" viewBox="0 0 28 27" key={starbar.length}>
