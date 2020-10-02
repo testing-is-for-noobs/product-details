@@ -21,7 +21,7 @@ class App extends React.Component {
       sid: 1,
       stores: [],
       store: {},
-      storeInventory: 0,
+      productInventory: [{}],
       storeMenu: 'minimized',
     };
     this.inputQuantity = this.inputQuantity.bind(this);
@@ -36,13 +36,15 @@ class App extends React.Component {
 
   componentDidMount() {
     const { pid, sid } = this.state;
+    console.log('CDM pid:', pid);
+    console.log('CDM sid:', sid);
     axios.get(`${pid}/product-details`)
       .then((response) => {
         this.setState({
           product: response.data.product[0],
           stores: response.data.stores,
           store: response.data.stores[sid],
-          storeInventory: response.data.inventory,
+          productInventory: response.data.inventory,
         }, () => { console.log('component mounted'); });
       })
       .catch((error) => {
@@ -130,7 +132,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { product, quantityField, stores, store, stockExpansion, storeMenu, storeInventory } = this.state;
+    const { product, quantityField, stores, store, stockExpansion, storeMenu, productInventory, sid } = this.state;
+    console.log('productInventory[sid - 1]:', productInventory[sid - 1]);
     return (
       <div className={styles.container}>
         <Tag tag={product.tag} />
@@ -160,7 +163,7 @@ class App extends React.Component {
           storeMenu={storeMenu}
           stores={stores}
           store={store}
-          inventory={storeInventory}
+          inventory={productInventory[sid - 1].inventory}
         />
         <Similar cat1={product.category_1} cat2={product.category_2} cat3={product.category_3} />
       </div>
