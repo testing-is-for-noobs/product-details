@@ -23,7 +23,13 @@ const Stock = ({ status, expander, storeChanger, store, inventory, stores }) => 
         <div className={styles.storeHeader}>
           <div className={styles.storeHeaderText}>Closest Store</div>
           <div className={`${styles.info} ${styles.storeInfo}`}>i</div>
-          <div className={styles.changeStore} onClick={storeChanger}>Change Store Location</div>
+          <button
+            className={styles.changeStore}
+            onClick={storeChanger}
+            type="button"
+          >
+            Change Store Location
+          </button>
         </div>
         <StoreSelect stores={stores} />
         <div className={styles.store}>

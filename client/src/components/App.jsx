@@ -1,5 +1,7 @@
 /*
-SVGs
+
+search:
+<svg width="18px" height="18px" viewBox="0 0 18 18"><path d="M18 16.615c0 .375-.137.7-.412.973a1.331 1.331 0 0 1-.973.412 1.28 1.28 0 0 1-.973-.412l-3.71-3.7a7.41 7.41 0 0 1-4.317 1.342c-1.03 0-2.017-.2-2.958-.6a7.616 7.616 0 0 1-2.434-1.623 7.605 7.605 0 0 1-1.622-2.433A7.472 7.472 0 0 1 0 7.616c0-1.032.2-2.018.6-2.96a7.65 7.65 0 0 1 1.623-2.433A7.616 7.616 0 0 1 4.657.601 7.49 7.49 0 0 1 7.615 0c1.032 0 2.018.2 2.959.601.94.4 1.752.941 2.434 1.622a7.624 7.624 0 0 1 1.622 2.434c.4.941.601 1.927.601 2.959a7.403 7.403 0 0 1-1.342 4.316l3.71 3.71c.267.266.401.592.401.973m-5.539-9c0-1.334-.474-2.475-1.423-3.423C10.09 3.244 8.95 2.77 7.615 2.77c-1.333 0-2.475.474-3.423 1.422C3.243 5.14 2.77 6.28 2.77 7.616c0 1.334.474 2.475 1.423 3.423.948.949 2.09 1.422 3.423 1.422 1.335 0 2.475-.473 3.423-1.422.95-.948 1.423-2.09 1.423-3.423" fill="#006DB7" fill-rule="evenodd"></path></svg>
 
 arrow down:
 <svg width="18px" height="28px" class="Chevron__ChevronIcon-sc-1q2x5f4-0 DOTSi StoreCheckerstyles__DropdownChevron-sc-1ogdbsf-1 hNeUFJ" viewBox="0 0 18 28" aria-hidden="true"><path d="M1.825 28L18 14 1.825 0 0 1.715 14.196 14 0 26.285z" fill="currentColor"></path></svg>
@@ -8,9 +10,6 @@ transform: rotate(90deg);
 arrow up:
 <svg width="18px" height="28px" class="Chevron__ChevronIcon-sc-1q2x5f4-0 hhhqNO StoreCheckerstyles__DropdownChevron-sc-1ogdbsf-1 hNeUFJ" viewBox="0 0 18 28" aria-hidden="true"><path d="M1.825 28L18 14 1.825 0 0 1.715 14.196 14 0 26.285z" fill="currentColor"></path></svg>
 transform: rotate(270deg);
-
-heart:
-<svg width="100%" height="100%" viewBox="0 0 40 40" alt="" class="WishlistButtonstyles__StyledWishlistIcon-d720r1-1 eDfAts"><rect fill="#F8F8F8" width="40" height="40" rx="20"></rect><path d="M19.986 30l.014-.014.014.014 8.223-8.116-.018-.019a5.678 5.678 0 0 0 1.78-4.126C30 14.569 27.398 12 24.187 12A5.829 5.829 0 0 0 20 13.762 5.827 5.827 0 0 0 15.815 12C12.604 12 10 14.569 10 17.739a5.68 5.68 0 0 0 1.782 4.126" fill="#006DB7"></path><path d="M26.84 20.417L20 27.204l-6.84-6.787A3.67 3.67 0 0 1 12 17.739C12 15.677 13.71 14 15.815 14a3.82 3.82 0 0 1 2.754 1.159l1.43 1.467 1.433-1.467A3.818 3.818 0 0 1 24.186 14C26.289 14 28 15.677 28 17.739a3.673 3.673 0 0 1-1.16 2.678M19.986 30l.014-.014.014.014 8.223-8.116-.018-.019a5.678 5.678 0 0 0 1.78-4.126C30 14.569 27.398 12 24.187 12A5.829 5.829 0 0 0 20 13.762 5.827 5.827 0 0 0 15.815 12C12.604 12 10 14.569 10 17.739a5.68 5.68 0 0 0 1.782 4.126" fill="#006DB7"></path></svg>
 
 full star:
 <svg width="100%" height="100%" viewBox="0 0 50 49"><g stroke="none" stroke-width="1" fill="#FFD500"><path d="M49.9,18.1 C49.3,16.2 47.1,15.9 47.1,15.9 L34,13.9 L28,2 C28,2 27,0 25,0 C23,0 22,2 22,2 L16.1,13.9 L3,15.9 C3,15.9 0.8,16.2 0.2,18.1 C-0.4,20 1.2,21.6 1.2,21.6 L10.8,31 L8.3,44 C8.3,44 7.9,46.2 9.5,47.4 C11.1,48.6 13.1,47.6 13.1,47.6 L25,41.8 L37.1,47.7 C37.1,47.7 39.1,48.7 40.7,47.5 C42.3,46.3 41.9,44.1 41.9,44.1 L39.4,31.1 L49,21.7 C48.9,21.6 50.5,20 49.9,18.1 Z" fill-rule="nonzero"></path></g></svg>
@@ -49,6 +48,7 @@ class App extends React.Component {
     };
     this.inputQuantity = this.inputQuantity.bind(this);
     this.adjustQuantity = this.adjustQuantity.bind(this);
+    this.updateWishlist = this.updateWishlist.bind(this);
     this.expander = this.expander.bind(this);
     this.changeStore = this.changeStore.bind(this);
   }
@@ -104,6 +104,19 @@ class App extends React.Component {
     });
   }
 
+  updateWishlist() {
+    const { pid, product } = this.state;
+    console.log('product.liked:', product.liked);
+    axios.put(`/${pid}/product-details/wishlist`)
+      .then((response) => {
+        console.log('update wishlist response:', response);
+        this.componentDidMount();
+      })
+      .catch((error) => {
+        console.log('update wishlist error:', error);
+      });
+  }
+
   expander() {
     const { stockExpansion } = this.state;
     let updatedStatus = 0;
@@ -144,7 +157,7 @@ class App extends React.Component {
           changeHandler={this.inputQuantity}
           buttonHandler={this.adjustQuantity}
         />
-        <Wishlist liked={product.liked} />
+        <Wishlist liked={product.liked} updater={this.updateWishlist} />
         <Stock
           store={store}
           stores={stores}
