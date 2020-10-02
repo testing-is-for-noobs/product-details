@@ -6,7 +6,7 @@ const Wishlist = ({ liked }) => (
     <button type="button" className={styles.wishlist}>
       <div className={styles.circle}>
         <div className={styles.heart}>
-          {liked}
+          &hearts;
         </div>
       </div>
       <div className={styles.wishlistText}>Add to Wishlist</div>
