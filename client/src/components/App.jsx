@@ -36,6 +36,8 @@ class App extends React.Component {
     this.updateWishlist = this.updateWishlist.bind(this);
     this.expander = this.expander.bind(this);
     this.changeStore = this.changeStore.bind(this);
+    this.storeSearch = this.storeSearch.bind(this);
+    this.searchButton = this.searchButton.bind(this);
     this.toggleDrop = this.toggleDrop.bind(this);
   }
 
@@ -109,6 +111,7 @@ class App extends React.Component {
     }
     this.setState({
       stockExpansion: updatedStatus,
+      storeMenu: 'minimized',
     }, () => { console.log('updated stockExpansion state:', updatedStatus); });
   }
 
@@ -116,6 +119,14 @@ class App extends React.Component {
     this.setState({
       stockExpansion: 'change store',
     }, () => { console.log('updated stockExpansion state: change store'); });
+  }
+
+  storeSearch() {
+    //
+  }
+
+  searchButton() {
+    //
   }
 
   toggleDrop() {

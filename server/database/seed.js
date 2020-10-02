@@ -54,7 +54,7 @@ const images = [
 for (let i = 1; i <= 20; i += 1) {
   const fakeStore = {
     id: i,
-    name: `LEGO® Store ${faker.company.companyName()}`,
+    name: `LEGO® Store ${faker.address.streetName()}`,
     address: faker.address.streetAddress(),
     city: faker.address.city(),
     state: faker.address.stateAbbr(),
