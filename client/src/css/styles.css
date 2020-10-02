@@ -359,6 +359,10 @@ body {
   text-decoration: underline;
 }
 
+.changeStore:focus {
+  outline: none;
+}
+
 .selectContainer {
   position: relative
 }

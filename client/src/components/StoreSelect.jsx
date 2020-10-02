@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../css/styles.css';
 
-const StoreSelect = ({ stores, toggleDrop, storeMenu }) => (
+const StoreSelect = ({ stores, store, toggleDrop, storeMenu }) => (
   <div className={styles.selectContainer}>
     <button type="button" className={styles.storeSelect} onClick={toggleDrop}>
       {storeMenu === 'minimized' && (
@@ -19,7 +19,7 @@ const StoreSelect = ({ stores, toggleDrop, storeMenu }) => (
         </div>
       )}
       <div className={styles.storeSelectHeader}>Select a Store</div>
-      {stores[0].name}
+      {store.name}
     </button>
     {storeMenu === 'expanded' && (
       <div className={styles.dropdown}>

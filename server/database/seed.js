@@ -71,34 +71,33 @@ for (let i = 1; i <= 20; i += 1) {
   });
 }
 
-db.getAllProducts((error, products) => {
-  if (error) {
-    console.log('getAllProducts error:', error);
-  } else {
-    db.getAllStores((err, stores) => {
-      if (err) {
-        console.log('getAllStores error:', err);
-      } else {
-        let count = 0;
-        for (let i = 0; i < products.length; i += 1) {
-          const currentProduct = products[i];
-          for (let j = 0; j < stores.length; j += 1) {
-            const currentStore = stores[j];
-            count += 1;
-            const inventory = {
-              id: count,
-              inventory: faker.random.number({ min: 0, max: 20 }),
-              product_id: currentProduct.id,
-              store_id: currentStore.id,
-            };
-            db.insertInventory(inventory, (inverror) => {
-              if (inverror) {
-                console.log(`inventory insertion error: ${inverror}`);
-              }
-            });
-          }
+db.seedData()
+  .then(([products, stores]) => {
+    let count = 0;
+    for (let i = 0; i < products.length; i += 1) {
+      const currentProduct = products[i];
+      for (let j = 0; j < stores.length; j += 1) {
+        const currentStore = stores[j];
+        count += 1;
+        let inv;
+        const random = Math.floor(Math.random() * 2);
+        if (random === 0) {
+          inv = 0;
+        } else if (random === 1) {
+          inv = faker.random.number({ min: 1, max: 20 });
         }
+        const inventory = {
+          id: count,
+          inventory: inv,
+          product_id: currentProduct.id,
+          store_id: currentStore.id,
+        };
+        db.insertInventory(inventory, (inverror) => {
+          if (inverror) {
+            console.log(`inventory insertion error: ${inverror}`);
+          }
+        });
       }
-    });
-  }
-});
+    }
+  })
+  .catch((error) => { console.log('seedData error:', error); });

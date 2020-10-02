@@ -31,7 +31,7 @@ const Stock = ({ status, expander, storeChanger, toggleDrop, storeMenu, stores, 
             Change Store Location
           </button>
         </div>
-        <StoreSelect stores={stores} toggleDrop={toggleDrop} storeMenu={storeMenu} />
+        <StoreSelect stores={stores} store={store} toggleDrop={toggleDrop} storeMenu={storeMenu} />
         <div className={styles.store}>
           {inventory > 0 && (
             <div className={`${styles.storeInventory} ${styles.inStock}`}>

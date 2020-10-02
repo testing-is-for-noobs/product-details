@@ -18,7 +18,8 @@ class App extends React.Component {
       product: {},
       quantityField: 1,
       stockExpansion: 'minimized',
-      sid: Math.floor(Math.random() * 20),
+      sid: 1,
+      stores: [],
       store: {},
       storeInventory: 0,
       storeMenu: 'minimized',
@@ -37,20 +38,16 @@ class App extends React.Component {
     const { pid, sid } = this.state;
     axios.get(`${pid}/product-details`)
       .then((response) => {
-        axios.get(`${sid}/${pid}`)
-          .then((res) => {
-            // console.log('store data:', res.data.store);
-            this.setState({
-              product: response.data[0],
-              store: res.data.store,
-              storeInventory: res.data.inventory,
-            }, () => { console.log('component mounted'); });
-          })
-          .catch((storeInvError) => {
-            console.log('storeInvError:', storeInvError);
-          });
+        this.setState({
+          product: response.data.product[0],
+          stores: response.data.stores,
+          store: response.data.stores[sid],
+          storeInventory: response.data.inventory,
+        }, () => { console.log('component mounted'); });
       })
-      .catch((err) => { console.log('get store error:', err); });
+      .catch((error) => {
+        console.log('Get Error:', error);
+      });
   }
 
   adjustQuantity(buttonText) {
@@ -133,8 +130,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { product, quantityField, store, stockExpansion, storeMenu, storeInventory } = this.state;
-    const stores = [store];
+    const { product, quantityField, stores, store, stockExpansion, storeMenu, storeInventory } = this.state;
     return (
       <div className={styles.container}>
         <Tag tag={product.tag} />
