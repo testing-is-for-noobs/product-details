@@ -29,6 +29,7 @@ class App extends React.Component {
       sid: Math.floor(Math.random() * 20),
       store: {},
       storeInventory: 0,
+      storeMenu: 'minimized',
     };
     this.inputQuantity = this.inputQuantity.bind(this);
     this.adjustQuantity = this.adjustQuantity.bind(this);
@@ -118,11 +119,18 @@ class App extends React.Component {
   }
 
   toggleDrop() {
-    //
+    const { storeMenu } = this.state;
+    let updatedStatus = 'minimized';
+    if (storeMenu === 'minimized') {
+      updatedStatus = 'expanded';
+    }
+    this.setState({
+      storeMenu: updatedStatus,
+    }, () => { console.log('updated storeMenu state:', updatedStatus); });
   }
 
   render() {
-    const { product, quantityField, store, stockExpansion, storeInventory } = this.state;
+    const { product, quantityField, store, stockExpansion, storeMenu, storeInventory } = this.state;
     const stores = [store];
     return (
       <div className={styles.container}>
@@ -146,13 +154,14 @@ class App extends React.Component {
         />
         <Wishlist liked={product.liked} updater={this.updateWishlist} />
         <Stock
-          store={store}
-          stores={stores}
-          inventory={storeInventory}
           status={stockExpansion}
           expander={this.expander}
           storeChanger={this.changeStore}
           toggleDrop={this.toggleDrop}
+          storeMenu={storeMenu}
+          stores={stores}
+          store={store}
+          inventory={storeInventory}
         />
         <Similar cat1={product.category_1} cat2={product.category_2} cat3={product.category_3} />
       </div>
