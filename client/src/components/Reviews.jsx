@@ -4,7 +4,7 @@ import styles from '../css/styles.css';
 const Reviews = (props) => {
   const { rating, count } = props;
   let starbar = [];
-  for (let i = 0; i < rating; i += 1) {
+  for (let i = 0; i < Math.floor(rating); i += 1) {
     starbar.push(
       <svg width="100%" height="100%" viewBox="0 0 50 49" key={i}>
         <g stroke="none" strokeWidth="1" fill="#FFD500">
@@ -14,6 +14,9 @@ const Reviews = (props) => {
     );
   }
   const ratingDecimal = rating - Math.floor(rating);
+  if (ratingDecimal) {
+    console.log('ratingDecimal:', ratingDecimal);
+  }
   if (ratingDecimal >= 0.25 && ratingDecimal <= 0.75) {
     starbar.push(
       <svg display="block" width="100%" height="100%" viewBox="0 0 28 27" key={starbar.length}>
@@ -28,7 +31,6 @@ const Reviews = (props) => {
       </svg>,
     );
   }
-  console.log(ratingDecimal);
   for (let i = starbar.length; i < 5; i += 1) {
     starbar.push(
       <svg width="100%" height="100%" viewBox="0 0 50 49" key={i}>
