@@ -432,7 +432,7 @@ body {
 }
 
 .storeSearch {
-  width: 72%;
+  width: 75%;
   height: 50px;
   border-right: 0;
   border-left: 1px solid #E0E0E0;
@@ -450,7 +450,7 @@ body {
 
 .searchButton {
   vertical-align: top;
-  width: 18%;
+  width: 15%;
   height: 54px;
   border: 1px solid rgb(0, 109, 183);
   border-radius: 0 0.3125rem 0.3125rem 0;
