@@ -22,7 +22,11 @@ const StoreSelect = ({ stores, toggleDrop, storeMenu }) => (
       {stores[0].name}
     </button>
     {storeMenu === 'expanded' && (
-      <div>menu</div>
+      <div className={styles.dropdown}>
+        <div className={styles.dropdownItem}>Home</div>
+        <div className={styles.dropdownItem}>About</div>
+        <div className={styles.dropdownItem}>Contact</div>
+      </div>
     )}
   </div>
 );
