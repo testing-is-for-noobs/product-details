@@ -401,9 +401,24 @@ body {
 }
 
 .store {
+  position: relative;
   border-bottom: 1px solid #E0E0E0;
   padding-left: 32px;
   padding-bottom: 18px;
+}
+
+.storeInventory {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+}
+
+.inStock {
+  color: rgb(0, 133, 55);
+}
+
+.outOfStock {
+  color: rgb(208, 2, 27);
 }
 
 .storeTitle {

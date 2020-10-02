@@ -1,11 +1,3 @@
-/*
-
-arrow down - transform: rotate(90deg);
-arrow up - transform: rotate(270deg);
-<svg width="18px" height="28px" class="Chevron__ChevronIcon-sc-1q2x5f4-0 DOTSi StoreCheckerstyles__DropdownChevron-sc-1ogdbsf-1 hNeUFJ" viewBox="0 0 18 28" aria-hidden="true"><path d="M1.825 28L18 14 1.825 0 0 1.715 14.196 14 0 26.285z" fill="currentColor"></path></svg>
-
-*/
-
 import React from 'react';
 import axios from 'axios';
 
