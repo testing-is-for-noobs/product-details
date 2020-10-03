@@ -12,7 +12,7 @@ for (let i = 1; i <= 100; i += 1) {
     online_inventory: faker.random.number({ min: 0, max: 1 }),
     rating: Math.random() * 5,
     review_count: faker.random.number({ min: 0, max: 1000 }),
-    customer_limit: faker.random.number({ min: 1, max: 20 }),
+    customer_limit: faker.random.number({ min: 1, max: 15 }),
     liked: faker.random.number({ min: 0, max: 1 }),
     category_1: pline,
     category_2: faker.commerce.productAdjective(),
@@ -27,34 +27,15 @@ for (let i = 1; i <= 100; i += 1) {
   });
 }
 
-const urlprefix = 'https://fec-lego.s3-us-west-1.amazonaws.com/Store+Details/store+';
-const images = [
-  `${urlprefix}1.png`,
-  `${urlprefix}2.png`,
-  `${urlprefix}3.png`,
-  `${urlprefix}4.png`,
-  `${urlprefix}5.png`,
-  `${urlprefix}6.png`,
-  `${urlprefix}7.png`,
-  `${urlprefix}8.png`,
-  `${urlprefix}9.png`,
-  `${urlprefix}10.png`,
-  `${urlprefix}11.png`,
-  `${urlprefix}12.png`,
-  `${urlprefix}13.png`,
-  `${urlprefix}14.png`,
-  `${urlprefix}15.png`,
-  `${urlprefix}16.png`,
-  `${urlprefix}17.png`,
-  `${urlprefix}18.png`,
-  `${urlprefix}19.png`,
-  `${urlprefix}20.png`,
-];
+const images = [];
+for (let i = 0; i <= 20; i += 1) {
+  images.push(`https://fec-lego.s3-us-west-1.amazonaws.com/Store+Details/store+${i}.png`);
+}
 
 for (let i = 1; i <= 20; i += 1) {
   const fakeStore = {
     id: i,
-    name: `LEGO® Store ${faker.company.companyName()}`,
+    name: `LEGO® Store ${faker.address.streetName()}`,
     address: faker.address.streetAddress(),
     city: faker.address.city(),
     state: faker.address.stateAbbr(),
@@ -71,34 +52,33 @@ for (let i = 1; i <= 20; i += 1) {
   });
 }
 
-db.getAllProducts((error, products) => {
-  if (error) {
-    console.log('getAllProducts error:', error);
-  } else {
-    db.getAllStores((err, stores) => {
-      if (err) {
-        console.log('getAllStores error:', err);
-      } else {
-        let count = 0;
-        for (let i = 0; i < products.length; i += 1) {
-          const currentProduct = products[i];
-          for (let j = 0; j < stores.length; j += 1) {
-            const currentStore = stores[j];
-            count += 1;
-            const inventory = {
-              id: count,
-              inventory: faker.random.number({ min: 0, max: 20 }),
-              product_id: currentProduct.id,
-              store_id: currentStore.id,
-            };
-            db.insertInventory(inventory, (inverror) => {
-              if (inverror) {
-                console.log(`inventory insertion error: ${inverror}`);
-              }
-            });
-          }
+db.seedData()
+  .then(([products, stores]) => {
+    let count = 0;
+    for (let i = 0; i < products.length; i += 1) {
+      const currentProduct = products[i];
+      for (let j = 0; j < stores.length; j += 1) {
+        const currentStore = stores[j];
+        count += 1;
+        let inv;
+        const random = Math.floor(Math.random() * 2);
+        if (random === 0) {
+          inv = 0;
+        } else if (random === 1) {
+          inv = faker.random.number({ min: 1, max: 20 });
         }
+        const inventory = {
+          id: count,
+          inventory: inv,
+          product_id: currentProduct.id,
+          store_id: currentStore.id,
+        };
+        db.insertInventory(inventory, (inverror) => {
+          if (inverror) {
+            console.log(`inventory insertion error: ${inverror}`);
+          }
+        });
       }
-    });
-  }
-});
+    }
+  })
+  .catch((error) => { console.log('seedData error:', error); });

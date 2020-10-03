@@ -1,7 +1,9 @@
 const mysql = require('mysql');
 const mysqlConfig = require('./config.js');
+const Bluebird = require('bluebird');
 
-const database = mysql.createConnection(mysqlConfig);
+const connection = mysql.createConnection(mysqlConfig);
+const database = Bluebird.promisifyAll(connection);
 
 const insertProduct = (product, callback) => {
   database.query(
@@ -33,48 +35,25 @@ const insertInventory = (inventory, callback) => {
   );
 };
 
-const getAllProducts = (callback) => {
-  database.query(
-    'select * from products',
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
+const seedData = () => (
+  Promise.all([
+    database.queryAsync('select * from products'),
+    database.queryAsync('select * from stores'),
+  ])
+);
 
-const getAllStores = (callback) => {
-  database.query(
-    'select * from stores',
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
+const initialData = (pid) => (
+  Promise.all([
+    database.queryAsync(`select * from products where id = ${pid}`),
+    database.queryAsync('select * from stores'),
+    database.queryAsync(`select * from inventory where product_id = ${pid}`),
+  ])
+);
 
 const getProduct = (pid, callback) => {
   database.query(
     'select * from products where id = ?',
     [pid],
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
-
-const getStore = (zip, callback) => {
-  database.query(
-    'select * from stores where zip = ?',
-    [zip],
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
-
-const getInventory = (pid, sid, callback) => {
-  database.query(
-    'select * from inventory where product_id = ? and store_id = ?',
-    [pid, sid],
     (error, results) => {
       callback(error, results);
     },
@@ -94,11 +73,9 @@ const updateWishlist = (newStatus, pid, callback) => {
 module.exports = {
   insertProduct,
   insertStore,
-  getAllProducts,
-  getAllStores,
   insertInventory,
+  seedData,
+  initialData,
   getProduct,
-  getStore,
-  getInventory,
   updateWishlist,
 };

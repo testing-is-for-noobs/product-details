@@ -36,8 +36,10 @@ body {
 .container {
   position: absolute;
   top: 270px;
-  left: 67%;
+  right: 15%;
   width: 27.5%;
+  min-width: 222.594px;
+  max-width: 352.797px;
   background-color: #FFFFFF;
   padding: 19px;
   margin-block-end: 52em;
@@ -54,6 +56,7 @@ body {
 }
 
 .productLine {
+  width: 100%;
   padding: 0;
   margin: 28px 0 3px 0;
   font-family: 'Cera Pro Bold';
@@ -69,15 +72,16 @@ body {
 
 .productTitle {
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 25px;
 }
 
 .stars {
-  display: inline-block;
+  display: inline-flex;
   height: 18px;
   width: 115px;
   padding-left: 0;
   padding-bottom: 2px;
+  margin-right: 12px;
   vertical-align: text-bottom;
   font-size: 18px;
   letter-spacing: 5px;
@@ -85,10 +89,13 @@ body {
 }
 
 .reviewText {
-  vertical-align: -18%;
+  display: inline-block;
+  vertical-align: 5%;
   color: #006DB7;
-  padding-left: 12px;
   font-size: 14px;
+  margin-top: 12px;
+  margin-left: 2px;
+  margin-bottom: 12px
 }
 
 .reviewText:hover {
@@ -246,9 +253,8 @@ body {
   width: 28px;
   height: 28px;
   display: inline-block;
-  background-color: #F8F8F8;
+  background-color: white;
   border: 0;
-  border-radius: 28px;
   vertical-align: middle;
 }
 
@@ -274,6 +280,7 @@ body {
 
 .stock {
   margin: 0;
+  padding: 0;
   font-family: 'Cera Pro Medium';
   font-size: 16px;
   margin-block-start: 1.5em;
@@ -295,12 +302,12 @@ body {
 }
 
 .expanded {
-  border-bottom: 0;
+  border-bottom: 1px solid white;
 }
 
 .stockText {
   margin: 0;
-  padding: 0;
+  padding-left: 0;
   color: #2C2C2C;
   display: inline-flex;
 }
@@ -323,7 +330,6 @@ body {
 .storeHeaderText {
   font-family: 'Cera Pro Regular';
   font-size: 14px;
-  padding-left: 5px;
   display: inline-flex;
   width: 32%;
   text-align: left;
@@ -338,6 +344,8 @@ body {
 }
 
 .changeStore {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
   position: absolute;
   right: 18px;
   display: inline-block;
@@ -350,7 +358,7 @@ body {
   margin-top: 0;
   margin-bottom: 5px;
   width: 48%;
-  margin-block-end: 0.5em;
+  margin-block-end: 0.08em;
 }
 
 .changeStore:hover {
@@ -358,7 +366,16 @@ body {
   text-decoration: underline;
 }
 
+.changeStore:focus {
+  outline: none;
+}
+
+.selectContainer {
+  position: relative
+}
+
 .storeSelect {
+  position: relative;
   color: #2c2c2c;
   font-family: 'Cera Pro Regular';
   font-size: 16px;
@@ -366,10 +383,9 @@ body {
   border: 1px solid #E0E0E0;
   padding-top: 2px;
   padding-left: 18px;
-  width: 100%;
+  width: 96%;
   height: 63px;
   text-align: left;
-  margin-block-end: 0.5em;
 }
 
 .storeSelect:focus {
@@ -383,10 +399,75 @@ body {
   line-height: 1.1875rem;
 }
 
-.store {
+.storeSelectArrow {
+  display: inline-flex;
+  position: absolute;
+  right: 18px;
+  top: 23px;
+}
+
+.down {
+  transform: rotate(90deg);
+}
+
+.up {
+  transform: rotate(270deg);
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 1000;
+  width: 95.5%;
+  background-color: white;
+  border-left: 1px solid #E0E0E0;
+  border-right: 1px solid #E0E0E0;
+}
+
+.dropdownItem {
+  position: relative;
+  text-align: left;
+  font-family: 'Cera Pro Medium';
+  font-size: 15px;
+  color: #2c2c2c;
+  background-color: white;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  width: 100%;
   border-bottom: 1px solid #E0E0E0;
-  padding-left: 32px;
+  padding: 15px 0 15px 50px;
+}
+
+.dropdownItem:focus {
+  outline: none;
+}
+
+.dropStoreInventory {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+}
+
+.store {
+  margin-block-start: 1.08em;
+  position: relative;
+  border-bottom: 1px solid #E0E0E0;
+  padding-left: 35px;
   padding-bottom: 18px;
+}
+
+.storeInventory {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+}
+
+.inStock {
+  color: rgb(0, 133, 55);
+}
+
+.outOfStock {
+  color: rgb(208, 2, 27);
 }
 
 .storeTitle {
@@ -430,14 +511,20 @@ body {
   border-bottom: 1px solid #E0E0E0;
 }
 
+.searchContainer {
+  display: inline-flex;
+  position: relative;
+  width: 100%
+}
+
 .storeSearch {
-  width: 72%;
+  flex-grow: 1;
   height: 50px;
   border-right: 0;
   border-left: 1px solid #E0E0E0;
   border-top: 1px solid #E0E0E0;
   border-bottom: 1px solid #E0E0E0;
-  padding-left: 18px;
+  padding-left: 15px;
   font-family: 'Cera Pro Regular';
   font-size: 16px;
   margin-block-end: 1.32em;
@@ -449,7 +536,8 @@ body {
 
 .searchButton {
   vertical-align: top;
-  width: 18%;
+  width: 54px;
+  width: 54px;
   height: 54px;
   border: 1px solid rgb(0, 109, 183);
   border-radius: 0 0.3125rem 0.3125rem 0;
@@ -462,6 +550,14 @@ body {
 
 .searchButton:focus {
   outline: none;
+}
+
+.noStoreFound {
+  font-family: 'Cera Pro Regular';
+  font-size: 16px;
+  color: #2C2C2C;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .similar {
