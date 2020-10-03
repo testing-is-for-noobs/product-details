@@ -139,11 +139,32 @@ class App extends React.Component {
   }
 
   searchButton(searchTerm) {
-    if (isNaN(Number(searchTerm)) || Number(searchTerm) < 10000 || Number(searchTerm) > 99999) {
+    const zipCode = Number(searchTerm);
+    if (typeof zipCode !== 'number' || zipCode < 10000 || zipCode > 99999) {
       this.setState({
         validZip: false,
         stockExpansion: 'expanded',
+        storeMenuExpansion: 'minimized',
       }, () => { console.log('invalid zip'); });
+    } else {
+      const { stores, sid, validZip } = this.state;
+      const nearby = [];
+      const storesCopy = stores.slice();
+      storesCopy.splice(sid - 1, 1);
+      const random = Math.floor(Math.random() * 4) + 2;
+      for (let i = 0; i < random; i += 1) {
+        const removed = storesCopy.splice(Math.floor(Math.random() * storesCopy.length), 1);
+        nearby.push(removed[0]);
+      }
+      const newStore = storesCopy[Math.floor(Math.random() * storesCopy.length)];
+      console.log('newStore:', newStore);
+      this.setState({
+        validZip: true,
+        store: newStore,
+        nearbyStores: nearby,
+        stockExpansion: 'expanded',
+        storeMenuExpansion: 'minimized',
+      }, () => { console.log('new zip stores'); });
     }
   }
 
