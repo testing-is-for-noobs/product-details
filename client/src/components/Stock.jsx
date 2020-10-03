@@ -17,69 +17,68 @@ const Stock = ({
     );
   }
   if (status === 'expanded') {
-    if (validZip) {
-      return (
-        <div>
-          <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>
-            <div className={styles.stockText}>Check Store Stock</div>
-            <div className={styles.expander}>-</div>
-          </button>
-          <div className={styles.storeHeader}>
-            <div className={styles.storeHeaderText}>Closest Store</div>
-            <div className={`${styles.info} ${styles.storeInfo}`}>i</div>
-            <button
-              className={styles.changeStore}
-              onClick={storeChanger}
-              type="button"
-            >
-              Change Store Location
-            </button>
-          </div>
-          <StoreSelect
-            stores={stores}
-            nearbyStores={nearbyStores}
-            productInventory={productInventory}
-            store={store}
-            sid={sid}
-            toggleDrop={toggleDrop}
-            storeMenuExpansion={storeMenuExpansion}
-            selectStore={selectStore}
-          />
-          <div className={styles.store}>
-            {inventory > 0 && (
-              <div className={`${styles.storeInventory} ${styles.inStock}`}>
-                <svg width="20px" height="13px" viewBox="0 0 20 13">
-                  <path d="M0 5.703L7.177 13 20 0h-4.476L7.177 8.442 4.476 5.723H2.238z" fill="currentColor" fillRule="evenodd" />
-                </svg>
-              </div>
-            )}
-            {inventory <= 0 && (
-              <div className={`${styles.storeInventory} ${styles.outOfStock}`}>
-                <svg viewBox="0 0 17 17" width="17px" height="17px">
-                  <path d="M10.377 8.142l5.953-5.954-2.234-2.234-5.954 5.954L2.188-.046-.046 2.188l5.954 5.954-5.954 5.954 2.234 2.234 5.954-5.953 5.954 5.953 2.234-2.234z" fill="currentColor" fillRule="evenodd" />
-                </svg>
-              </div>
-            )}
-            <div className={styles.storeTitle}>{store.name}</div>
-            {inventory > 0 && (
-              <div className={styles.storeStock}>In Stock at this time</div>
-            )}
-            {inventory <= 0 && (
-              <div className={styles.storeStock}>Out of Stock</div>
-            )}
-            <div className={styles.storeDetails}>{store.address}</div>
-            <div className={styles.storeDetails}>{`${store.city}, ${store.state} ${store.zip}`}</div>
-            <div className={styles.seeStore}>See Store Details</div>
-          </div>
-        </div>
-      );
-    }
     return (
       <div>
-        <button type="button" className={styles.stock} onClick={expander}>
+        <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>
           <div className={styles.stockText}>Check Store Stock</div>
           <div className={styles.expander}>-</div>
         </button>
+        <div className={styles.storeHeader}>
+          <div className={styles.storeHeaderText}>Closest Store</div>
+          <div className={`${styles.info} ${styles.storeInfo}`}>i</div>
+          <button
+            className={styles.changeStore}
+            onClick={storeChanger}
+            type="button"
+          >
+            Change Store Location
+          </button>
+        </div>
+        {validZip === true && (
+          <div>
+            <StoreSelect
+              stores={stores}
+              nearbyStores={nearbyStores}
+              productInventory={productInventory}
+              store={store}
+              sid={sid}
+              toggleDrop={toggleDrop}
+              storeMenuExpansion={storeMenuExpansion}
+              selectStore={selectStore}
+            />
+            <div className={styles.store}>
+              {inventory > 0 && (
+                <div className={`${styles.storeInventory} ${styles.inStock}`}>
+                  <svg width="20px" height="13px" viewBox="0 0 20 13">
+                    <path d="M0 5.703L7.177 13 20 0h-4.476L7.177 8.442 4.476 5.723H2.238z" fill="currentColor" fillRule="evenodd" />
+                  </svg>
+                </div>
+              )}
+              {inventory <= 0 && (
+                <div className={`${styles.storeInventory} ${styles.outOfStock}`}>
+                  <svg viewBox="0 0 17 17" width="17px" height="17px">
+                    <path d="M10.377 8.142l5.953-5.954-2.234-2.234-5.954 5.954L2.188-.046-.046 2.188l5.954 5.954-5.954 5.954 2.234 2.234 5.954-5.953 5.954 5.953 2.234-2.234z" fill="currentColor" fillRule="evenodd" />
+                  </svg>
+                </div>
+              )}
+              <div className={styles.storeTitle}>{store.name}</div>
+              {inventory > 0 && (
+                <div className={styles.storeStock}>In Stock at this time</div>
+              )}
+              {inventory <= 0 && (
+                <div className={styles.storeStock}>Out of Stock</div>
+              )}
+              <div className={styles.storeDetails}>{store.address}</div>
+              <div className={styles.storeDetails}>{`${store.city}, ${store.state} ${store.zip}`}</div>
+              <div className={styles.seeStore}>See Store Details</div>
+            </div>
+          </div>
+        )}
+        {validZip === false && (
+          <div className={styles.noStoreFound}>
+            No stores found within a 60-mile radius of your zip code
+          </div>
+        )}
       </div>
     );
   }
@@ -89,7 +88,7 @@ const Stock = ({
         <div className={styles.stockText}>Check Store Stock</div>
         <div className={styles.expander}>-</div>
       </button>
-      <div className={`${styles.storeHeader} ${styles.searchHeader}`}>
+      <div className={styles.storeHeader}>
         <span className={styles.findStoreText}>Enter your address to find a store near you.</span>
       </div>
       <div className={styles.searchContainer}>

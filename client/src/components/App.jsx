@@ -139,7 +139,12 @@ class App extends React.Component {
   }
 
   searchButton(searchTerm) {
-    console.log('searchTerm:', searchTerm);
+    if (isNaN(Number(searchTerm)) || Number(searchTerm) < 10000 || Number(searchTerm) > 99999) {
+      this.setState({
+        validZip: false,
+        stockExpansion: 'expanded',
+      }, () => { console.log('invalid zip'); });
+    }
   }
 
   toggleDrop() {
