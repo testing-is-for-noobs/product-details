@@ -164,7 +164,7 @@ class App extends React.Component {
         nearbyStores: nearby,
         stockExpansion: 'expanded',
         storeMenuExpansion: 'minimized',
-      }, () => { console.log('new zip stores'); });
+      }, () => { console.log('new zip, new store, new nearby'); });
     }
   }
 
