@@ -44,8 +44,6 @@ class App extends React.Component {
 
   componentDidMount() {
     const { pid, sid } = this.state;
-    console.log('CDM pid:', pid);
-    console.log('CDM sid:', sid);
     axios.get(`${pid}/product-details`)
       .then((response) => {
         const nearby = [];
@@ -119,14 +117,14 @@ class App extends React.Component {
     }
     this.setState({
       stockExpansion: updatedStatus,
-      storeMenu: 'minimized',
-    }, () => { console.log('updated stockExpansion state:', updatedStatus); });
+      storeMenuExpansion: 'minimized',
+    }, () => { console.log('stock panel', updatedStatus); });
   }
 
   changeStore() {
     this.setState({
       stockExpansion: 'change store',
-    }, () => { console.log('updated stockExpansion state: change store'); });
+    }, () => { console.log('stock panel: change store'); });
   }
 
   storeSearch() {
@@ -145,18 +143,14 @@ class App extends React.Component {
     }
     this.setState({
       storeMenuExpansion: updatedStatus,
-    }, () => { console.log('updated storeMenuExpansion state:', updatedStatus); });
+    }, () => { console.log('dropdown menu', updatedStatus); });
   }
 
   selectStore(previousStore, selectedStore, selectedStoreIndex) {
-    console.log('previousStore:', previousStore);
-    console.log('selectedStore:', selectedStore);
     const { nearbyStores } = this.state;
-    console.log('nearbyStores:', nearbyStores);
     const nearbyCopy = nearbyStores.slice();
     nearbyCopy.splice(selectedStoreIndex, 1);
     nearbyCopy.unshift(previousStore);
-    console.log('nearbyCopy:', nearbyCopy);
     this.setState({
       store: selectedStore,
       nearbyStores: nearbyCopy,
@@ -177,7 +171,6 @@ class App extends React.Component {
       productInventory,
       sid,
     } = this.state;
-    console.log('productInventory[sid - 1]:', productInventory[sid - 1]);
     return (
       <div className={styles.container}>
         <Tag tag={product.tag} />
