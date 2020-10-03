@@ -23,10 +23,10 @@ const StoreSelect = ({ stores, nearbyStores, productInventory, store, toggleDrop
     </button>
     {storeMenuExpansion === 'expanded' && (
       <div className={styles.dropdown}>
-        {nearbyStores.map((currentStore) => {
+        {nearbyStores.map((currentStore, i) => {
           const currentStoreInv = productInventory[currentStore.id - 1].inventory;
           return (
-            <button type="button" className={styles.dropdownItem} key={currentStore.name} onClick={() => { selectStore(store, currentStore); }}>
+            <button type="button" className={styles.dropdownItem} key={currentStore.name} onClick={() => { selectStore(store, currentStore, i); }}>
               {currentStoreInv > 0 && (
                 <div className={`${styles.dropStoreInventory} ${styles.inStock}`}>
                   <svg width="20px" height="13px" viewBox="0 0 20 13">

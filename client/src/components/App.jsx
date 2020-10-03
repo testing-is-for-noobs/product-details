@@ -148,9 +148,21 @@ class App extends React.Component {
     }, () => { console.log('updated storeMenuExpansion state:', updatedStatus); });
   }
 
-  selectStore(previousStore, selectedStore) {
+  selectStore(previousStore, selectedStore, selectedStoreIndex) {
     console.log('previousStore:', previousStore);
     console.log('selectedStore:', selectedStore);
+    const { nearbyStores } = this.state;
+    console.log('nearbyStores:', nearbyStores);
+    const nearbyCopy = nearbyStores.slice();
+    nearbyCopy.splice(selectedStoreIndex, 1);
+    nearbyCopy.unshift(previousStore);
+    console.log('nearbyCopy:', nearbyCopy);
+    this.setState({
+      store: selectedStore,
+      nearbyStores: nearbyCopy,
+      storeMenuExpansion: 'minimized',
+      sid: selectedStore.id,
+    }, () => { console.log('selected store updated'); });
   }
 
   render() {
