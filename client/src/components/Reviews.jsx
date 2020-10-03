@@ -14,7 +14,7 @@ const Reviews = (props) => {
     );
   }
   const ratingDecimal = rating - Math.floor(rating);
-  if (ratingDecimal >= 0.25 && ratingDecimal < 0.7) {
+  if (ratingDecimal >= 0.25 && ratingDecimal < 0.75) {
     starbar.push(
       <svg display="block" width="100%" height="100%" viewBox="0 0 28 27" key={starbar.length}>
         <g stroke="none" strokeWidth="1">
@@ -27,7 +27,7 @@ const Reviews = (props) => {
         </g>
       </svg>,
     );
-  } else if (ratingDecimal >= 0.7) {
+  } else if (ratingDecimal >= 0.75) {
     starbar.push(
       <svg width="100%" height="100%" viewBox="0 0 50 49" key={starbar.length}>
         <g stroke="none" strokeWidth="1" fill="#FFD500">
