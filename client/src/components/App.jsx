@@ -184,6 +184,7 @@ class App extends React.Component {
           storeMenu={storeMenu}
           stores={stores}
           nearbyStores={nearbyStores}
+          productInventory={productInventory}
           store={store}
           sid={sid}
           inventory={productInventory[sid - 1].inventory}
