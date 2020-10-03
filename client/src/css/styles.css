@@ -36,8 +36,10 @@ body {
 .container {
   position: absolute;
   top: 270px;
-  left: 67%;
+  right: 15%;
   width: 27.5%;
+  min-width: 222.594px;
+  max-width: 352.797px;
   background-color: #FFFFFF;
   padding: 19px;
   margin-block-end: 52em;
@@ -54,6 +56,7 @@ body {
 }
 
 .productLine {
+  width: 100%;
   padding: 0;
   margin: 28px 0 3px 0;
   font-family: 'Cera Pro Bold';
@@ -78,6 +81,7 @@ body {
   width: 115px;
   padding-left: 0;
   padding-bottom: 2px;
+  margin-right: 12px;
   vertical-align: text-bottom;
   font-size: 18px;
   letter-spacing: 5px;
@@ -85,10 +89,13 @@ body {
 }
 
 .reviewText {
+  display: inline-block;
   vertical-align: 5%;
   color: #006DB7;
-  padding-left: 18px;
   font-size: 14px;
+  margin-top: 12px;
+  margin-left: 2px;
+  margin-bottom: 12px
 }
 
 .reviewText:hover {
