@@ -29,7 +29,7 @@ class App extends React.Component {
       nearbyStores: [],
       store: {},
       productInventory: inv,
-      storeMenu: 'minimized',
+      storeMenuExpansion: 'minimized',
     };
     this.inputQuantity = this.inputQuantity.bind(this);
     this.adjustQuantity = this.adjustQuantity.bind(this);
@@ -138,22 +138,33 @@ class App extends React.Component {
   }
 
   toggleDrop() {
-    const { storeMenu } = this.state;
+    const { storeMenuExpansion } = this.state;
     let updatedStatus = 'minimized';
-    if (storeMenu === 'minimized') {
+    if (storeMenuExpansion === 'minimized') {
       updatedStatus = 'expanded';
     }
     this.setState({
-      storeMenu: updatedStatus,
-    }, () => { console.log('updated storeMenu state:', updatedStatus); });
+      storeMenuExpansion: updatedStatus,
+    }, () => { console.log('updated storeMenuExpansion state:', updatedStatus); });
   }
 
-  selectStore() {
-    //
+  selectStore(previousStore, selectedStore) {
+    console.log('previousStore:', previousStore);
+    console.log('selectedStore:', selectedStore);
   }
 
   render() {
-    const { product, quantityField, stores, nearbyStores, store, stockExpansion, storeMenu, productInventory, sid } = this.state;
+    const {
+      product,
+      quantityField,
+      stores,
+      nearbyStores,
+      store,
+      stockExpansion,
+      storeMenuExpansion,
+      productInventory,
+      sid,
+    } = this.state;
     console.log('productInventory[sid - 1]:', productInventory[sid - 1]);
     return (
       <div className={styles.container}>
@@ -181,7 +192,8 @@ class App extends React.Component {
           expander={this.expander}
           storeChanger={this.changeStore}
           toggleDrop={this.toggleDrop}
-          storeMenu={storeMenu}
+          selectStore={this.selectStore}
+          storeMenuExpansion={storeMenuExpansion}
           stores={stores}
           nearbyStores={nearbyStores}
           productInventory={productInventory}

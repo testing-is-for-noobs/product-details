@@ -344,7 +344,7 @@ body {
 }
 
 .changeStore {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   border: 0;
   position: absolute;
   right: 18px;
@@ -417,7 +417,7 @@ body {
 .dropdown {
   position: absolute;
   z-index: 1000;
-  width: 99.5%;
+  width: 99.25%;
   background-color: white;
   border-left: 1px solid #E0E0E0;
   border-right: 1px solid #E0E0E0;
@@ -425,8 +425,21 @@ body {
 
 .dropdownItem {
   position: relative;
+  text-align: left;
+  font-family: 'Cera Pro Medium';
+  font-size: 15px;
+  color: #2c2c2c;
+  background-color: white;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  width: 100%;
   border-bottom: 1px solid #E0E0E0;
   padding: 15px 0 15px 50px;
+}
+
+.dropdownItem:focus {
+  outline: none;
 }
 
 .dropStoreInventory {

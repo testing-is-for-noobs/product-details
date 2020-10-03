@@ -1,17 +1,17 @@
 import React from 'react';
 import styles from '../css/styles.css';
 
-const StoreSelect = ({ stores, nearbyStores, productInventory, store, toggleDrop, storeMenu, sid }) => (
+const StoreSelect = ({ stores, nearbyStores, productInventory, store, toggleDrop, storeMenuExpansion, selectStore, sid }) => (
   <div className={styles.selectContainer}>
     <button type="button" className={styles.storeSelect} onClick={toggleDrop}>
-      {storeMenu === 'minimized' && (
+      {storeMenuExpansion === 'minimized' && (
         <div className={`${styles.storeSelectArrow} ${styles.down}`}>
           <svg width="12px" height="19px" viewBox="0 0 18 28" aria-hidden="true">
             <path d="M1.825 28L18 14 1.825 0 0 1.715 14.196 14 0 26.285z" fill="#757575" />
           </svg>
         </div>
       )}
-      {storeMenu === 'expanded' && (
+      {storeMenuExpansion === 'expanded' && (
         <div className={`${styles.storeSelectArrow} ${styles.up}`}>
           <svg width="12px" height="19px" viewBox="0 0 18 28" aria-hidden="true">
             <path d="M1.825 28L18 14 1.825 0 0 1.715 14.196 14 0 26.285z" fill="#757575" />
@@ -21,12 +21,12 @@ const StoreSelect = ({ stores, nearbyStores, productInventory, store, toggleDrop
       <div className={styles.storeSelectHeader}>Select a Store</div>
       {store.name}
     </button>
-    {storeMenu === 'expanded' && (
+    {storeMenuExpansion === 'expanded' && (
       <div className={styles.dropdown}>
         {nearbyStores.map((currentStore) => {
           const currentStoreInv = productInventory[currentStore.id - 1].inventory;
           return (
-            <div className={styles.dropdownItem} key={currentStore.name}>
+            <button type="button" className={styles.dropdownItem} key={currentStore.name} onClick={() => { selectStore(store, currentStore); }}>
               {currentStoreInv > 0 && (
                 <div className={`${styles.dropStoreInventory} ${styles.inStock}`}>
                   <svg width="20px" height="13px" viewBox="0 0 20 13">
@@ -42,7 +42,7 @@ const StoreSelect = ({ stores, nearbyStores, productInventory, store, toggleDrop
                 </div>
               )}
               {currentStore.name}
-            </div>
+            </button>
           );
         })}
       </div>

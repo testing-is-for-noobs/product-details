@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../css/styles.css';
 import StoreSelect from './StoreSelect';
 
-const Stock = ({ status, expander, storeChanger, toggleDrop, storeMenu, stores, nearbyStores, store, sid, inventory, productInventory }) => {
+const Stock = ({status, expander, storeChanger, toggleDrop, storeMenuExpansion, selectStore, stores, nearbyStores, store, sid, inventory, productInventory }) => {
   if (status === 'minimized') {
     return (
       <div>
@@ -31,7 +31,16 @@ const Stock = ({ status, expander, storeChanger, toggleDrop, storeMenu, stores, 
             Change Store Location
           </button>
         </div>
-        <StoreSelect stores={stores} nearbyStores={nearbyStores} productInventory={productInventory} store={store} sid={sid} toggleDrop={toggleDrop} storeMenu={storeMenu} />
+        <StoreSelect
+          stores={stores}
+          nearbyStores={nearbyStores}
+          productInventory={productInventory}
+          store={store}
+          sid={sid}
+          toggleDrop={toggleDrop}
+          storeMenuExpansion={storeMenuExpansion}
+          selectStore={selectStore}
+        />
         <div className={styles.store}>
           {inventory > 0 && (
             <div className={`${styles.storeInventory} ${styles.inStock}`}>
