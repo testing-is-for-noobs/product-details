@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from '../css/styles.css';
 
-const StoreSelect = ({ stores, nearbyStores, productInventory, store, toggleDrop, storeMenuExpansion, selectStore, sid }) => (
+const StoreSelect = ({
+  stores, nearbyStores, productInventory, store, toggleDrop, storeMenuExpansion, selectStore, sid
+}) => (
   <div className={styles.selectContainer}>
     <button type="button" className={styles.storeSelect} onClick={toggleDrop}>
       {storeMenuExpansion === 'minimized' && (

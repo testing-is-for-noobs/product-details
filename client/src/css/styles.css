@@ -306,7 +306,7 @@ body {
 
 .stockText {
   margin: 0;
-  padding: 0;
+  padding-left: 0;
   color: #2C2C2C;
   display: inline-flex;
 }
@@ -329,7 +329,7 @@ body {
 .storeHeaderText {
   font-family: 'Cera Pro Regular';
   font-size: 14px;
-  padding-left: 5px;
+  padding-left: 7px;
   display: inline-flex;
   width: 32%;
   text-align: left;
@@ -375,6 +375,7 @@ body {
 }
 
 .storeSelect {
+  margin-left: 7px;
   position: relative;
   color: #2c2c2c;
   font-family: 'Cera Pro Regular';
@@ -383,7 +384,7 @@ body {
   border: 1px solid #E0E0E0;
   padding-top: 2px;
   padding-left: 18px;
-  width: 100%;
+  width: 96%;
   height: 63px;
   text-align: left;
 }
@@ -415,9 +416,10 @@ body {
 }
 
 .dropdown {
+  margin-left: 7px;
   position: absolute;
   z-index: 1000;
-  width: 99.25%;
+  width: 95.5%;
   background-color: white;
   border-left: 1px solid #E0E0E0;
   border-right: 1px solid #E0E0E0;
@@ -457,6 +459,7 @@ body {
 }
 
 .storeInventory {
+  margin-left: 7px;
   position: absolute;
   left: 2px;
   top: 2px;
@@ -511,8 +514,19 @@ body {
   border-bottom: 1px solid #E0E0E0;
 }
 
+.searchHeader {
+  margin-left: 7px;
+}
+
+.searchContainer {
+  margin-left: 7px;
+  display: inline-flex;
+  position: relative;
+  width: 100%
+}
+
 .storeSearch {
-  width: 75%;
+  flex-grow: 1;
   height: 50px;
   border-right: 0;
   border-left: 1px solid #E0E0E0;
@@ -530,7 +544,8 @@ body {
 
 .searchButton {
   vertical-align: top;
-  width: 15%;
+  width: 54px;
+  width: 54px;
   height: 54px;
   border: 1px solid rgb(0, 109, 183);
   border-radius: 0 0.3125rem 0.3125rem 0;

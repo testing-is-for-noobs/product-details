@@ -30,6 +30,8 @@ class App extends React.Component {
       store: {},
       productInventory: inv,
       storeMenuExpansion: 'minimized',
+      searchField: '',
+      validZip: true,
     };
     this.inputQuantity = this.inputQuantity.bind(this);
     this.adjustQuantity = this.adjustQuantity.bind(this);
@@ -127,12 +129,17 @@ class App extends React.Component {
     }, () => { console.log('stock panel: change store'); });
   }
 
-  storeSearch() {
-    //
+  storeSearch(userInput) {
+    this.setState({
+      searchField: userInput,
+    }, () => {
+      const { searchField } = this.state;
+      console.log('searchField updated:', searchField);
+    });
   }
 
-  searchButton() {
-    //
+  searchButton(searchTerm) {
+    console.log('searchTerm:', searchTerm);
   }
 
   toggleDrop() {
@@ -163,6 +170,7 @@ class App extends React.Component {
     const {
       product,
       quantityField,
+      searchField,
       stores,
       nearbyStores,
       store,
@@ -170,6 +178,7 @@ class App extends React.Component {
       storeMenuExpansion,
       productInventory,
       sid,
+      validZip,
     } = this.state;
     return (
       <div className={styles.container}>
@@ -198,6 +207,10 @@ class App extends React.Component {
           storeChanger={this.changeStore}
           toggleDrop={this.toggleDrop}
           selectStore={this.selectStore}
+          searchButton={this.searchButton}
+          storeSearch={this.storeSearch}
+          searchField={searchField}
+          validZip={validZip}
           storeMenuExpansion={storeMenuExpansion}
           stores={stores}
           nearbyStores={nearbyStores}
