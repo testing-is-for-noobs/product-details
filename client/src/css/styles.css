@@ -409,7 +409,7 @@ body {
 
 .dropdown {
   position: absolute;
-  z-index:1000;
+  z-index: 1000;
   width: 99.5%;
   background-color: white;
   border-left: 1px solid #E0E0E0;

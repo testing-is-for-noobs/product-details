@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../css/styles.css';
 
-const StoreSelect = ({ stores, store, toggleDrop, storeMenu }) => (
+const StoreSelect = ({ stores, nearbyStores, store, toggleDrop, storeMenu, sid }) => (
   <div className={styles.selectContainer}>
     <button type="button" className={styles.storeSelect} onClick={toggleDrop}>
       {storeMenu === 'minimized' && (
@@ -23,9 +23,9 @@ const StoreSelect = ({ stores, store, toggleDrop, storeMenu }) => (
     </button>
     {storeMenu === 'expanded' && (
       <div className={styles.dropdown}>
-        <div className={styles.dropdownItem}>Home</div>
-        <div className={styles.dropdownItem}>About</div>
-        <div className={styles.dropdownItem}>Contact</div>
+        {nearbyStores.map((currentStore) => (
+          <div className={styles.dropdownItem} key={currentStore.name}>{currentStore.name}</div>
+        ))}
       </div>
     )}
   </div>

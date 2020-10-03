@@ -27,29 +27,10 @@ for (let i = 1; i <= 100; i += 1) {
   });
 }
 
-const urlprefix = 'https://fec-lego.s3-us-west-1.amazonaws.com/Store+Details/store+';
-const images = [
-  `${urlprefix}1.png`,
-  `${urlprefix}2.png`,
-  `${urlprefix}3.png`,
-  `${urlprefix}4.png`,
-  `${urlprefix}5.png`,
-  `${urlprefix}6.png`,
-  `${urlprefix}7.png`,
-  `${urlprefix}8.png`,
-  `${urlprefix}9.png`,
-  `${urlprefix}10.png`,
-  `${urlprefix}11.png`,
-  `${urlprefix}12.png`,
-  `${urlprefix}13.png`,
-  `${urlprefix}14.png`,
-  `${urlprefix}15.png`,
-  `${urlprefix}16.png`,
-  `${urlprefix}17.png`,
-  `${urlprefix}18.png`,
-  `${urlprefix}19.png`,
-  `${urlprefix}20.png`,
-];
+const images = [];
+for (let i = 0; i <= 20; i += 1) {
+  images.push(`https://fec-lego.s3-us-west-1.amazonaws.com/Store+Details/store+${i}.png`);
+}
 
 for (let i = 1; i <= 20; i += 1) {
   const fakeStore = {

@@ -25,13 +25,6 @@ const insertStore = (store, callback) => {
   );
 };
 
-const seedData = () => (
-  Promise.all([
-    database.queryAsync('select * from products'),
-    database.queryAsync('select * from stores'),
-  ])
-);
-
 const insertInventory = (inventory, callback) => {
   database.query(
     'insert into inventory set ?',
@@ -42,15 +35,12 @@ const insertInventory = (inventory, callback) => {
   );
 };
 
-const getInventory = (pid, sid, callback) => {
-  database.query(
-    'select * from inventory where product_id = ? and store_id = ?',
-    [pid, sid],
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
+const seedData = () => (
+  Promise.all([
+    database.queryAsync('select * from products'),
+    database.queryAsync('select * from stores'),
+  ])
+);
 
 const initialData = (pid) => (
   Promise.all([
@@ -59,6 +49,16 @@ const initialData = (pid) => (
     database.queryAsync(`select * from inventory where product_id = ${pid}`),
   ])
 );
+
+const getProduct = (pid, callback) => {
+  database.query(
+    'select * from products where id = ?',
+    [pid],
+    (error, results) => {
+      callback(error, results);
+    },
+  );
+};
 
 const updateWishlist = (newStatus, pid, callback) => {
   database.query(
@@ -73,9 +73,9 @@ const updateWishlist = (newStatus, pid, callback) => {
 module.exports = {
   insertProduct,
   insertStore,
-  seedData,
   insertInventory,
-  getInventory,
+  seedData,
   initialData,
+  getProduct,
   updateWishlist,
 };

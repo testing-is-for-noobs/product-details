@@ -1,3 +1,5 @@
+// transition: 200ms ease-in-out;
+
 import React from 'react';
 import axios from 'axios';
 
@@ -13,15 +15,20 @@ import Similar from './Similar';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    const inv = [];
+    for (let i = 0; i < 20; i += 1) {
+      inv.push({});
+    }
     this.state = {
-      pid: 1,
+      pid: Math.floor(Math.random() * 100),
       product: {},
       quantityField: 1,
       stockExpansion: 'minimized',
-      sid: 1,
+      sid: Math.floor(Math.random() * 20),
       stores: [],
+      nearbyStores: [],
       store: {},
-      productInventory: [{}],
+      productInventory: inv,
       storeMenu: 'minimized',
     };
     this.inputQuantity = this.inputQuantity.bind(this);
@@ -32,6 +39,7 @@ class App extends React.Component {
     this.storeSearch = this.storeSearch.bind(this);
     this.searchButton = this.searchButton.bind(this);
     this.toggleDrop = this.toggleDrop.bind(this);
+    this.selectStore = this.selectStore.bind(this);
   }
 
   componentDidMount() {
@@ -40,9 +48,18 @@ class App extends React.Component {
     console.log('CDM sid:', sid);
     axios.get(`${pid}/product-details`)
       .then((response) => {
+        const nearby = [];
+        const storesCopy = response.data.stores.slice();
+        storesCopy.splice(sid - 1, 1);
+        const random = Math.floor(Math.random() * 4) + 2;
+        for (let i = 0; i < random; i += 1) {
+          const removed = storesCopy.splice(Math.floor(Math.random() * storesCopy.length), 1);
+          nearby.push(removed[0]);
+        }
         this.setState({
           product: response.data.product[0],
           stores: response.data.stores,
+          nearbyStores: nearby,
           store: response.data.stores[sid],
           productInventory: response.data.inventory,
         }, () => { console.log('component mounted'); });
@@ -131,8 +148,12 @@ class App extends React.Component {
     }, () => { console.log('updated storeMenu state:', updatedStatus); });
   }
 
+  selectStore() {
+    //
+  }
+
   render() {
-    const { product, quantityField, stores, store, stockExpansion, storeMenu, productInventory, sid } = this.state;
+    const { product, quantityField, stores, nearbyStores, store, stockExpansion, storeMenu, productInventory, sid } = this.state;
     console.log('productInventory[sid - 1]:', productInventory[sid - 1]);
     return (
       <div className={styles.container}>
@@ -162,7 +183,9 @@ class App extends React.Component {
           toggleDrop={this.toggleDrop}
           storeMenu={storeMenu}
           stores={stores}
+          nearbyStores={nearbyStores}
           store={store}
+          sid={sid}
           inventory={productInventory[sid - 1].inventory}
         />
         <Similar cat1={product.category_1} cat2={product.category_2} cat3={product.category_3} />
