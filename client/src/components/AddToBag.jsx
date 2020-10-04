@@ -61,6 +61,11 @@ const AddToBag = ({
           <div>
             <button type="button" className={styles.limitTooltip} aria-label="button" onClick={() => { handleTooltips('limit'); }} />
             <div className={styles.limitTooltipContainer}>
+              <button type="button" className={styles.limitX} aria-label="button" onClick={() => { handleTooltips('limit'); }}>
+                <svg viewBox="0 0 17 17" width="17px" height="17px">
+                  <path d="M10.377 8.142l5.953-5.954-2.234-2.234-5.954 5.954L2.188-.046-.046 2.188l5.954 5.954-5.954 5.954 2.234 2.234 5.954-5.953 5.954 5.953 2.234-2.234z" fill="currentColor" fillRule="evenodd" />
+                </svg>
+              </button>
               <div className={styles.limitTooltipHeader}>Limit</div>
               <div className={styles.limitTooltipText}>
                 We restrict the limit a household can buy in order to be fair to all of our fans. If
@@ -74,6 +79,11 @@ const AddToBag = ({
           <div>
             <button type="button" className={styles.closestTooltip} aria-label="button" onClick={() => { handleTooltips('closest'); }} />
             <div className={styles.closestTooltipContainer}>
+              <button type="button" className={styles.closestX} aria-label="button" onClick={() => { handleTooltips('closest'); }}>
+                <svg viewBox="0 0 17 17" width="17px" height="17px">
+                  <path d="M10.377 8.142l5.953-5.954-2.234-2.234-5.954 5.954L2.188-.046-.046 2.188l5.954 5.954-5.954 5.954 2.234 2.234 5.954-5.953 5.954 5.953 2.234-2.234z" fill="currentColor" fillRule="evenodd" />
+                </svg>
+              </button>
               <div className={styles.closestTooltipHeader}>Please Note:</div>
               <div className={styles.closestTooltipText}>
                 The green check mark indicates that this item is currently available in this

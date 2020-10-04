@@ -139,7 +139,7 @@ body {
   font-family: 'Cera Pro Regular';
   font-weight: 300;
   font-size: 28px;
-  padding-top: 0px;
+  padding-top: 3px;
   padding-bottom: 15px;
   background-color: white;
 }
@@ -609,6 +609,8 @@ body {
 
 
 
+
+
 .limitTooltip {
   position: fixed;
   top: 0;
@@ -662,6 +664,28 @@ body {
   font-size: 16px;
   line-height: 175%;
 }
+
+.limitX {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  width: 20px;
+  height: 20px;
+  padding: 1px;
+  color: #2C2C2C;
+}
+
+.limitX:hover {
+  cursor: pointer;
+}
+
+.limitX:focus {
+  outline: none;
+}
+
+
 
 
 
@@ -719,6 +743,28 @@ body {
   font-size: 16px;
   line-height: 175%;
 }
+
+.closestX {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  width: 20px;
+  height: 20px;
+  padding: 1px;
+  color: #2C2C2C;
+}
+
+.closestX:hover {
+  cursor: pointer;
+}
+
+.closestX:focus {
+  outline: none;
+}
+
+
 
 
 

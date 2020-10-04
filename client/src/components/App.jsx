@@ -214,6 +214,7 @@ class App extends React.Component {
       }
       this.setState({
         detailsTooltip: updatedStatus,
+        storeMenuExpansion: 'minimized',
       });
     }
   }
