@@ -88,9 +88,9 @@ const Stock = ({
                 See Store Details
               </button>
               {detailsTooltip === true && (
-                <div>
+                <div className={styles.detailsTooltipContainer}>
                   <button type="button" className={styles.detailsTooltip} aria-label="button" onClick={() => { handleTooltips('details'); }} />
-                  <div className={styles.detailsTooltipContainer}>
+                  <div className={styles.detailsTooltipContent}>
                     <img src={store.details} alt="store details" />
                     <button type="button" className={styles.detailsX} aria-label="button" onClick={() => { handleTooltips('details'); }} />
                   </div>

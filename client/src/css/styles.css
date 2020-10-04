@@ -776,15 +776,34 @@ body {
 
 
 
+.detailsTooltipContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 0;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 .detailsTooltip {
   z-index: 1000;
+  width: 100%;
+  height: 100%;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   border: 0;
-  width: 100vw;
-  height: 100vh;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
 }
 
 .noScroll {
@@ -795,16 +814,19 @@ body {
   outline: none;
 }
 
-.detailsTooltipContainer {
-  position: fixed;
+.detailsTooltipContent {
+  position: relative;
   z-index: 1000;
-  top: 10vh;
-  left: 32vw;
-  width: fit-content;
-  height: fit-content;
+  /* top: 10vh;
+  left: 32vw; */
+  width: auto;
+  height: auto;
   background-color: white;
   border: 0;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 24px 0px;
+  max-height: 95%;
+  max-width: 82.5rem;
+  overflow-y: auto;
 }
 
 .detailsX {
