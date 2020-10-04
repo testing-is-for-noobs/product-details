@@ -47,12 +47,7 @@ const Reviews = ({ rating, count }) => {
   }
   return (
     <div className="reviews">
-      {/* <div className={styles.stars}>
-        &#9733;&#9733;&#9733;&#9733;&#9733;
-      </div> */}
-      <div className={styles.stars}>
-        {starbar}
-      </div>
+      <div className={styles.stars}>{starbar}</div>
       <span className={styles.reviewText}>
         <span className={styles.reviewCount}>{`${count} `}</span>
         {`Reviews (${rating})`}
