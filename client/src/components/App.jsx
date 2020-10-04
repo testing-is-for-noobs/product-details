@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-console */
-// transition: 200ms ease-in-out;
 
 import React from 'react';
 import axios from 'axios';
@@ -235,18 +234,18 @@ class App extends React.Component {
     } = this.state;
     return (
       <div className={`container ${styles.container}`}>
-        <Tag tag={product.tag} />
+        <Tag tag={Number(product.tag)} />
         <p className={styles.productLine}>
           {product.product_line}
         </p>
         <h1 className={styles.productTitle}>
           {product.name}
         </h1>
-        <Reviews rating={product.rating} count={product.review_count} />
+        <Reviews rating={Number(product.rating)} count={Number(product.review_count)} />
         <h1 className={styles.price}>
           {`$${product.price}`}
         </h1>
-        <Availability onlineInv={product.online_inventory} />
+        <Availability onlineInv={Number(product.online_inventory)} />
         <AddToBag
           limit={Number(product.customer_limit)}
           quantity={quantityField}
@@ -256,7 +255,7 @@ class App extends React.Component {
           limitTooltip={limitTooltip}
           closestTooltip={closestTooltip}
         />
-        <Wishlist liked={product.liked} updater={this.updateWishlist} />
+        <Wishlist liked={Number(product.liked)} updater={this.updateWishlist} />
         <Stock
           status={stockExpansion}
           expander={this.expander}

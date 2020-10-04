@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
 const StoreSelect = ({
-  stores, nearbyStores, productInventory, store, toggleDrop, storeMenuExpansion, selectStore, sid
+  nearbyStores, productInventory, store, toggleDrop, storeMenuExpansion, selectStore,
 }) => (
   <div className={styles.selectContainer}>
     <button type="button" className={styles.storeSelect} onClick={toggleDrop}>
@@ -54,11 +54,14 @@ const StoreSelect = ({
 );
 
 StoreSelect.propTypes = {
-  store: PropTypes.shape({}).isRequired,
+  toggleDrop: PropTypes.func.isRequired,
+  selectStore: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
   nearbyStores: PropTypes.arrayOf(PropTypes.object).isRequired,
   productInventory: PropTypes.arrayOf(PropTypes.object).isRequired,
   storeMenuExpansion: PropTypes.string.isRequired,
-  sid: PropTypes.number.isRequired,
 };
 
 export default StoreSelect;

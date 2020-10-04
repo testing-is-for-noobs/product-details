@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
@@ -92,6 +93,7 @@ const Stock = ({
                   <button type="button" className={styles.detailsTooltip} onClick={() => { handleTooltips('details'); }} />
                   <div className={styles.detailsTooltipContainer}>
                     <img src={store.details} alt="store details" />
+                    <button type="button" className={styles.detailsX} onClick={() => { handleTooltips('details'); }} />
                   </div>
                 </div>
               )}
@@ -128,11 +130,25 @@ const Stock = ({
 };
 
 Stock.propTypes = {
+  expander: PropTypes.func.isRequired,
+  storeChanger: PropTypes.func.isRequired,
+  toggleDrop: PropTypes.func.isRequired,
+  selectStore: PropTypes.func.isRequired,
+  storeSearch: PropTypes.func.isRequired,
+  searchButton: PropTypes.func.isRequired,
+  handleTooltips: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
   storeMenuExpansion: PropTypes.string.isRequired,
   searchField: PropTypes.string.isRequired,
   sid: PropTypes.number.isRequired,
-  store: PropTypes.shape({}).isRequired,
+  store: PropTypes.shape({
+    name: PropTypes.string,
+    address: PropTypes.string,
+    city: PropTypes.string,
+    state: PropTypes.string,
+    zip: PropTypes.string,
+    details: PropTypes.string,
+  }).isRequired,
   stores: PropTypes.arrayOf(PropTypes.object).isRequired,
   nearbyStores: PropTypes.arrayOf(PropTypes.object).isRequired,
   productInventory: PropTypes.arrayOf(PropTypes.object).isRequired,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
 const Reviews = ({ rating, count }) => {
-  let starbar = [];
+  const starbar = [];
   for (let i = 0; i < Math.floor(rating); i += 1) {
     starbar.push(
       <svg width="100%" height="100%" viewBox="0 0 50 49" key={i}>
@@ -59,6 +59,11 @@ const Reviews = ({ rating, count }) => {
       </span>
     </div>
   );
+};
+
+Reviews.propTypes = {
+  rating: PropTypes.number,
+  count: PropTypes.number,
 };
 
 Reviews.defaultProps = {

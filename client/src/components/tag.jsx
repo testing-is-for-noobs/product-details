@@ -14,8 +14,12 @@ const Tag = ({ tag }) => {
   );
 };
 
+Tag.propTypes = {
+  tag: PropTypes.number,
+};
+
 Tag.defaultProps = {
-  tag: PropTypes.string,
+  tag: PropTypes.number,
 };
 
 export default Tag;

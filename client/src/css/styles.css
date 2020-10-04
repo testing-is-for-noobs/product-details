@@ -39,7 +39,7 @@ body {
 
 .container {
   position: relative;
-  top: 270px;
+  top: 88px;
   left: 60%;
   width: 27.5%;
   min-width: 252.594px;
@@ -354,7 +354,7 @@ body {
 .storeInfo {
   left: 0;
   vertical-align: bottom;
-  margin-left: 0;
+  margin-left: 5px;
   margin-bottom: 8px;
 }
 
@@ -424,14 +424,10 @@ body {
 
 .down {
   transform: rotate(90deg);
-  transition: 200ms ease-in;
-  transition-duration: 3ms;
 }
 
 .up {
   transform: rotate(270deg);
-  transition: 200ms ease-in;
-  transition-duration: 3ms;
 }
 
 .dropdown {
@@ -632,7 +628,7 @@ body {
   position: relative;
   z-index: 1000;
   top: -128px;
-  right: 86%;
+  right: 89.5%;
   width: 269px;
   height: 182px;
   background-color: white;
@@ -641,6 +637,19 @@ body {
   flex-direction: column;
   text-align: left;
   padding: 1.75rem;
+}
+
+.limitTooltipContainer:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid white;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  right: -20px;
+  top: 45%;
 }
 
 .limitTooltipHeader {
@@ -687,6 +696,19 @@ body {
   padding: 1.75rem;
 }
 
+.closestTooltipContainer:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid white;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  right: -20px;
+  top: 50%;
+}
+
 .closestTooltipHeader {
   font-family: 'Cera Pro Medium';
   font-size: 20px;
@@ -722,10 +744,28 @@ body {
 .detailsTooltipContainer {
   position: fixed;
   z-index: 1000;
-  top: 10%;
-  right: 25%;
+  top: 10vh;
+  left: 32vw;
   width: fit-content;
   height: fit-content;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 24px 0px;
+}
+
+.detailsX {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  width: 20px;
+  height: 20px;
+}
+
+.detailsX:hover {
+  cursor: pointer;
+}
+
+.detailsX:focus {
+  outline: none;
 }

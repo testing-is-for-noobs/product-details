@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
 const AddToBag = ({
-  limit, quantity, changeHandler, buttonHandler, handleTooltips, limitTooltip, closestTooltip
+  limit, quantity, changeHandler, buttonHandler, handleTooltips, limitTooltip, closestTooltip,
 }) => {
   const customerLimit = limit;
   return (
@@ -59,7 +60,7 @@ const AddToBag = ({
         <button type="button" className={styles.info} onClick={() => { handleTooltips('limit'); }}>i</button>
         {limitTooltip === true && (
           <div>
-            <button type="button" className={styles.limitTooltip} onClick={() => { handleTooltips('limit'); }}>{}</button>
+            <button type="button" className={styles.limitTooltip} onClick={() => { handleTooltips('limit'); }} />
             <div className={styles.limitTooltipContainer}>
               <div className={styles.limitTooltipHeader}>Limit</div>
               <div className={styles.limitTooltipText}>
@@ -72,7 +73,7 @@ const AddToBag = ({
         )}
         {closestTooltip === true && (
           <div>
-            <button type="button" className={styles.closestTooltip} onClick={() => { handleTooltips('closest'); }}>{}</button>
+            <button type="button" className={styles.closestTooltip} onClick={() => { handleTooltips('closest'); }} />
             <div className={styles.closestTooltipContainer}>
               <div className={styles.closestTooltipHeader}>Please Note:</div>
               <div className={styles.closestTooltipText}>
@@ -81,7 +82,7 @@ const AddToBag = ({
                 will remain in stock for an extended period of time.  If you want to ensure
                 availability, visit the store soon or call ahead and speak with a Brick
                 Specialist.
-                </div>
+              </div>
             </div>
           </div>
         )}

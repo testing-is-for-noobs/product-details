@@ -9,6 +9,10 @@ const Availability = ({ onlineInv }) => {
   );
 };
 
+Availability.propTypes = {
+  onlineInv: PropTypes.number,
+};
+
 Availability.defaultProps = {
   onlineInv: PropTypes.number,
 };
