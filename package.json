@@ -14,12 +14,8 @@
     "type": "git",
     "url": "git+https://github.com/ucb15erickao/product-details.git"
   },
-  "author": "Eric",
+  "author": "Eric Kao",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ucb15erickao/product-details/issues"
-  },
-  "homepage": "https://github.com/ucb15erickao/product-details#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
@@ -28,11 +24,9 @@
     "css-loader": "^4.3.0",
     "eslint": "^7.9.0",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react": "^7.21.1",
-    "eslint-plugin-react-hooks": "^4.1.2",
-    "file-loader": "^6.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",

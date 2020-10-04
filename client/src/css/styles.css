@@ -403,6 +403,10 @@ body {
   text-align: left;
 }
 
+.storeSelect:hover {
+  cursor: pointer;
+}
+
 .storeSelect:focus {
   outline: none;
 }
@@ -455,6 +459,10 @@ body {
   border-bottom: 1px solid #E0E0E0;
   padding: 15px 0 15px 50px;
   margin-right: 0px;
+}
+
+.dropdownItem:hover {
+  cursor: pointer;
 }
 
 .dropdownItem:focus {
