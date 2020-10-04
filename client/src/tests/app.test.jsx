@@ -51,7 +51,7 @@ Result:     Pass
 
 TEST 7:     Clicking the limit info button should display a modal that can be closed by
             clicking outside of the modal or clicking on the black X button at the top right of
-            the modal.
+            the modal. Clicking elsewhere on the modal should not close the modal.
 Procedure:  Click the limit info button and try closing the modal with both methods.
 Result:     Pass
 
@@ -86,14 +86,14 @@ Result:     Pass
 
 TEST 12:    Clicking the closest store info button should display a modal that can be closed by
             clicking outside of the modal or clicking on the black X button at the top right of
-            the modal.
+            the modal. Clicking elsewhere on the modal should not close the modal.
 Procedure:  Click the closest store info button and try closing the modal with both methods.
 Result:     Pass
 
 TEST 13:    Clicking the "See Store Details" blue text should display a modal that can be closed by
             clicking outside of the modal or clicking on the black X button at the top right of
-            the modal. The background behind the
-            modal should be a dark translucent grey.
+            the modal. Clicking elsewhere on the modal should not close the modal. The background
+            behind the modal should be a dark translucent grey.
 Procedure:  Click the "See Store Details" blue text and confirm the background behind the modal is
             displaying correctly. Try closing the modal with both methods.
 Result:     Pass
