@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
@@ -90,10 +89,10 @@ const Stock = ({
               </button>
               {detailsTooltip === true && (
                 <div>
-                  <button type="button" className={styles.detailsTooltip} onClick={() => { handleTooltips('details'); }} />
+                  <button type="button" className={styles.detailsTooltip} aria-label="button" onClick={() => { handleTooltips('details'); }} />
                   <div className={styles.detailsTooltipContainer}>
                     <img src={store.details} alt="store details" />
-                    <button type="button" className={styles.detailsX} onClick={() => { handleTooltips('details'); }} />
+                    <button type="button" className={styles.detailsX} aria-label="button" onClick={() => { handleTooltips('details'); }} />
                   </div>
                 </div>
               )}

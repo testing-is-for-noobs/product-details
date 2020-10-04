@@ -31,10 +31,13 @@
 body {
   font-family: 'Cera Pro Medium';
   background-color: #F8F8F8;
-  height: 300vh;
-  width: 100vw;
+  height: 132vh;
+  width: 98.8vw;
   display: inline-block;
   position: absolute;
+  margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 .container {
@@ -46,7 +49,6 @@ body {
   max-width: 352.797px;
   background-color: #FFFFFF;
   padding: 19px;
-  margin-block-end: 52em;
 }
 
 .tag {

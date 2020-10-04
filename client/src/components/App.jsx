@@ -1,6 +1,3 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-console */
-
 import React from 'react';
 import axios from 'axios';
 
@@ -67,10 +64,10 @@ class App extends React.Component {
           nearbyStores: nearby,
           store: response.data.stores[sid],
           productInventory: response.data.inventory,
-        }, () => { console.log('component mounted'); });
+        });
       })
       .catch((error) => {
-        console.log('Get Error:', error);
+        throw new Error('get error:', error);
       });
   }
 
@@ -86,13 +83,13 @@ class App extends React.Component {
 
     this.setState({
       quantityField: newQuantity,
-    }, () => { console.log('quantityField adjusted:', newQuantity); });
+    });
   }
 
   inputQuantity(userInput) {
     const { product, quantityField } = this.state;
     let newQuantity = Number(userInput);
-    if (isNaN(newQuantity)) {
+    if (Number.isNaN(newQuantity)) {
       newQuantity = quantityField;
     } else if (newQuantity > product.customer_limit) {
       newQuantity = product.customer_limit;
@@ -101,18 +98,17 @@ class App extends React.Component {
     }
     this.setState({
       quantityField: newQuantity,
-    }, () => { console.log('quantityField updated:', newQuantity); });
+    });
   }
 
   updateWishlist() {
     const { pid } = this.state;
     axios.put(`/${pid}/product-details/wishlist`)
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
         this.componentDidMount();
       })
       .catch((error) => {
-        console.log('update wishlist error:', error);
+        throw new Error('update wishlist error:', error);
       });
   }
 
@@ -125,32 +121,29 @@ class App extends React.Component {
     this.setState({
       stockExpansion: updatedStatus,
       storeMenuExpansion: 'minimized',
-    }, () => { console.log('stock panel', updatedStatus); });
+    });
   }
 
   changeStore() {
     this.setState({
       stockExpansion: 'change store',
-    }, () => { console.log('stock panel: change store'); });
+    });
   }
 
   storeSearch(userInput) {
     this.setState({
       searchField: userInput,
-    }, () => {
-      const { searchField } = this.state;
-      console.log('searchField updated:', searchField);
     });
   }
 
   searchButton(searchTerm) {
     const zipCode = Number(searchTerm);
-    if (isNaN(zipCode) || zipCode < 10000 || zipCode > 99999) {
+    if (Number.isNaN(zipCode) || zipCode < 10000 || zipCode > 99999) {
       this.setState({
         validZip: false,
         stockExpansion: 'expanded',
         storeMenuExpansion: 'minimized',
-      }, () => { console.log('invalid zip'); });
+      });
     } else {
       const { stores, sid } = this.state;
       const nearby = [];
@@ -162,14 +155,13 @@ class App extends React.Component {
         nearby.push(removed[0]);
       }
       const newStore = storesCopy[Math.floor(Math.random() * storesCopy.length)];
-      console.log('newStore:', newStore);
       this.setState({
         validZip: true,
         store: newStore,
         nearbyStores: nearby,
         stockExpansion: 'expanded',
         storeMenuExpansion: 'minimized',
-      }, () => { console.log('store & nearby stores updated with entered zip code'); });
+      });
     }
   }
 
@@ -181,7 +173,7 @@ class App extends React.Component {
     }
     this.setState({
       storeMenuExpansion: updatedStatus,
-    }, () => { console.log('dropdown menu', updatedStatus); });
+    });
   }
 
   selectStore(previousStore, selectedStore, selectedStoreIndex) {
@@ -194,7 +186,7 @@ class App extends React.Component {
       nearbyStores: nearbyCopy,
       storeMenuExpansion: 'minimized',
       sid: selectedStore.id,
-    }, () => { console.log('selected store updated'); });
+    });
   }
 
   handleTooltips(clickedItem) {
@@ -206,14 +198,14 @@ class App extends React.Component {
       }
       this.setState({
         limitTooltip: updatedStatus,
-      }, () => { console.log('limitTooltip status:', updatedStatus); });
+      });
     } else if (clickedItem === 'closest') {
       if (closestTooltip === true) {
         updatedStatus = false;
       }
       this.setState({
         closestTooltip: updatedStatus,
-      }, () => { console.log('closestTooltip status:', updatedStatus); });
+      });
     } else if (clickedItem === 'details') {
       document.body.className = styles.noScroll;
       if (detailsTooltip === true) {
@@ -222,7 +214,7 @@ class App extends React.Component {
       }
       this.setState({
         detailsTooltip: updatedStatus,
-      }, () => { console.log('detailsTooltip status:', updatedStatus); });
+      });
     }
   }
 

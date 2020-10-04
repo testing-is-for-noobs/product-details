@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "react": "webpack -w",
-    "server": "nodemon server/index.js -w server -w database",
+    "server": "mysql.server start && nodemon server/index.js -w server -w database",
     "test": "jest",
     "seed": "mysql -u root < server/database/schema.sql && node server/database/seed.js"
   },

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
@@ -60,7 +59,7 @@ const AddToBag = ({
         <button type="button" className={styles.info} onClick={() => { handleTooltips('limit'); }}>i</button>
         {limitTooltip === true && (
           <div>
-            <button type="button" className={styles.limitTooltip} onClick={() => { handleTooltips('limit'); }} />
+            <button type="button" className={styles.limitTooltip} aria-label="button" onClick={() => { handleTooltips('limit'); }} />
             <div className={styles.limitTooltipContainer}>
               <div className={styles.limitTooltipHeader}>Limit</div>
               <div className={styles.limitTooltipText}>
@@ -73,7 +72,7 @@ const AddToBag = ({
         )}
         {closestTooltip === true && (
           <div>
-            <button type="button" className={styles.closestTooltip} onClick={() => { handleTooltips('closest'); }} />
+            <button type="button" className={styles.closestTooltip} aria-label="button" onClick={() => { handleTooltips('closest'); }} />
             <div className={styles.closestTooltipContainer}>
               <div className={styles.closestTooltipHeader}>Please Note:</div>
               <div className={styles.closestTooltipText}>
