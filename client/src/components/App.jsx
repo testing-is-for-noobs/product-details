@@ -32,6 +32,9 @@ class App extends React.Component {
       storeMenuExpansion: 'minimized',
       searchField: '',
       validZip: true,
+      limitTooltip: false,
+      closestTooltip: false,
+      detailsTooltip: false,
     };
     this.inputQuantity = this.inputQuantity.bind(this);
     this.adjustQuantity = this.adjustQuantity.bind(this);
@@ -42,6 +45,7 @@ class App extends React.Component {
     this.searchButton = this.searchButton.bind(this);
     this.toggleDrop = this.toggleDrop.bind(this);
     this.selectStore = this.selectStore.bind(this);
+    this.handleTooltips = this.handleTooltips.bind(this);
   }
 
   componentDidMount() {
@@ -140,7 +144,7 @@ class App extends React.Component {
 
   searchButton(searchTerm) {
     const zipCode = Number(searchTerm);
-    if (typeof zipCode !== 'number' || zipCode < 10000 || zipCode > 99999) {
+    if (isNaN(zipCode) || zipCode < 10000 || zipCode > 99999) {
       this.setState({
         validZip: false,
         stockExpansion: 'expanded',
@@ -192,22 +196,43 @@ class App extends React.Component {
     }, () => { console.log('selected store updated'); });
   }
 
+  handleTooltips(clickedItem) {
+    const { limitTooltip, closestTooltip, detailsTooltip } = this.state;
+    let updatedStatus = true;
+    if (clickedItem === 'limit') {
+      if (limitTooltip === true) {
+        updatedStatus = false;
+      }
+      this.setState({
+        limitTooltip: updatedStatus,
+      }, () => { console.log('limitTooltip status:', updatedStatus); });
+    } else if (clickedItem === 'closest') {
+      if (closestTooltip === true) {
+        updatedStatus = false;
+      }
+      this.setState({
+        closestTooltip: updatedStatus,
+      }, () => { console.log('closestTooltip status:', updatedStatus); });
+    } else if (clickedItem === 'details') {
+      document.body.className = styles.noScroll;
+      if (detailsTooltip === true) {
+        document.body.className = '';
+        updatedStatus = false;
+      }
+      this.setState({
+        detailsTooltip: updatedStatus,
+      }, () => { console.log('detailsTooltip status:', updatedStatus); });
+    }
+  }
+
   render() {
     const {
-      product,
-      quantityField,
-      searchField,
-      stores,
-      nearbyStores,
-      store,
-      stockExpansion,
-      storeMenuExpansion,
-      productInventory,
-      sid,
-      validZip,
+      product, quantityField, searchField, stores, nearbyStores, store, stockExpansion,
+      storeMenuExpansion, productInventory, sid, validZip, limitTooltip, closestTooltip,
+      detailsTooltip,
     } = this.state;
     return (
-      <div className={styles.container}>
+      <div className={`container ${styles.container}`}>
         <Tag tag={product.tag} />
         <p className={styles.productLine}>
           {product.product_line}
@@ -225,6 +250,8 @@ class App extends React.Component {
           quantity={quantityField}
           changeHandler={this.inputQuantity}
           buttonHandler={this.adjustQuantity}
+          handleTooltips={this.handleTooltips}
+          limitTooltip={limitTooltip}
         />
         <Wishlist liked={product.liked} updater={this.updateWishlist} />
         <Stock
@@ -235,6 +262,7 @@ class App extends React.Component {
           selectStore={this.selectStore}
           searchButton={this.searchButton}
           storeSearch={this.storeSearch}
+          handleTooltips={this.handleTooltips}
           searchField={searchField}
           validZip={validZip}
           storeMenuExpansion={storeMenuExpansion}
@@ -244,6 +272,8 @@ class App extends React.Component {
           store={store}
           sid={sid}
           inventory={productInventory[sid - 1].inventory}
+          closestTooltip={closestTooltip}
+          detailsTooltip={detailsTooltip}
         />
         <Similar cat1={product.category_1} cat2={product.category_2} cat3={product.category_3} />
       </div>

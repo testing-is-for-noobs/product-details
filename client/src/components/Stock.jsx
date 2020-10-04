@@ -4,7 +4,8 @@ import StoreSelect from './StoreSelect';
 
 const Stock = ({
   status, expander, storeChanger, toggleDrop, storeMenuExpansion,selectStore, stores, nearbyStores,
-  storeSearch, searchField, searchButton, store, sid, inventory, productInventory, validZip
+  storeSearch, searchField, searchButton, store, sid, inventory, productInventory, validZip,
+  handleTooltips, detailsTooltip
 }) => {
   if (status === 'minimized') {
     return (
@@ -25,7 +26,13 @@ const Stock = ({
         </button>
         <div className={styles.storeHeader}>
           <div className={styles.storeHeaderText}>Closest Store</div>
-          <div className={`${styles.info} ${styles.storeInfo}`}>i</div>
+          <button
+            type="button"
+            className={`${styles.info} ${styles.storeInfo}`}
+            onClick={() => { handleTooltips('closest'); }}
+          >
+            i
+          </button>
           <button
             className={styles.changeStore}
             onClick={storeChanger}
@@ -70,7 +77,21 @@ const Stock = ({
               )}
               <div className={styles.storeDetails}>{store.address}</div>
               <div className={styles.storeDetails}>{`${store.city}, ${store.state} ${store.zip}`}</div>
-              <div className={styles.seeStore}>See Store Details</div>
+              <button
+                type="button"
+                className={styles.seeStore}
+                onClick={() => { handleTooltips('details'); }}
+              >
+                See Store Details
+              </button>
+              {detailsTooltip === true && (
+                <div>
+                  <button type="button" className={styles.detailsTooltip} onClick={() => { handleTooltips('details'); }} />
+                  <div className={styles.detailsTooltipContainer}>
+                    <img src={store.details} alt="store details" />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
