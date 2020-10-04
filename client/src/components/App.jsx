@@ -62,7 +62,7 @@ class App extends React.Component {
           product: response.data.product[0],
           stores: response.data.stores,
           nearbyStores: nearby,
-          store: response.data.stores[sid],
+          store: response.data.stores[sid - 1],
           productInventory: response.data.inventory,
         });
       })

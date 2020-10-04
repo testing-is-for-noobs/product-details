@@ -4,10 +4,11 @@
   "description": "test",
   "main": "index.js",
   "scripts": {
+    "start": "mysql.server start && node server/index.js",
+    "seed": "mysql.server start && mysql -u root < server/database/schema.sql && node server/database/seed.js",
     "react": "webpack -w",
-    "server": "mysql.server start && nodemon server/index.js -w server -w database",
-    "test": "jest",
-    "seed": "mysql -u root < server/database/schema.sql && node server/database/seed.js"
+    "server": "nodemon server/index.js -w server -w database",
+    "test": "jest"
   },
   "repository": {
     "type": "git",

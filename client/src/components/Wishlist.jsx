@@ -26,12 +26,8 @@ const Wishlist = ({ liked, updater }) => (
 );
 
 Wishlist.propTypes = {
-  liked: PropTypes.number,
+  liked: PropTypes.number.isRequired,
   updater: PropTypes.func.isRequired,
-};
-
-Wishlist.defaultProps = {
-  liked: PropTypes.number,
 };
 
 export default Wishlist;

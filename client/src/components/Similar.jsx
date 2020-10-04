@@ -14,15 +14,9 @@ const Similar = ({ cat1, cat2, cat3 }) => (
 );
 
 Similar.propTypes = {
-  cat1: PropTypes.string,
-  cat2: PropTypes.string,
-  cat3: PropTypes.string,
-};
-
-Similar.defaultProps = {
-  cat1: PropTypes.string,
-  cat2: PropTypes.string,
-  cat3: PropTypes.string,
+  cat1: PropTypes.string.isRequired,
+  cat2: PropTypes.string.isRequired,
+  cat3: PropTypes.string.isRequired,
 };
 
 export default Similar;

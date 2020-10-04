@@ -96,15 +96,9 @@ AddToBag.propTypes = {
   changeHandler: PropTypes.func.isRequired,
   buttonHandler: PropTypes.func.isRequired,
   handleTooltips: PropTypes.func.isRequired,
-  limit: PropTypes.number,
-  limitTooltip: PropTypes.bool,
-  closestTooltip: PropTypes.bool,
-};
-
-AddToBag.defaultProps = {
-  limit: PropTypes.number,
-  limitTooltip: PropTypes.bool,
-  closestTooltip: PropTypes.bool,
+  limit: PropTypes.number.isRequired,
+  limitTooltip: PropTypes.bool.isRequired,
+  closestTooltip: PropTypes.bool.isRequired,
 };
 
 export default AddToBag;

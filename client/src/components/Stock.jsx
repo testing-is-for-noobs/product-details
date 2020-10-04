@@ -151,15 +151,9 @@ Stock.propTypes = {
   stores: PropTypes.arrayOf(PropTypes.object).isRequired,
   nearbyStores: PropTypes.arrayOf(PropTypes.object).isRequired,
   productInventory: PropTypes.arrayOf(PropTypes.object).isRequired,
-  inventory: PropTypes.number,
-  validZip: PropTypes.bool,
-  detailsTooltip: PropTypes.bool,
-};
-
-Stock.defaultProps = {
-  inventory: PropTypes.number,
-  validZip: PropTypes.bool,
-  detailsTooltip: PropTypes.bool,
+  inventory: PropTypes.number.isRequired,
+  validZip: PropTypes.bool.isRequired,
+  detailsTooltip: PropTypes.bool.isRequired,
 };
 
 export default Stock;

@@ -62,13 +62,8 @@ const Reviews = ({ rating, count }) => {
 };
 
 Reviews.propTypes = {
-  rating: PropTypes.number,
-  count: PropTypes.number,
-};
-
-Reviews.defaultProps = {
-  rating: PropTypes.number,
-  count: PropTypes.number,
+  rating: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
 };
 
 export default Reviews;
