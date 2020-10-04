@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
 const StoreSelect = ({
@@ -51,5 +52,13 @@ const StoreSelect = ({
     )}
   </div>
 );
+
+StoreSelect.propTypes = {
+  store: PropTypes.shape({}).isRequired,
+  nearbyStores: PropTypes.arrayOf(PropTypes.object).isRequired,
+  productInventory: PropTypes.arrayOf(PropTypes.object).isRequired,
+  storeMenuExpansion: PropTypes.string.isRequired,
+  sid: PropTypes.number.isRequired,
+};
 
 export default StoreSelect;

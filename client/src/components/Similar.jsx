@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
 const Similar = ({ cat1, cat2, cat3 }) => (
@@ -11,5 +12,17 @@ const Similar = ({ cat1, cat2, cat3 }) => (
     </div>
   </div>
 );
+
+Similar.propTypes = {
+  cat1: PropTypes.string,
+  cat2: PropTypes.string,
+  cat3: PropTypes.string,
+};
+
+Similar.defaultProps = {
+  cat1: PropTypes.string,
+  cat2: PropTypes.string,
+  cat3: PropTypes.string,
+};
 
 export default Similar;

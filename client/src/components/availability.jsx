@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
 const Availability = ({ onlineInv }) => {
@@ -6,6 +7,10 @@ const Availability = ({ onlineInv }) => {
   return (
     <div className={styles.availability}>{stock[onlineInv]}</div>
   );
+};
+
+Availability.defaultProps = {
+  onlineInv: PropTypes.number,
 };
 
 export default Availability;

@@ -42,7 +42,7 @@ body {
   top: 270px;
   left: 60%;
   width: 27.5%;
-  min-width: 222.594px;
+  min-width: 252.594px;
   max-width: 352.797px;
   background-color: #FFFFFF;
   padding: 19px;
@@ -202,7 +202,7 @@ body {
 .info {
   background-color: white;
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 8px;
   padding-top: 1px;
   padding-right: 10px;
   font-family: 'Cera Pro Regular';
@@ -225,47 +225,6 @@ body {
 
 .info:focus {
   outline: none;
-}
-
-.tooltip {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0);
-  border: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
-.tooltip:focus {
-  outline: none;
-}
-
-.limitTooltipContainer {
-  position: relative;
-  z-index: 1000;
-  top: -125px;
-  right: 325px;
-  width: 269px;
-  height: 200px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 24px 0px;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding: 1.75rem;
-}
-
-.limitTooltipHeader {
-  font-family: 'Cera Pro Medium';
-  font-size: 20px;
-  margin-block-end: 15px;
-}
-
-.limitTooltipText {
-  font-family: 'Cera Pro Regular';
-  font-size: 16px;
-  line-height: 175%;
 }
 
 .addToBag {
@@ -330,6 +289,10 @@ body {
   vertical-align: middle;
 }
 
+.stockContainer {
+  position: relative;
+}
+
 .stock {
   margin: 0;
   padding: 0;
@@ -382,16 +345,16 @@ body {
 .storeHeaderText {
   font-family: 'Cera Pro Regular';
   font-size: 14px;
-  display: inline-flex;
+  display: inline-block;
   width: 32%;
   text-align: left;
   vertical-align: top;
 }
 
 .storeInfo {
-  position: relative;
   left: 0;
   vertical-align: bottom;
+  margin-left: 0;
   margin-bottom: 8px;
 }
 
@@ -423,7 +386,8 @@ body {
 }
 
 .selectContainer {
-  position: relative
+  position: relative;
+  width: 100%;
 }
 
 .storeSelect {
@@ -435,7 +399,7 @@ body {
   border: 1px solid #E0E0E0;
   padding-top: 2px;
   padding-left: 18px;
-  width: 96%;
+  width: 100%;
   height: 63px;
   text-align: left;
 }
@@ -461,23 +425,28 @@ body {
 .down {
   transform: rotate(90deg);
   transition: 200ms ease-in;
+  transition-duration: 3ms;
 }
 
 .up {
   transform: rotate(270deg);
   transition: 200ms ease-in;
+  transition-duration: 3ms;
 }
 
 .dropdown {
+  z-index: 1;
   position: absolute;
-  z-index: 1000;
-  width: 95.5%;
+  display: block;
+  width: 99.5%;
   background-color: white;
   border-left: 1px solid #E0E0E0;
   border-right: 1px solid #E0E0E0;
 }
 
 .dropdownItem {
+  z-index: 1;
+  display: inline-flex;
   position: relative;
   text-align: left;
   font-family: 'Cera Pro Medium';
@@ -490,6 +459,7 @@ body {
   width: 100%;
   border-bottom: 1px solid #E0E0E0;
   padding: 15px 0 15px 50px;
+  margin-right: 0px;
 }
 
 .dropdownItem:focus {
@@ -561,35 +531,6 @@ body {
 
 .seeStore:focus {
   outline: none;
-}
-
-.detailsTooltip {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
-.noScroll {
-  overflow: hidden;
-}
-
-.detailsTooltip:focus {
-  outline: none;
-}
-
-.detailsTooltipContainer {
-  position: fixed;
-  z-index: 1000;
-  top: 10%;
-  right: 25%;
-  width: fit-content;
-  height: fit-content;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 24px 0px;
 }
 
 .findStoreText {
@@ -669,4 +610,122 @@ body {
 
 .nonFirst {
   margin-left: 15px;
+}
+
+
+
+.limitTooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.limitTooltip:focus {
+  outline: none;
+}
+
+.limitTooltipContainer {
+  position: relative;
+  z-index: 1000;
+  top: -128px;
+  right: 86%;
+  width: 269px;
+  height: 182px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 24px 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 1.75rem;
+}
+
+.limitTooltipHeader {
+  font-family: 'Cera Pro Medium';
+  font-size: 20px;
+  margin-block-end: 15px;
+}
+
+.limitTooltipText {
+  font-family: 'Cera Pro Regular';
+  font-size: 16px;
+  line-height: 175%;
+}
+
+
+
+.closestTooltip {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.closestTooltip:focus {
+  outline: none;
+}
+
+.closestTooltipContainer {
+  position: relative;
+  display: block;
+  z-index: 1000;
+  top: 62px;
+  right: 132%;
+  width: 269px;
+  height: 295px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 24px 0px;
+  display: block;
+  text-align: left;
+  padding: 1.75rem;
+}
+
+.closestTooltipHeader {
+  font-family: 'Cera Pro Medium';
+  font-size: 20px;
+  margin-block-end: 15px;
+}
+
+.closestTooltipText {
+  font-family: 'Cera Pro Regular';
+  font-size: 16px;
+  line-height: 175%;
+}
+
+
+
+.detailsTooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.noScroll {
+  overflow: hidden;
+}
+
+.detailsTooltip:focus {
+  outline: none;
+}
+
+.detailsTooltipContainer {
+  position: fixed;
+  z-index: 1000;
+  top: 10%;
+  right: 25%;
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 24px 0px;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
-const Reviews = (props) => {
-  const { rating, count } = props;
+const Reviews = ({ rating, count }) => {
   let starbar = [];
   for (let i = 0; i < Math.floor(rating); i += 1) {
     starbar.push(
@@ -59,6 +59,11 @@ const Reviews = (props) => {
       </span>
     </div>
   );
+};
+
+Reviews.defaultProps = {
+  rating: PropTypes.number,
+  count: PropTypes.number,
 };
 
 export default Reviews;

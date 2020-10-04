@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
 const Wishlist = ({ liked, updater }) => (
@@ -23,5 +24,9 @@ const Wishlist = ({ liked, updater }) => (
     </button>
   </div>
 );
+
+Wishlist.defaultProps = {
+  liked: PropTypes.number,
+};
 
 export default Wishlist;

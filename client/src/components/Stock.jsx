@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 import StoreSelect from './StoreSelect';
 
 const Stock = ({
-  status, expander, storeChanger, toggleDrop, storeMenuExpansion,selectStore, stores, nearbyStores,
+  status, expander, storeChanger, toggleDrop, storeMenuExpansion, selectStore, stores, nearbyStores,
   storeSearch, searchField, searchButton, store, sid, inventory, productInventory, validZip,
-  handleTooltips, detailsTooltip
+  detailsTooltip, handleTooltips,
 }) => {
   if (status === 'minimized') {
     return (
@@ -19,7 +20,8 @@ const Stock = ({
   }
   if (status === 'expanded') {
     return (
-      <div>
+      <div className={styles.storeContainer}>
+
         <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>
           <div className={styles.stockText}>Check Store Stock</div>
           <div className={styles.expander}>-</div>
@@ -33,6 +35,7 @@ const Stock = ({
           >
             i
           </button>
+
           <button
             className={styles.changeStore}
             onClick={storeChanger}
@@ -122,6 +125,26 @@ const Stock = ({
       </div>
     </div>
   );
+};
+
+Stock.propTypes = {
+  status: PropTypes.string.isRequired,
+  storeMenuExpansion: PropTypes.string.isRequired,
+  searchField: PropTypes.string.isRequired,
+  sid: PropTypes.number.isRequired,
+  store: PropTypes.shape({}).isRequired,
+  stores: PropTypes.arrayOf(PropTypes.object).isRequired,
+  nearbyStores: PropTypes.arrayOf(PropTypes.object).isRequired,
+  productInventory: PropTypes.arrayOf(PropTypes.object).isRequired,
+  inventory: PropTypes.number,
+  validZip: PropTypes.bool,
+  detailsTooltip: PropTypes.bool,
+};
+
+Stock.defaultProps = {
+  inventory: PropTypes.number,
+  validZip: PropTypes.bool,
+  detailsTooltip: PropTypes.bool,
 };
 
 export default Stock;

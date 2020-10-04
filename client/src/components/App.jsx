@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-console */
 // transition: 200ms ease-in-out;
 
 import React from 'react';
@@ -151,7 +153,7 @@ class App extends React.Component {
         storeMenuExpansion: 'minimized',
       }, () => { console.log('invalid zip'); });
     } else {
-      const { stores, sid, validZip } = this.state;
+      const { stores, sid } = this.state;
       const nearby = [];
       const storesCopy = stores.slice();
       storesCopy.splice(sid - 1, 1);
@@ -168,7 +170,7 @@ class App extends React.Component {
         nearbyStores: nearby,
         stockExpansion: 'expanded',
         storeMenuExpansion: 'minimized',
-      }, () => { console.log('new zip, new store, new nearby'); });
+      }, () => { console.log('store & nearby stores updated with entered zip code'); });
     }
   }
 
@@ -246,12 +248,13 @@ class App extends React.Component {
         </h1>
         <Availability onlineInv={product.online_inventory} />
         <AddToBag
-          limit={product.customer_limit}
+          limit={Number(product.customer_limit)}
           quantity={quantityField}
           changeHandler={this.inputQuantity}
           buttonHandler={this.adjustQuantity}
           handleTooltips={this.handleTooltips}
           limitTooltip={limitTooltip}
+          closestTooltip={closestTooltip}
         />
         <Wishlist liked={product.liked} updater={this.updateWishlist} />
         <Stock
@@ -271,11 +274,10 @@ class App extends React.Component {
           productInventory={productInventory}
           store={store}
           sid={sid}
-          inventory={productInventory[sid - 1].inventory}
-          closestTooltip={closestTooltip}
+          inventory={Number(productInventory[sid - 1].inventory)}
           detailsTooltip={detailsTooltip}
         />
-        <Similar cat1={product.category_1} cat2={product.category_2} cat3={product.category_3} />
+        <Similar cat1={`${product.category_1}`} cat2={`${product.category_2}`} cat3={`${product.category_3}`} />
       </div>
     );
   }
