@@ -174,7 +174,7 @@ TEST 24:    When the error message "No stores found within a 60-mile radius of y
 Procedure:  Try an invalid search and then click on the "Check Store Stock" bar several times after
             the error message is displayed. Afterwards, click the "Change Store Location" to confirm
             the search panel is displayed.
-Result: Pass
+Result:     Pass
 
 TEST 25:    Hovering over the 3 related categories in blue text below "Shop more like this:" in the
             bottom panel should transform the cursor into a pointer.
