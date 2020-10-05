@@ -10,10 +10,15 @@ const Stock = ({
 }) => {
   if (status === 'minimized') {
     return (
-      <div>
-        <button type="button" className={styles.stock} onClick={expander}>
-          <div className={styles.stockText}>Check Store Stock</div>
-          <div className={styles.expander}>+</div>
+      <div className={styles.storeContainer}>
+        <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>
+          <div className={styles.buttonTextWrapper}>
+            <div className={styles.stockText}>Check Store Stock</div>
+            <div className={styles.expander}>
+              <div className={`${styles.horizontal} ${styles.horizontalInit}`} />
+              <div className={`${styles.vertical} ${styles.verticalInit}`} />
+            </div>
+          </div>
         </button>
       </div>
     );
@@ -23,95 +28,106 @@ const Stock = ({
       <div className={styles.storeContainer}>
 
         <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>
-          <div className={styles.stockText}>Check Store Stock</div>
-          <div className={styles.expander}>-</div>
-        </button>
-        <div className={styles.storeHeader}>
-          <div className={styles.storeHeaderText}>Closest Store</div>
-          <button
-            type="button"
-            className={`${styles.info} ${styles.storeInfo}`}
-            onClick={() => { handleTooltips('closest'); }}
-          >
-            i
-          </button>
-
-          <button
-            className={styles.changeStore}
-            onClick={storeChanger}
-            type="button"
-          >
-            Change Store Location
-          </button>
-        </div>
-        {validZip === true && (
-          <div>
-            <StoreSelect
-              stores={stores}
-              nearbyStores={nearbyStores}
-              productInventory={productInventory}
-              store={store}
-              sid={sid}
-              toggleDrop={toggleDrop}
-              storeMenuExpansion={storeMenuExpansion}
-              selectStore={selectStore}
-            />
-            <div className={styles.store}>
-              {inventory > 0 && (
-                <div className={`${styles.storeInventory} ${styles.inStock}`}>
-                  <svg width="20px" height="13px" viewBox="0 0 20 13">
-                    <path d="M0 5.703L7.177 13 20 0h-4.476L7.177 8.442 4.476 5.723H2.238z" fill="currentColor" fillRule="evenodd" />
-                  </svg>
-                </div>
-              )}
-              {inventory <= 0 && (
-                <div className={`${styles.storeInventory} ${styles.outOfStock}`}>
-                  <svg viewBox="0 0 17 17" width="17px" height="17px">
-                    <path d="M10.377 8.142l5.953-5.954-2.234-2.234-5.954 5.954L2.188-.046-.046 2.188l5.954 5.954-5.954 5.954 2.234 2.234 5.954-5.953 5.954 5.953 2.234-2.234z" fill="currentColor" fillRule="evenodd" />
-                  </svg>
-                </div>
-              )}
-              <div className={styles.storeTitle}>{store.name}</div>
-              {inventory > 0 && (
-                <div className={styles.storeStock}>In Stock at this time</div>
-              )}
-              {inventory <= 0 && (
-                <div className={styles.storeStock}>Out of Stock</div>
-              )}
-              <div className={styles.storeDetails}>{store.address}</div>
-              <div className={styles.storeDetails}>{`${store.city}, ${store.state} ${store.zip}`}</div>
-              <button
-                type="button"
-                className={styles.seeStore}
-                onClick={() => { handleTooltips('details'); }}
-              >
-                See Store Details
-              </button>
-              {detailsTooltip === true && (
-                <div className={styles.detailsTooltipContainer}>
-                  <button type="button" className={styles.detailsTooltip} aria-label="button" onClick={() => { handleTooltips('details'); }} />
-                  <div className={styles.detailsTooltipContent}>
-                    <img src={store.details} alt="store details" />
-                    <button type="button" className={styles.detailsX} aria-label="button" onClick={() => { handleTooltips('details'); }} />
-                  </div>
-                </div>
-              )}
+          <div className={styles.buttonTextWrapper}>
+            <div className={styles.stockText}>Check Store Stock</div>
+            <div className={styles.expander}>
+              <div className={`${styles.horizontal} ${styles.horizontalToggled}`} />
+              <div className={`${styles.vertical} ${styles.verticalToggled}`} />
             </div>
           </div>
-        )}
-        {validZip === false && (
-          <div className={styles.noStoreFound}>
-            No stores found within a 60-mile radius of your zip code
+        </button>
+        <div className={styles.storePanel}>
+          <div className={styles.storeHeader}>
+            <span className={styles.storeHeaderText}>Closest Store</span>
+            <div className={styles.infoContainer}>
+              <span className={styles.infoWrapper}>
+                <button type="button" className={styles.storeInfo} onClick={() => { handleTooltips('closest'); }} />
+              </span>
+            </div>
+            <button
+              className={styles.changeStore}
+              onClick={storeChanger}
+              type="button"
+            >
+              <span className={styles.changeStoreText}>
+                Change Store Location
+              </span>
+            </button>
           </div>
-        )}
+          {validZip === true && (
+            <div>
+              <StoreSelect
+                stores={stores}
+                nearbyStores={nearbyStores}
+                productInventory={productInventory}
+                store={store}
+                sid={sid}
+                toggleDrop={toggleDrop}
+                storeMenuExpansion={storeMenuExpansion}
+                selectStore={selectStore}
+              />
+              <div className={styles.store}>
+                {inventory > 0 && (
+                  <div className={`${styles.storeInventory} ${styles.inStock}`}>
+                    <svg width="20px" height="13px" viewBox="0 0 20 13">
+                      <path d="M0 5.703L7.177 13 20 0h-4.476L7.177 8.442 4.476 5.723H2.238z" fill="currentColor" fillRule="evenodd" />
+                    </svg>
+                  </div>
+                )}
+                {inventory <= 0 && (
+                  <div className={`${styles.storeInventory} ${styles.outOfStock}`}>
+                    <svg viewBox="0 0 17 17" width="17px" height="17px">
+                      <path d="M10.377 8.142l5.953-5.954-2.234-2.234-5.954 5.954L2.188-.046-.046 2.188l5.954 5.954-5.954 5.954 2.234 2.234 5.954-5.953 5.954 5.953 2.234-2.234z" fill="currentColor" fillRule="evenodd" />
+                    </svg>
+                  </div>
+                )}
+                <div className={styles.storeTitle}>{store.name}</div>
+                {inventory > 0 && (
+                  <div className={styles.storeStock}>In Stock at this time</div>
+                )}
+                {inventory <= 0 && (
+                  <div className={styles.storeStock}>Out of Stock</div>
+                )}
+                <div className={styles.storeDetails}>{store.address}</div>
+                <div className={styles.storeDetails}>{`${store.city}, ${store.state} ${store.zip}`}</div>
+                <button
+                  type="button"
+                  className={styles.seeStore}
+                  onClick={() => { handleTooltips('details'); }}
+                >
+                  See Store Details
+                </button>
+                {detailsTooltip === true && (
+                  <div className={styles.detailsTooltipContainer}>
+                    <button type="button" className={styles.detailsTooltip} aria-label="button" onClick={() => { handleTooltips('details'); }} />
+                    <div className={styles.detailsTooltipContent}>
+                      <img src={store.details} alt="store details" />
+                      <button type="button" className={styles.detailsX} aria-label="button" onClick={() => { handleTooltips('details'); }} />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+          {validZip === false && (
+            <div className={styles.noStoreFound}>
+              No stores found within a 60-mile radius of your zip code
+            </div>
+          )}
+        </div>
       </div>
     );
   }
   return (
     <div className={styles.searchPanel}>
       <button type="button" className={`${styles.stock} ${styles.expanded}`} onClick={expander}>
-        <div className={styles.stockText}>Check Store Stock</div>
-        <div className={styles.expander}>-</div>
+        <div className={styles.buttonTextWrapper}>
+          <div className={styles.stockText}>Check Store Stock</div>
+          <div className={styles.expander}>
+            <div className={`${styles.horizontal} ${styles.horizontalToggled}`} />
+            <div className={`${styles.vertical} ${styles.verticalToggled}`} />
+          </div>
+        </div>
       </button>
       <div className={styles.storeHeader}>
         <span className={styles.findStoreText}>Enter your address to find a store near you.</span>

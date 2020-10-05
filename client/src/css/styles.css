@@ -25,6 +25,10 @@
   src: url('./fonts/Cera-Pro-Thin.otf');
 }
 
+html {
+  box-sizing: inherit;
+}
+
 body {
   font-family: 'Cera Pro Medium';
   background-color: #F8F8F8;
@@ -35,9 +39,11 @@ body {
   margin: 0;
   border: 0;
   padding: 0;
+  box-sizing: inherit;
 }
 
 .container {
+  box-sizing: inherit;
   position: relative;
   top: 88px;
   left: 60%;
@@ -67,6 +73,7 @@ body {
   font-size: 50px;
   line-height: 0.1em;
   font-style: italic;
+  box-sizing: inherit;
 }
 
 .productLine:hover {
@@ -76,9 +83,11 @@ body {
 .productTitle {
   font-weight: 500;
   margin-bottom: 25px;
+  box-sizing: inherit;
 }
 
 .stars {
+  box-sizing: inherit;
   display: inline-flex;
   height: 18px;
   width: 115px;
@@ -92,6 +101,7 @@ body {
 }
 
 .reviewText {
+  box-sizing: inherit;
   display: inline-block;
   vertical-align: 5%;
   color: #006DB7;
@@ -106,10 +116,12 @@ body {
 }
 
 .reviewCount {
+  box-sizing: inherit;
   letter-spacing: 0.75px;
 }
 
 .price {
+  box-sizing: inherit;
   font-family: 'Cera Pro Bold';
   font-weight: 550;
   font-size: 30px;
@@ -118,6 +130,7 @@ body {
 }
 
 .availability {
+  box-sizing: inherit;
   font-family: 'Cera Pro Regular';
   font-size: 13px;
   color: #008537;
@@ -189,6 +202,7 @@ body {
 }
 
 .customerLimit {
+  box-sizing: inherit;
   color: #2C2C2C;
   position: absolute;
   left: 192px;
@@ -243,12 +257,13 @@ body {
 }
 
 .wishlist {
-  margin-block-start: 1.32em;
+  box-sizing: inherit;
+  margin-block-start: 0.75rem;
   height: 32px;
   background-color: white;
   border: 0;
-  padding: 5px;
   vertical-align: middle;
+  margin-bottom: 0.75rem;
 }
 
 .wishlist:hover {
@@ -269,6 +284,7 @@ body {
 }
 
 .heart {
+  box-sizing: inherit;
   display: inline-block;
   width: 8px;
   position: relative;
@@ -281,6 +297,7 @@ body {
 }
 
 .wishlistText {
+  box-sizing: inherit;
   padding-left: 5px;
   display: inline-flex;
   font-family: 'Cera Pro Medium';
@@ -288,24 +305,44 @@ body {
   vertical-align: middle;
 }
 
-.stockContainer {
+.storeContainer {
   position: relative;
+  display: block;
+  box-sizing: inherit;
+  width: 100%;
+  max-width: 82.5rem;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  border-top: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .stock {
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  box-sizing: inherit;
   margin: 0;
   padding: 0;
-  font-family: 'Cera Pro Medium';
+  border: 0;
+  font-family: 'Cera Pro Regular';
   font-size: 16px;
-  margin-block-start: 1.5em;
+  line-height: 1.5;
   width: 100%;
   height: 65px;
-  text-align: left;
-  background-color: white;
-  border-left: 0;
-  border-right: 0;
-  border-top: 1px solid #E0E0E0;
-  border-bottom: 1px solid #E0E0E0;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+}
+
+.buttonTextWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: 1.25rem 0px;
 }
 
 .stock:hover {
@@ -320,59 +357,186 @@ body {
 }
 
 .stockText {
-  margin: 0;
-  padding-left: 0;
-  color: #2C2C2C;
-  display: inline-flex;
+  margin: 0px;
+  text-align: left;
+  font-family: 'Cera Pro Medium';
+  font-size: 1rem;
+  line-height: 1.5625rem;
 }
 
 .expander {
-  color: #2C2C2C;
-  font-size: 18px;
+  position: relative;
+  display: block;
+  float: right;
+  margin-right: 0.625rem;;
+  width: 23px;
+  height: 23px;
+  background: rgb(255, 255, 255);
+  border: 1px solid #E0E0E0;
+  border-radius: 50%;
+  padding: 1px;
+}
+
+.horizontal {
+  display: block;
   position: absolute;
-  right: 32px;
-  display: inline-flex;
+  /* top: 20%;
+  right: 25%; */
+  width: 0.1875rem;
+  height: 1.125rem;
+  background-color: #2C2C2C;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-top: 3px;
+}
+
+.vertical {
+  display: block;
+  position: absolute;
+  /* top: 20%;
+  right: 25%; */
+  width: 0.1875rem;
+  height: 1.125rem;
+  background-color: #2C2C2C;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-top: 3px;
+}
+
+.horizontalInit {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transform: rotate(270deg);
+}
+
+.verticalInit {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transform: rotate(180deg);
+}
+
+.horizontalToggled {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transform: rotate(90deg);
+}
+
+.verticalToggled {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transform: rotate(90deg);
+}
+
+.storePanel {
+  box-sizing: border-box;
+  height: auto;
+  overflow: hidden;
+  display: block;
+  line-height: 1.5;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  padding-bottom: 1.25rem;
+  width: 100%;
 }
 
 .storeHeader {
-  margin-block-start: 0.02em;
-  display: inline-block;
+  box-sizing: inherit;
+  display: flex;
+  flex-direction: row;
   width: 100%;
-  padding-bottom: 18px;
+  -webkit-box-align: baseline;
+  align-items: baseline;
+  padding: 0px 0px 0.9375rem;
+  text-transform: inherit;
 }
 
 .storeHeaderText {
-  font-family: 'Cera Pro Regular';
-  font-size: 14px;
   display: inline-block;
-  width: 32%;
-  text-align: left;
-  vertical-align: top;
+  font-family: 'Cera Pro Regular';
+  font-size: 0.875rem;
+  line-height: 1.1875rem;
+  text-transform: inherit;
+  box-sizing: inherit;
+}
+
+.infoContainer {
+  position: relative;
+  box-sizing: inherit;
+  display: block;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.infoWrapper {
+  display: inline;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  margin-left: 0.3125rem;
+  box-sizing: inherit;
+  font-family: 'Cera Pro Regular';
+  color: rgb(117, 117, 117);
 }
 
 .storeInfo {
-  left: 0;
-  vertical-align: bottom;
-  margin-left: 5px;
-  margin-bottom: 8px;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 1px solid rgb(117, 117, 117);
+  border-radius: 100%;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-transform: none;
+  box-sizing: inherit;
+  text-rendering: auto;
+  text-indent: 0px;
+  display: inline-block;
+  text-align: center;
+}
+
+.storeInfo:hover {
+  border-color: rgb(0, 109, 183);
+  cursor: pointer;
+}
+
+.storeInfo::before {
+  display: block;
+  content: " i ";
+  color: rgb(117, 117, 117);
+}
+
+.storeInfo:hover::before {
+  color: rgb(0, 109, 183);
+  cursor: pointer;
+}
+
+.storeInfo:focus {
+  outline: none;
 }
 
 .changeStore {
-  background-color: rgba(255, 255, 255, 0);
-  border: 0;
-  position: absolute;
-  right: 18px;
   display: inline-block;
-  padding-top: 0;
-  color: #006DB7;
-  font-family: 'Cera Pro Regular';
-  font-size: 14px;
+  width: auto;
+  border-collapse: collapse;
   text-align: center;
-  vertical-align: top;
-  margin-top: 0;
-  margin-bottom: 5px;
-  width: 48%;
-  margin-block-end: 0.08em;
+  font-family: 'Cera Pro Regular';
+  font-size: 0.875rem;
+  line-height: 1.1875rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #006DB7;
+  text-transform: none;
+  margin: 0;
+  box-sizing: inherit;
+  text-rendering: auto;
+  text-indent: 0;
+  margin-left: auto;
 }
 
 .changeStore:hover {
@@ -384,9 +548,27 @@ body {
   outline: none;
 }
 
+.changeStoreText {
+  color: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  font-size: 0.875rem;
+  line-height: 1.1875rem;
+  font-family: 'Cera Pro Regular';
+  text-transform: inherit;
+  box-sizing: inherit;
+  display: inline-block;
+  width: auto;
+  border-collapse: collapse;
+  text-align: center;
+  text-rendering: auto;
+  text-indent: 0;
+}
+
 .selectContainer {
   position: relative;
   width: 100%;
+  height: fit-content;
 }
 
 .storeSelect {
@@ -478,9 +660,7 @@ body {
 .store {
   margin-block-start: 1.08em;
   position: relative;
-  border-bottom: 1px solid #E0E0E0;
   padding-left: 35px;
-  padding-bottom: 18px;
 }
 
 .storeInventory {
@@ -716,7 +896,7 @@ body {
   position: relative;
   display: block;
   z-index: 1000;
-  top: 62px;
+  top: 52px;
   right: 132%;
   width: 269px;
   height: 295px;
