@@ -447,8 +447,8 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
-  -webkit-box-align: baseline;
-  align-items: baseline;
+  -webkit-box-align: center;
+  align-items: center;
   padding: 0px 0px 0.9375rem;
   text-transform: inherit;
 }
