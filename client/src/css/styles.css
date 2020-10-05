@@ -27,6 +27,7 @@
 
 html {
   box-sizing: inherit;
+  border: 1px solid transparent;
 }
 
 body {
@@ -40,16 +41,18 @@ body {
   border: 0;
   padding: 0;
   box-sizing: inherit;
+  border: 1px solid transparent;
 }
 
 .container {
   box-sizing: inherit;
+  border: 1px solid transparent;
   position: relative;
   top: 88px;
   left: 60%;
   width: 27.5%;
-  min-width: 252.594px;
-  max-width: 352.797px;
+  min-width: 259.5px;
+  max-width: 352.5px;
   background-color: #FFFFFF;
   padding: 19px;
 }
@@ -187,10 +190,11 @@ body {
   left: 64px;
   height: 38px;
   width: 63px;
+  background: transparent;
   border-top: 1px solid #E0E0E0;
   border-bottom: 1px solid #E0E0E0;
-  border-left: 0px;
-  border-right: 0px;
+  border-left: transparent;
+  border-right: transparent;
   text-align: center;
   font-family: 'Cera Pro Regular';
   font-size: 15px;
@@ -220,10 +224,10 @@ body {
   padding-right: 10px;
   font-family: 'Cera Pro Regular';
   font-size: 12px;
-  color: #757575;
+  color: rgb(117, 117, 117);
   text-align: center;
   vertical-align: 2%;
-  border: 1px solid #757575;
+  border: 1px solid rgb(117, 117, 117);
   width: 15px;
   height: 18px;
   border-radius: 15px;
@@ -310,7 +314,7 @@ body {
   display: block;
   box-sizing: inherit;
   width: 100%;
-  max-width: 82.5rem;
+  height: auto;
   transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   border-top: 1px solid #E0E0E0;
   border-bottom: 1px solid #E0E0E0;
@@ -365,6 +369,7 @@ body {
 }
 
 .expander {
+  box-sizing: inherit;
   position: relative;
   display: block;
   float: right;
@@ -378,10 +383,9 @@ body {
 }
 
 .horizontal {
+  box-sizing: inherit;
   display: block;
   position: absolute;
-  /* top: 20%;
-  right: 25%; */
   width: 0.1875rem;
   height: 1.125rem;
   background-color: #2C2C2C;
@@ -395,10 +399,9 @@ body {
 }
 
 .vertical {
+  box-sizing: inherit;
   display: block;
   position: absolute;
-  /* top: 20%;
-  right: 25%; */
   width: 0.1875rem;
   height: 1.125rem;
   background-color: #2C2C2C;
@@ -432,20 +435,21 @@ body {
 }
 
 .storePanel {
-  box-sizing: border-box;
+  box-sizing: inherit;
+  border: 1px solid transparent;
   height: auto;
+  width: 100%;
   overflow: hidden;
   display: block;
   line-height: 1.5;
   transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   padding-bottom: 1.25rem;
-  width: 100%;
+
 }
 
 .storeHeader {
   box-sizing: inherit;
   display: flex;
-  flex-direction: row;
   width: 100%;
   -webkit-box-align: center;
   align-items: center;
@@ -465,13 +469,13 @@ body {
 .infoContainer {
   position: relative;
   box-sizing: inherit;
-  display: block;
-  line-height: 1.5;
+  display: inline;
   font-size: 16px;
+  line-height: 1.5;
 }
 
 .infoWrapper {
-  display: inline;
+  display: block;
   font-size: 0.75rem;
   line-height: 1.125rem;
   margin-left: 0.3125rem;
@@ -537,6 +541,7 @@ body {
   text-rendering: auto;
   text-indent: 0;
   margin-left: auto;
+  margin-right: 2%;
 }
 
 .changeStore:hover {
@@ -558,21 +563,40 @@ body {
   text-transform: inherit;
   box-sizing: inherit;
   display: inline-block;
-  width: auto;
+  width: 100%;
   border-collapse: collapse;
   text-align: center;
   text-rendering: auto;
   text-indent: 0;
 }
 
-.selectContainer {
+.selectPanel {
+  box-sizing: inherit;
   position: relative;
+  display: flexbox;
+  margin-right: 32px;
+  width: auto;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.selectContainer {
+  margin: 0;
+  box-sizing: inherit;
+  position: relative;
+  border: 1px solid transparent;
+  display: inline-block;
   width: 100%;
   height: fit-content;
 }
 
 .storeSelect {
+  box-sizing: inherit;
   position: relative;
+  margin: 0;
+  display: inline-block;
+  width: 100%;
+  height: auto;
   color: #2c2c2c;
   font-family: 'Cera Pro Regular';
   font-size: 16px;
@@ -580,7 +604,6 @@ body {
   border: 1px solid #E0E0E0;
   padding-top: 2px;
   padding-left: 18px;
-  width: 100%;
   height: 63px;
   text-align: left;
 }
@@ -594,6 +617,7 @@ body {
 }
 
 .storeSelectHeader {
+  box-sizing: inherit;
   color: #2c2c2c;
   font-family: 'Cera Pro Regular';
   font-size: 14px;
@@ -601,7 +625,8 @@ body {
 }
 
 .storeSelectArrow {
-  display: inline-flex;
+  box-sizing: inherit;
+  display: inline;
   position: absolute;
   right: 18px;
   top: 23px;
@@ -616,28 +641,33 @@ body {
 }
 
 .dropdown {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
   z-index: 1;
   position: absolute;
   display: block;
-  width: 99.5%;
+  width: calc(100% + 24px);
+  height: auto;
   background-color: white;
   border-left: 1px solid #E0E0E0;
   border-right: 1px solid #E0E0E0;
 }
 
 .dropdownItem {
+  box-sizing: inherit;
   z-index: 1;
-  display: inline-flex;
+  display: block;
   position: relative;
   text-align: left;
   font-family: 'Cera Pro Medium';
   font-size: 15px;
   color: #2c2c2c;
-  background-color: white;
+  background-color: transparent;
   border-left: 0px;
   border-right: 0px;
   border-top: 0px;
-  width: 100%;
+  width: calc(100% - 50px);
   border-bottom: 1px solid #E0E0E0;
   padding: 15px 0 15px 50px;
   margin-right: 0px;
@@ -652,18 +682,21 @@ body {
 }
 
 .dropStoreInventory {
+  box-sizing: inherit;
   position: absolute;
   left: 18px;
   top: 18px;
 }
 
 .store {
+  box-sizing: inherit;
   margin-block-start: 1.08em;
   position: relative;
   padding-left: 35px;
 }
 
 .storeInventory {
+  box-sizing: inherit;
   position: absolute;
   left: 2px;
   top: 2px;
@@ -678,12 +711,14 @@ body {
 }
 
 .storeTitle {
+  box-sizing: inherit;
   font-family: 'Cera Pro Medium';
   color: #2c2c2c;
   font-size: 16px;
 }
 
 .storeStock {
+  box-sizing: inherit;
   margin-block-start: 0.32em;
   font-family: 'Cera Pro Medium';
   font-size: 12px;
@@ -691,6 +726,7 @@ body {
 }
 
 .storeDetails {
+  box-sizing: inherit;
   margin-block-start: 0.32em;
   font-family: 'Cera Pro Regular';
   font-size: 15px;
@@ -698,7 +734,8 @@ body {
 }
 
 .seeStore {
-  background-color: white;
+  box-sizing: inherit;
+  background-color: transparent;
   border: 0;
   padding-left: 0;
   margin-block-start: 1.32em;
@@ -717,24 +754,27 @@ body {
 }
 
 .findStoreText {
+  box-sizing: inherit;
   font-family: 'Cera Pro Regular';
   font-size: 14px;
 }
 
 .searchPanel {
-  border-bottom: 1px solid #E0E0E0;
+  box-sizing: inherit;
 }
 
 .searchContainer {
+  box-sizing: inherit;
   display: inline-flex;
   position: relative;
   width: 100%
 }
 
 .storeSearch {
+  box-sizing: inherit;
   flex-grow: 1;
   height: 50px;
-  border-right: 0;
+  border-right: transparent;
   border-left: 1px solid #E0E0E0;
   border-top: 1px solid #E0E0E0;
   border-bottom: 1px solid #E0E0E0;
@@ -749,10 +789,10 @@ body {
 }
 
 .searchButton {
+  box-sizing: inherit;
   vertical-align: top;
-  width: 54px;
-  width: 54px;
-  height: 54px;
+  width: 50px;
+  height: 50px;
   border: 1px solid rgb(0, 109, 183);
   border-radius: 0 0.3125rem 0.3125rem 0;
   background-color: white;
@@ -767,14 +807,14 @@ body {
 }
 
 .noStoreFound {
+  box-sizing: inherit;
   font-family: 'Cera Pro Regular';
   font-size: 16px;
   color: #2C2C2C;
-  padding-bottom: 23px;
-  border-bottom: 1px solid #E0E0E0;
 }
 
 .similar {
+  box-sizing: inherit;
   margin-block-start: 1.08em;
   font-family: 'Cera Pro Regular';
   font-size: 14px;
@@ -782,6 +822,7 @@ body {
 }
 
 .categories {
+  box-sizing: inherit;
   margin-block-start: 0.75em;
   color: #006DB7;
   font-family: 'Cera Pro Medium';
@@ -800,6 +841,7 @@ body {
 
 
 .limitTooltip {
+  box-sizing: inherit;
   position: fixed;
   top: 0;
   left: 0;
@@ -814,6 +856,7 @@ body {
 }
 
 .limitTooltipContainer {
+  box-sizing: inherit;
   position: relative;
   z-index: 1000;
   top: -128px;
@@ -842,18 +885,21 @@ body {
 }
 
 .limitTooltipHeader {
+  box-sizing: inherit;
   font-family: 'Cera Pro Medium';
   font-size: 20px;
   margin-block-end: 15px;
 }
 
 .limitTooltipText {
+  box-sizing: inherit;
   font-family: 'Cera Pro Regular';
   font-size: 16px;
   line-height: 175%;
 }
 
 .limitX {
+  box-sizing: inherit;
   position: absolute;
   top: 8px;
   right: 8px;
@@ -878,6 +924,7 @@ body {
 
 
 .closestTooltip {
+  box-sizing: inherit;
   position: fixed;
   z-index: 1000;
   top: 0;
@@ -893,6 +940,7 @@ body {
 }
 
 .closestTooltipContainer {
+  box-sizing: inherit;
   position: relative;
   display: block;
   z-index: 1000;
@@ -921,18 +969,21 @@ body {
 }
 
 .closestTooltipHeader {
+  box-sizing: inherit;
   font-family: 'Cera Pro Medium';
   font-size: 20px;
   margin-block-end: 15px;
 }
 
 .closestTooltipText {
+  box-sizing: inherit;
   font-family: 'Cera Pro Regular';
   font-size: 16px;
   line-height: 175%;
 }
 
 .closestX {
+  box-sizing: inherit;
   position: absolute;
   top: 8px;
   right: 8px;
@@ -957,6 +1008,7 @@ body {
 
 
 .detailsTooltipContainer {
+  box-sizing: inherit;
   position: fixed;
   top: 0;
   left: 0;
@@ -971,6 +1023,7 @@ body {
 }
 
 .detailsTooltip {
+  box-sizing: inherit;
   z-index: 1000;
   width: 100%;
   height: 100%;
@@ -995,6 +1048,7 @@ body {
 }
 
 .detailsTooltipContent {
+  box-sizing: inherit;
   position: relative;
   z-index: 1000;
   /* top: 10vh;
@@ -1010,6 +1064,7 @@ body {
 }
 
 .detailsX {
+  box-sizing: inherit;
   position: absolute;
   top: 8px;
   right: 8px;
