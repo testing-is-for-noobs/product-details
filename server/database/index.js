@@ -78,4 +78,5 @@ module.exports = {
   initialData,
   getProduct,
   updateWishlist,
+  connection
 };
