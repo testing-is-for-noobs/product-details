@@ -8,7 +8,7 @@ for (let i = 1; i <= 100; i += 1) {
     name: `LEGO® ${faker.commerce.productName()}`,
     product_line: pline,
     tag: faker.random.number({ min: 0, max: 3 }),
-    price: faker.random.number({ min: 0, max: 1000, precision: 0.01 }),
+    price: `${faker.random.number({ min: 0, max: 499 })}.99`,
     online_inventory: faker.random.number({ min: 0, max: 1 }),
     rating: Math.random() * 5,
     review_count: faker.random.number({ min: 0, max: 1000 }),
@@ -20,15 +20,16 @@ for (let i = 1; i <= 100; i += 1) {
   };
   db.insertProduct(fakeProduct, (error) => {
     if (error) {
-      console.log(`product insertion error @ ${i}: ${error}`);
+      throw new Error(`product insertion error @ ${i}: ${error}`);
     } else {
+      // eslint-disable-next-line no-console
       console.log(`successful product insertion #${i}`);
     }
   });
 }
 
 const images = [];
-for (let i = 0; i <= 20; i += 1) {
+for (let i = 1; i <= 20; i += 1) {
   images.push(`https://fec-lego.s3-us-west-1.amazonaws.com/Store+Details/store+${i}.png`);
 }
 
@@ -45,8 +46,9 @@ for (let i = 1; i <= 20; i += 1) {
   };
   db.insertStore(fakeStore, (error) => {
     if (error) {
-      console.log(`store insertion error @ ${i}: ${error}`);
+      throw new Error(`store insertion error @ ${i}: ${error}`);
     } else {
+      // eslint-disable-next-line no-console
       console.log(`successful store insertion #${i}`);
     }
   });
@@ -75,10 +77,10 @@ db.seedData()
         };
         db.insertInventory(inventory, (inverror) => {
           if (inverror) {
-            console.log(`inventory insertion error: ${inverror}`);
+            throw new Error(`inventory insertion error: ${inverror}`);
           }
         });
       }
     }
   })
-  .catch((error) => { console.log('seedData error:', error); });
+  .catch((error) => { throw new Error('seedData error:', error); });

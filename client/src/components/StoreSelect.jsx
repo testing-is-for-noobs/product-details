@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
 const StoreSelect = ({
-  stores, nearbyStores, productInventory, store, toggleDrop, storeMenuExpansion, selectStore, sid
+  nearbyStores, productInventory, store, toggleDrop, storeMenuExpansion, selectStore,
 }) => (
   <div className={styles.selectContainer}>
     <button type="button" className={styles.storeSelect} onClick={toggleDrop}>
@@ -51,5 +52,16 @@ const StoreSelect = ({
     )}
   </div>
 );
+
+StoreSelect.propTypes = {
+  toggleDrop: PropTypes.func.isRequired,
+  selectStore: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  nearbyStores: PropTypes.arrayOf(PropTypes.object).isRequired,
+  productInventory: PropTypes.arrayOf(PropTypes.object).isRequired,
+  storeMenuExpansion: PropTypes.string.isRequired,
+};
 
 export default StoreSelect;

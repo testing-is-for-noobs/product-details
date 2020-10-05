@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
 const Tag = ({ tag }) => {
@@ -9,8 +10,12 @@ const Tag = ({ tag }) => {
     );
   }
   return (
-    <div> </div>
+    <div />
   );
+};
+
+Tag.propTypes = {
+  tag: PropTypes.number.isRequired,
 };
 
 export default Tag;

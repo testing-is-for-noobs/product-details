@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../css/styles.css';
 
-const Reviews = (props) => {
-  const { rating, count } = props;
-  let starbar = [];
+const Reviews = ({ rating, count }) => {
+  const starbar = [];
   for (let i = 0; i < Math.floor(rating); i += 1) {
     starbar.push(
       <svg width="100%" height="100%" viewBox="0 0 50 49" key={i}>
@@ -47,18 +47,18 @@ const Reviews = (props) => {
   }
   return (
     <div className="reviews">
-      {/* <div className={styles.stars}>
-        &#9733;&#9733;&#9733;&#9733;&#9733;
-      </div> */}
-      <div className={styles.stars}>
-        {starbar}
-      </div>
+      <div className={styles.stars}>{starbar}</div>
       <span className={styles.reviewText}>
         <span className={styles.reviewCount}>{`${count} `}</span>
         {`Reviews (${rating})`}
       </span>
     </div>
   );
+};
+
+Reviews.propTypes = {
+  rating: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
 };
 
 export default Reviews;
