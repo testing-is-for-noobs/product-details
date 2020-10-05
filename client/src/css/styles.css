@@ -260,6 +260,10 @@ body {
   cursor: pointer;
 }
 
+.addToBag:focus {
+  outline: none;
+}
+
 .wishlist {
   box-sizing: inherit;
   margin-block-start: 0.75rem;

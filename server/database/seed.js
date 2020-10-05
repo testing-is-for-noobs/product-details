@@ -83,4 +83,5 @@ db.seedData()
       }
     }
   })
+  .then(() => { db.connection.end(); })
   .catch((error) => { throw new Error('seedData error:', error); });
