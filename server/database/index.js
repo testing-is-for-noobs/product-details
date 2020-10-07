@@ -71,6 +71,7 @@ const updateWishlist = (newStatus, pid, callback) => {
 };
 
 module.exports = {
+  connection,
   insertProduct,
   insertStore,
   insertInventory,
@@ -78,5 +79,4 @@ module.exports = {
   initialData,
   getProduct,
   updateWishlist,
-  connection
 };

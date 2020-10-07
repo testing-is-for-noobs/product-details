@@ -14,7 +14,7 @@ server.get('/:pid/product-details/', (req, res) => {
     })
     .catch((error) => {
       res.status(404).send(error);
-      throw new Error('initialData error:', error);
+      console.log('initialData error:', error);
     });
 });
 
@@ -31,7 +31,7 @@ server.put('/:pid/product-details/wishlist', (req, res) => {
       db.updateWishlist(updatedStatus, req.params.pid, (putError) => {
         if (putError) {
           res.status(404);
-          throw new Error('putError:', putError);
+          console.log('putError:', putError);
         } else {
           res.status(200).send('wishlist status updated');
         }

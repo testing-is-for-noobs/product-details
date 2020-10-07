@@ -48,8 +48,8 @@ body {
   box-sizing: inherit;
   border: 1px solid transparent;
   position: relative;
-  top: 88px;
-  left: 60%;
+  top: 0;
+  left: 0;
   width: 27.5%;
   min-width: 259.5px;
   max-width: 352.5px;
