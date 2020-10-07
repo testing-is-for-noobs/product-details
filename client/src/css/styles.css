@@ -25,32 +25,13 @@
   src: url('./fonts/Cera-Pro-Thin.otf');
 }
 
-html {
-  box-sizing: inherit;
-  border: 1px solid transparent;
-}
-
-body {
-  font-family: 'Cera Pro Medium';
-  background-color: #F8F8F8;
-  height: 132vh;
-  width: 98.8vw;
-  display: inline-block;
-  position: absolute;
-  margin: 0;
-  border: 0;
-  padding: 0;
-  box-sizing: inherit;
-  border: 1px solid transparent;
-}
-
 .container {
-  box-sizing: inherit;
+  box-sizing: border-box;
   border: 1px solid transparent;
   position: relative;
-  top: 88px;
-  left: 60%;
-  width: 27.5%;
+  top: 0;
+  left: 0;
+  width: 27.5vw;
   min-width: 259.5px;
   max-width: 352.5px;
   background-color: #FFFFFF;
@@ -271,6 +252,7 @@ body {
   background-color: white;
   border: 0;
   vertical-align: middle;
+  padding: 0;
   margin-bottom: 0.75rem;
 }
 

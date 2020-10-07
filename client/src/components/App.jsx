@@ -48,7 +48,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const { pid, sid } = this.state;
-    axios.get(`${pid}/product-details`)
+    axios.get(`/${pid}/product-details`)
       .then((response) => {
         const nearby = [];
         const storesCopy = response.data.stores.slice();
@@ -67,7 +67,18 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
-        throw new Error('get error:', error);
+        console.log('details get error:', error);
+      });
+  }
+
+  updateWishlist() {
+    const { pid } = this.state;
+    axios.put(`/${pid}/product-details/wishlist`)
+      .then(() => {
+        this.componentDidMount();
+      })
+      .catch((error) => {
+        console.log('details update wishlist error:', error);
       });
   }
 
@@ -99,17 +110,6 @@ class App extends React.Component {
     this.setState({
       quantityField: newQuantity,
     });
-  }
-
-  updateWishlist() {
-    const { pid } = this.state;
-    axios.put(`/${pid}/product-details/wishlist`)
-      .then(() => {
-        this.componentDidMount();
-      })
-      .catch((error) => {
-        throw new Error('update wishlist error:', error);
-      });
   }
 
   expander() {
