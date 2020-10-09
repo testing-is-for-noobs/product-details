@@ -370,7 +370,6 @@
   box-sizing: inherit;
   width: 100%;
   height: auto;
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   border-top: 1px solid #E0E0E0;
   border-bottom: 1px solid #E0E0E0;
 }
@@ -499,7 +498,6 @@
   display: flex;
   flex-direction: column;
   line-height: 1.5;
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   padding-bottom: 1.25rem;
   overflow: visible;
 }
@@ -612,6 +610,11 @@
   justify-content: space-between;
 }
 
+.storeSelected {
+  border: 1px solid rgb(49, 161, 224);
+  box-shadow: rgb(224, 224, 224) 0px 0px 0.75rem 0px;
+}
+
 .storeSelect:hover {
   cursor: pointer;
 }
@@ -638,21 +641,41 @@
 }
 
 .storeSelectArrow {
+  display: block;
+  background: transparent;
   box-sizing: inherit;
   position: absolute;
-  right: 18px;
-  top: 18px;
+  right: 19px;
+  top: 19px;
+  height: fit-content;
+  width: fit-content;
+  overflow: visible;
 }
 
-.down {
-  transform: rotate(0.25turn);
+.pointDown {
+  position: relative;
+  transform-origin: center;
+  transform: rotate(270deg) translateX(-2px);
+  animation: down 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(90deg) translateX(3px);
 }
-/*
-transform: rotate(90deg);
-transform: rotate(270deg);
-*/
-.up {
-  transform: translate(5px, 0) rotate(-0.25turn);
+
+@keyframes down {
+  from { transform: rotate(270deg) translateX(-2px); }
+  to { transform: rotate(90deg) translateX(3px); }
+}
+
+.pointUp {
+  position: relative;
+  transform-origin: center;
+  transform: rotate(90deg) translateX(3px);
+  animation: up 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(270deg) translateX(-2px);
+}
+
+@keyframes up {
+  from { transform: rotate(90deg) translateX(3px); }
+  to { transform: rotate(270deg) translateX(-2px); }
 }
 
 .dropdown {

@@ -4,3 +4,8 @@ module.exports = {
   password: 'docker',
   database: 'legoland',
 };
+
+// module.exports = {
+//   user: 'root',
+//   database: 'legoland',
+// };

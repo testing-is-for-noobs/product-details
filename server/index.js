@@ -1,10 +1,8 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const db = require('./database');
 
 const server = express();
 server.use(express.static(`${__dirname}/../client/dist`));
-server.use(bodyParser.json());
 
 server.get('/:pid/product-details/', (req, res) => {
   db.initialData(req.params.pid)
@@ -40,7 +38,7 @@ server.put('/:pid/product-details/wishlist', (req, res) => {
   });
 });
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`listening on port ${PORT}`);

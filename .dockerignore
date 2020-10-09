@@ -1,1 +1,11 @@
 node_modules
+coverage
+tests
+client
+.git*
+docker-compose.yml
+.eslintrc.json
+config.js
+jest.config.js
+webpack.config.js
+.env
