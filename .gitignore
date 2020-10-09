@@ -69,7 +69,8 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-config.js
+.gitignore
+/server/database/config.js
 .env
 .env.test
 .dockerignore
