@@ -26,16 +26,19 @@
 }
 
 .container {
-  box-sizing: border-box;
-  border: 1px solid transparent;
+  border: 0;
   position: relative;
+  display: block;
   top: 0;
   left: 0;
-  width: 27.5vw;
+  width: 100%;
   min-width: 259.5px;
-  max-width: 352.5px;
-  background-color: #FFFFFF;
-  padding: 19px;
+  /* max-width: 388px; */
+  background-color: #FFF;
+  color: #2c2c2c;
+  padding: 1.125rem;
+  border: 0;
+  box-sizing: border-box;
 }
 
 .tag {
@@ -86,6 +89,7 @@
 }
 
 .reviewText {
+  font-family: 'Cera Pro Medium';
   box-sizing: inherit;
   display: inline-block;
   vertical-align: 5%;
@@ -122,23 +126,50 @@
   margin-bottom: 32px;
 }
 
+.bagContainer {
+  display: block;
+  width: 100%;
+}
+
 .bag {
+  box-sizing: inherit;
   font-family: 'Cera Pro Regular';
   font-weight: 400;
-  font-size: 15px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.quantity {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.quantityBar {
+  height: 2.7rem;
+  display: flex;
+  min-width: 10rem;
+  margin-right: 1.125rem;
 }
 
 .bagAdjust {
-  position: absolute;
-  height: 42px;
-  width: 45px;
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #E0E0E0;
   color: black;
   font-family: 'Cera Pro Regular';
   font-weight: 300;
   font-size: 28px;
-  padding-top: 3px;
-  padding-bottom: 15px;
   background-color: white;
 }
 
@@ -155,7 +186,6 @@
 }
 
 .plus {
-  left: 131px;
   border-radius: 0 5px 5px 0;
 }
 
@@ -168,9 +198,8 @@
 }
 
 .bagInput {
-  position: absolute;
-  left: 64px;
-  height: 38px;
+  display: flex;
+  position: relative;
   width: 63px;
   background: transparent;
   border-top: 1px solid #E0E0E0;
@@ -178,9 +207,8 @@
   border-left: transparent;
   border-right: transparent;
   text-align: center;
+  justify-content: center;
   font-family: 'Cera Pro Regular';
-  font-size: 15px;
-  line-height: 0%;
 }
 
 .bagInput:focus {
@@ -190,36 +218,74 @@
 .customerLimit {
   box-sizing: inherit;
   color: #2C2C2C;
-  position: absolute;
-  left: 192px;
-  display: inline-block;
-  padding-top: 12px;
+  position: relative;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 0.875rem;
+}
+
+.customerLimitText {
   font-family: 'Cera Pro Regular';
-  font-size: 14px;
+  line-height: 1.1875rem;
+  white-space: nowrap;
+}
+
+.infoContainer {
+  position: relative;
+  box-sizing: inherit;
+  display: block;
+  line-height: 1.5;
+  font-size: 16px;
+  align-content: center;
+}
+
+.infoWrapper {
+  display: inline;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  margin-left: 0.3125rem;
+  box-sizing: inherit;
+  font-family: 'Cera Pro Regular';
+  color: rgb(117, 117, 117);
 }
 
 .info {
-  background-color: white;
+  font-size: inherit;
   display: inline-block;
-  margin-left: 8px;
-  padding-top: 1px;
-  padding-right: 10px;
-  font-family: 'Cera Pro Regular';
-  font-size: 12px;
-  color: rgb(117, 117, 117);
-  text-align: center;
-  vertical-align: 2%;
+  box-sizing: inherit;
   border: 1px solid rgb(117, 117, 117);
-  width: 15px;
-  height: 18px;
-  border-radius: 15px;
+  border-radius: 100%;
+  width: 1.125rem;
+  height: 1.125rem;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-transform: none;
+  text-rendering: auto;
+  text-indent: 0px;
+  text-align: center;
+  border-collapse: collapse;
 }
 
 .info:hover {
-  cursor: pointer;
-  color: rgb(0, 109, 183);
   border-color: rgb(0, 109, 183);
-  background-color: white;
+  cursor: pointer;
+}
+
+.info::before {
+  display: block;
+  content: " i ";
+  color: rgb(117, 117, 117);
+  box-sizing: inherit;
+}
+
+.info:hover::before {
+  color: rgb(0, 109, 183);
+  cursor: pointer;
 }
 
 .info:focus {
@@ -227,12 +293,15 @@
 }
 
 .addToBag {
-  font-size: 14px;
-  margin-block-start: 4.5em;
-  font-family: 'Cera Pro Medium';
-  background-color: #FD8024;
+  display: inline-block;
   width: 100%;
-  padding: 16px;
+  box-sizing: inherit;
+  font-family: 'Cera Pro Medium';
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.1875rem;
+  background-color: #FD8024;
+  padding: 0.9375rem;
   border-radius: 4px;
   border: 2px solid #FD8024;
 }
@@ -248,13 +317,12 @@
 
 .wishlist {
   box-sizing: inherit;
-  margin-block-start: 0.75rem;
   height: 32px;
   background-color: white;
   border: 0;
   vertical-align: middle;
   padding: 0;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .wishlist:hover {
@@ -298,7 +366,7 @@
 
 .storeContainer {
   position: relative;
-  display: block;
+  display: inline-block;
   box-sizing: inherit;
   width: 100%;
   height: auto;
@@ -308,7 +376,7 @@
 }
 
 .stock {
-  display: inline-block;
+  display: block;
   text-align: center;
   align-items: flex-start;
   box-sizing: inherit;
@@ -344,7 +412,7 @@
 }
 
 .expanded {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid transparent;
 }
 
 .stockText {
@@ -353,6 +421,7 @@
   font-family: 'Cera Pro Medium';
   font-size: 1rem;
   line-height: 1.5625rem;
+  color: rgb(44, 44, 44);
 }
 
 .expander {
@@ -427,86 +496,33 @@
   height: auto;
   width: 100%;
   overflow: hidden;
-  display: block;
+  display: flex;
+  flex-direction: column;
   line-height: 1.5;
   transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   padding-bottom: 1.25rem;
-
+  overflow: visible;
 }
 
 .storeHeader {
   box-sizing: inherit;
-  display: flex;
+  display: inline-flex;
   width: 100%;
   -webkit-box-align: center;
   align-items: center;
   padding: 0px 0px 0.9375rem;
   text-transform: inherit;
+  vertical-align: middle;
 }
 
 .storeHeaderText {
-  display: inline-block;
   font-family: 'Cera Pro Regular';
+  font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.1875rem;
   text-transform: inherit;
   box-sizing: inherit;
-}
-
-.infoContainer {
-  position: relative;
-  box-sizing: inherit;
-  display: inline;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.infoWrapper {
-  display: block;
-  font-size: 0.75rem;
-  line-height: 1.125rem;
-  margin-left: 0.3125rem;
-  box-sizing: inherit;
-  font-family: 'Cera Pro Regular';
-  color: rgb(117, 117, 117);
-}
-
-.storeInfo {
-  width: 1.125rem;
-  height: 1.125rem;
-  border: 1px solid rgb(117, 117, 117);
-  border-radius: 100%;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  text-transform: none;
-  box-sizing: inherit;
-  text-rendering: auto;
-  text-indent: 0px;
-  display: inline-block;
-  text-align: center;
-}
-
-.storeInfo:hover {
-  border-color: rgb(0, 109, 183);
-  cursor: pointer;
-}
-
-.storeInfo::before {
-  display: block;
-  content: " i ";
-  color: rgb(117, 117, 117);
-}
-
-.storeInfo:hover::before {
-  color: rgb(0, 109, 183);
-  cursor: pointer;
-}
-
-.storeInfo:focus {
-  outline: none;
+  color: rgb(44, 44, 44);
 }
 
 .changeStore {
@@ -547,6 +563,7 @@
   font-size: 0.875rem;
   line-height: 1.1875rem;
   font-family: 'Cera Pro Regular';
+  font-weight: 400;
   text-transform: inherit;
   box-sizing: inherit;
   display: inline-block;
@@ -561,7 +578,6 @@
   box-sizing: inherit;
   position: relative;
   display: inline-block;
-  margin-right: 32px;
   width: 100%;
   border: 0;
 }
@@ -574,6 +590,7 @@
   display: inline-block;
   width: 100%;
   height: fit-content;
+  vertical-align: middle;
 }
 
 .storeSelect {
@@ -588,10 +605,11 @@
   font-size: 16px;
   background-color: white;
   border: 1px solid #E0E0E0;
-  padding-top: 2px;
   padding-left: 18px;
   height: 63px;
   text-align: left;
+  align-content: center;
+  justify-content: space-between;
 }
 
 .storeSelect:hover {
@@ -602,7 +620,12 @@
   outline: none;
 }
 
+.storeSelectText {
+  vertical-align: middle;
+}
+
 .storeSelectHeader {
+  display: block;
   box-sizing: inherit;
   color: #2c2c2c;
   font-family: 'Cera Pro Regular';
@@ -610,20 +633,26 @@
   line-height: 1.1875rem;
 }
 
+.storeSelectCurrent {
+  display: block;
+}
+
 .storeSelectArrow {
   box-sizing: inherit;
-  display: inline;
   position: absolute;
   right: 18px;
-  top: 23px;
+  top: 18px;
 }
 
 .down {
-  transform: rotate(90deg);
+  transform: rotate(0.25turn);
 }
-
+/*
+transform: rotate(90deg);
+transform: rotate(270deg);
+*/
 .up {
-  transform: rotate(270deg);
+  transform: translate(5px, 0) rotate(-0.25turn);
 }
 
 .dropdown {
@@ -639,6 +668,7 @@
   background-color: white;
   border-left: 1px solid #E0E0E0;
   border-right: 1px solid #E0E0E0;
+  overflow: visible;
 }
 
 .dropdownItem {
@@ -827,11 +857,21 @@
 
 
 
+.limitTooltipWrapper {
+  position: relative;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  transform: translate(-333px, -130px);
+}
+
 .limitTooltip {
-  box-sizing: inherit;
+  z-index: 1;
+  box-sizing: border-box;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0vh;
+  left: 0vw;
   background-color: rgba(255, 255, 255, 0);
   border: 0;
   width: 100vw;
@@ -844,10 +884,8 @@
 
 .limitTooltipContainer {
   box-sizing: inherit;
-  position: relative;
-  z-index: 1000;
-  top: -128px;
-  right: 89.5%;
+  position: absolute;
+  z-index: 3;
   width: 269px;
   height: 182px;
   background-color: white;
@@ -856,6 +894,7 @@
   flex-direction: column;
   text-align: left;
   padding: 1.75rem;
+  white-space: normal;
 }
 
 .limitTooltipContainer:after {
@@ -910,10 +949,19 @@
 
 
 
+.closestTooltipWrapper {
+  position: relative;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  transform: translate(-336px, -196px);
+}
+
 .closestTooltip {
   box-sizing: inherit;
   position: fixed;
-  z-index: 1000;
+  z-index: 1;
   top: 0;
   left: 0;
   background-color: rgba(255, 255, 255, 0);
@@ -928,11 +976,9 @@
 
 .closestTooltipContainer {
   box-sizing: inherit;
-  position: relative;
+  position: absolute;
   display: block;
-  z-index: 1000;
-  top: 52px;
-  right: 132%;
+  z-index: 3;
   width: 269px;
   height: 295px;
   background-color: white;
@@ -940,6 +986,7 @@
   display: block;
   text-align: left;
   padding: 1.75rem;
+  white-space: normal;
 }
 
 .closestTooltipContainer:after {
@@ -1036,7 +1083,7 @@
 
 .detailsTooltipContent {
   box-sizing: inherit;
-  position: relative;
+  position: absolute;
   z-index: 1000;
   /* top: 10vh;
   left: 32vw; */

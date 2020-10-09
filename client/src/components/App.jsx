@@ -246,7 +246,6 @@ class App extends React.Component {
           buttonHandler={this.adjustQuantity}
           handleTooltips={this.handleTooltips}
           limitTooltip={limitTooltip}
-          closestTooltip={closestTooltip}
         />
         <Wishlist liked={Number(product.liked)} updater={this.updateWishlist} />
         <Stock
@@ -267,6 +266,7 @@ class App extends React.Component {
           store={store}
           sid={sid}
           inventory={Number(productInventory[sid - 1].inventory)}
+          closestTooltip={closestTooltip}
           detailsTooltip={detailsTooltip}
         />
         <Similar cat1={`${product.category_1}`} cat2={`${product.category_2}`} cat3={`${product.category_3}`} />

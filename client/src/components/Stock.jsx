@@ -6,7 +6,7 @@ import StoreSelect from './StoreSelect';
 const Stock = ({
   status, expander, storeChanger, toggleDrop, storeMenuExpansion, selectStore, stores, nearbyStores,
   storeSearch, searchField, searchButton, store, sid, inventory, productInventory, validZip,
-  detailsTooltip, handleTooltips,
+  closestTooltip, detailsTooltip, handleTooltips,
 }) => {
   if (status === 'minimized') {
     return (
@@ -41,8 +41,32 @@ const Stock = ({
             <span className={styles.storeHeaderText}>Closest Store</span>
             <div className={styles.infoContainer}>
               <span className={styles.infoWrapper}>
-                <button type="button" className={styles.storeInfo} onClick={() => { handleTooltips('closest'); }} />
+                <button type="button" className={styles.info} onClick={() => { handleTooltips('closest'); }} />
               </span>
+
+              {closestTooltip === true && (
+                <div>
+                  <div className={styles.closestTooltipWrapper}>
+                    <div className={styles.closestTooltipContainer}>
+                      <button type="button" className={styles.closestX} aria-label="button" onClick={() => { handleTooltips('closest'); }}>
+                        <svg viewBox="0 0 17 17" width="17px" height="17px">
+                          <path d="M10.377 8.142l5.953-5.954-2.234-2.234-5.954 5.954L2.188-.046-.046 2.188l5.954 5.954-5.954 5.954 2.234 2.234 5.954-5.953 5.954 5.953 2.234-2.234z" fill="currentColor" fillRule="evenodd" />
+                        </svg>
+                      </button>
+                      <div className={styles.closestTooltipHeader}>Please Note:</div>
+                      <div className={styles.closestTooltipText}>
+                        The green check mark indicates that this item is currently available in this
+                        location. Items sell at varying rates and this is not a guarantee that the item
+                        will remain in stock for an extended period of time.  If you want to ensure
+                        availability, visit the store soon or call ahead and speak with a Brick
+                        Specialist.
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" className={styles.closestTooltip} aria-label="button" onClick={() => { handleTooltips('closest'); }} />
+                </div>
+              )}
+
             </div>
             <button
               className={styles.changeStore}
@@ -171,6 +195,7 @@ Stock.propTypes = {
   productInventory: PropTypes.arrayOf(PropTypes.object).isRequired,
   inventory: PropTypes.number.isRequired,
   validZip: PropTypes.bool.isRequired,
+  closestTooltip: PropTypes.bool.isRequired,
   detailsTooltip: PropTypes.bool.isRequired,
 };
 
