@@ -38,7 +38,7 @@ server.put('/:pid/product-details/wishlist', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = 8888;
 server.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`listening on port ${PORT}`);

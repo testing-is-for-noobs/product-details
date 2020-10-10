@@ -53,7 +53,7 @@ const AddToBag = ({ limit, quantity, changeHandler, buttonHandler, handleTooltip
                 disabled="disabled"
                 className={`${styles.bagAdjust} ${styles.plus} ${styles.disabled}`}
               >
-                -
+                +
               </button>
             )}
 

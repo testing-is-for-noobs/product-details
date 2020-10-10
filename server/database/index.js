@@ -1,11 +1,6 @@
 const mysql = require('mysql');
 const Bluebird = require('bluebird');
-const mysqlConfig = { user: process.env.user, database: process.env.database };
-
-if (process.env.NODE_ENV === 'production') {
-  mysqlConfig.host = process.env.productionhost;
-  mysqlConfig.password = process.env.productionpassword;
-}
+const mysqlConfig = require('./config');
 
 const connection = mysql.createConnection(mysqlConfig);
 const database = Bluebird.promisifyAll(connection);
