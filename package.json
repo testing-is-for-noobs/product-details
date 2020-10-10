@@ -4,11 +4,12 @@
   "description": "test",
   "main": "index.js",
   "scripts": {
-    "start": "node server",
-    "seed": "mysql -u root < server/database/schema.sql && node server/database/seed.js",
-    "build": "webpack",
-    "react": "webpack -w",
-    "server": "nodemon server -w server",
+    "start": "NODE_ENV=production node server",
+    "local": "NODE_ENV=development node server",
+    "seed": "mysql -u root < server/database/schema.sql && NODE_ENV=development node server/database/seed.js",
+    "build": "NODE_ENV=development webpack",
+    "react": "NODE_ENV=development webpack -w",
+    "server": "NODE_ENV=development nodemon server -w server",
     "test": "jest"
   },
   "repository": {

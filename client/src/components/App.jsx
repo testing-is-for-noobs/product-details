@@ -72,14 +72,12 @@ class App extends React.Component {
   }
 
   updateWishlist() {
-    const { pid } = this.state;
-    axios.put(`/${pid}/product-details/wishlist`)
-      .then(() => {
-        this.componentDidMount();
-      })
-      .catch((error) => {
-        console.log('details update wishlist error:', error);
-      });
+    const { product } = this.state;
+    const productUpdate = product;
+    productUpdate.liked = !product.liked
+    this.setState({
+      product: productUpdate,
+    });
   }
 
   adjustQuantity(buttonText) {

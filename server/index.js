@@ -16,28 +16,6 @@ server.get('/:pid/product-details/', (req, res) => {
     });
 });
 
-server.put('/:pid/product-details/wishlist', (req, res) => {
-  db.getProduct(req.params.pid, (error, product) => {
-    if (error) {
-      res.status(404);
-      throw new Error('put getProduct error:', error);
-    } else {
-      let updatedStatus = 0;
-      if (product[0].liked === 0) {
-        updatedStatus = 1;
-      }
-      db.updateWishlist(updatedStatus, req.params.pid, (putError) => {
-        if (putError) {
-          res.status(404);
-          console.log('putError:', putError);
-        } else {
-          res.status(200).send('wishlist status updated');
-        }
-      });
-    }
-  });
-});
-
 const PORT = 8888;
 server.listen(PORT, () => {
   // eslint-disable-next-line no-console

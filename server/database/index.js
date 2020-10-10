@@ -60,16 +60,6 @@ const getProduct = (pid, callback) => {
   );
 };
 
-const updateWishlist = (newStatus, pid, callback) => {
-  database.query(
-    'update products set liked = ? where id = ?',
-    [newStatus, pid],
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
-
 module.exports = {
   connection,
   insertProduct,
@@ -78,5 +68,4 @@ module.exports = {
   seedData,
   initialData,
   getProduct,
-  updateWishlist,
 };
