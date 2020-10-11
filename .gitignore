@@ -69,8 +69,6 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.test
 .dockerignore
 Dockerfile
 docker-compose.yml
