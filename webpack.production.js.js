@@ -4,7 +4,7 @@ const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
@@ -35,7 +35,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg|otf)$/,
+        test: /\.(woff|woff2|otf)$/,
         exclude: /node_modules/,
         loader: 'url-loader',
       },

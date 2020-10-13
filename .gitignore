@@ -69,8 +69,11 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.test
+.dockerignore
+Dockerfile
+docker-compose.yml
+legoland.sql
+.eslintrc.json
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -102,3 +105,5 @@ bundle.js
 
 # TernJS port file
 .tern-port
+
+

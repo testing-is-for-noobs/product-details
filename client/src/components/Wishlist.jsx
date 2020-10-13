@@ -5,7 +5,7 @@ import styles from '../css/styles.css';
 const Wishlist = ({ liked, updater }) => (
   <div>
     <button type="button" className={styles.wishlist} onClick={updater}>
-      <div className={styles.circle}>
+      <div className={styles.heart}>
         { liked === 1 && (
         <svg width="100%" height="100%" viewBox="0 0 40 40" alt="">
           <rect fill="#F8F8F8" width="40" height="40" rx="20" />
@@ -20,7 +20,7 @@ const Wishlist = ({ liked, updater }) => (
         </svg>
         )}
       </div>
-      <div className={styles.wishlistText}>Add to Wishlist</div>
+      <span className={styles.wishlistText}>Add to Wishlist</span>
     </button>
   </div>
 );

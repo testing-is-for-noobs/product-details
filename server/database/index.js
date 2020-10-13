@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 const Bluebird = require('bluebird');
-const mysqlConfig = require('./config.js');
+const mysqlConfig = require('./config');
 
 const connection = mysql.createConnection(mysqlConfig);
 const database = Bluebird.promisifyAll(connection);
@@ -60,16 +60,6 @@ const getProduct = (pid, callback) => {
   );
 };
 
-const updateWishlist = (newStatus, pid, callback) => {
-  database.query(
-    'update products set liked = ? where id = ?',
-    [newStatus, pid],
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
-
 module.exports = {
   connection,
   insertProduct,
@@ -78,5 +68,4 @@ module.exports = {
   seedData,
   initialData,
   getProduct,
-  updateWishlist,
 };
