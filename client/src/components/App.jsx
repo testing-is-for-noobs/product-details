@@ -53,7 +53,7 @@ class App extends React.Component {
         const nearby = [];
         const storesCopy = response.data.stores.slice();
         storesCopy.splice(sid - 1, 1);
-        const random = Math.floor(Math.random() * 4) + 2;
+        const random = Math.floor(Math.random() * 3) + 3;
         for (let i = 0; i < random; i += 1) {
           const removed = storesCopy.splice(Math.floor(Math.random() * storesCopy.length), 1);
           nearby.push(removed[0]);
@@ -147,7 +147,7 @@ class App extends React.Component {
       const nearby = [];
       const storesCopy = stores.slice();
       storesCopy.splice(sid - 1, 1);
-      const random = Math.floor(Math.random() * 4) + 2;
+      const random = Math.floor(Math.random() * 3) + 3;
       for (let i = 0; i < random; i += 1) {
         const removed = storesCopy.splice(Math.floor(Math.random() * storesCopy.length), 1);
         nearby.push(removed[0]);
