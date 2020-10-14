@@ -96,7 +96,7 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }
 ```
 
@@ -116,7 +116,7 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }
 ```
 
@@ -136,7 +136,7 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }
 ```
 
@@ -164,7 +164,7 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }]
 ```
 
@@ -185,6 +185,6 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }]
 ```
