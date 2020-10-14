@@ -27,6 +27,7 @@
 }
 ```
 
+
 **Create a product**
 * POST `/product`
 
@@ -51,6 +52,8 @@
 }
 ```
 
+
+
 **Update a product**
 * PUT `/product/:pid`
 
@@ -74,10 +77,13 @@
 }
 ```
 
+
+
 **Remove a product**
 * DELETE `/product/:pid`
 
 **Success Status Code:** `201`
+
 
 
 **Get a store**
@@ -101,6 +107,7 @@
 ```
 
 
+
 **Create a store**
 * POST `/store`
 
@@ -119,6 +126,8 @@
   "details": ["String"]
 }
 ```
+
+
 
 **Update a store**
 * PUT `/store/:sid`
@@ -140,12 +149,15 @@
 }
 ```
 
+
+
 **Delete a store**
 * DELETE `/store/:sid`
 
 **Success Status Code:** `201`
 
 **Request Body:** Expects JSON with the following keys.
+
 
 
 **Get nearby stores**
@@ -167,6 +179,7 @@
   "details": ["String"]
 }]
 ```
+
 
 
 **Get nearby stores that have inventory**
