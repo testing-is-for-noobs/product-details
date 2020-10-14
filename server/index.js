@@ -68,14 +68,6 @@ server.get('/nearbyWithInventory/:pid/:zip', (req, res) => {
 
 });
 
-
-
-
-
-
-
-
-
 const PORT = 8888;
 server.listen(PORT, () => {
   // eslint-disable-next-line no-console
