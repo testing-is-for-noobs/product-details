@@ -19,7 +19,7 @@ server.get('/product/:pid', (req, res) => {
   console.log(`get request for product ${id}`);
 });
 
-server.post('/product/:pid', (req, res) => {
+server.post('/product', (req, res) => {
   const id = req.params.pid;
   console.log(`post request for product ${id}`);
 });
@@ -40,7 +40,7 @@ server.get('/store/:sid', (req, res) => {
   console.log(`get request for store ${id}`);
 });
 
-server.post('/store/:sid', (req, res) => {
+server.post('/store', (req, res) => {
   const id = req.params.sid;
   console.log(`post request for store ${id}`);
 });
