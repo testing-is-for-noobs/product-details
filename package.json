@@ -9,7 +9,7 @@
     "seed": "mysql -u root < server/database/schema.sql && NODE_ENV=development node server/database/seed.js",
     "build": "NODE_ENV=production webpack --config webpack.production.js",
     "react": "NODE_ENV=development webpack -w",
-    "server": "NODE_ENV=development nodemon server -w server",
+    "server": "nodemon server -w server",
     "test": "jest"
   },
   "repository": {
@@ -45,6 +45,7 @@
     "bluebird": "^3.7.2",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
