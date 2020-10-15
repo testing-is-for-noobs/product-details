@@ -2,7 +2,7 @@
 
 ## CRUD Operations for product-details
 
-**Get a product**
+### Get a product
 * GET `/product/:pid`
 
 **Success Status Code:** `201`
@@ -27,7 +27,8 @@
 }
 ```
 
-**Create a product**
+
+### Create a product
 * POST `/product`
 
 **Success Status Code:** `201`
@@ -51,7 +52,9 @@
 }
 ```
 
-**Update a product**
+
+
+### Update a product
 * PUT `/product/:pid`
 
 **Success Status Code:** `201`
@@ -74,13 +77,16 @@
 }
 ```
 
-**Remove a product**
+
+
+### Remove a product
 * DELETE `/product/:pid`
 
 **Success Status Code:** `201`
 
 
-**Get a store**
+
+### Get a store
 * GET `/store/:sid`
 
 **Success Status Code:** `201`
@@ -96,12 +102,13 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }
 ```
 
 
-**Create a store**
+
+### Create a store
 * POST `/store`
 
 **Success Status Code:** `201`
@@ -116,11 +123,13 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }
 ```
 
-**Update a store**
+
+
+### Update a store
 * PUT `/store/:sid`
 
 **Success Status Code:** `201`
@@ -136,11 +145,13 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }
 ```
 
-**Delete a store**
+
+
+### Delete a store
 * DELETE `/store/:sid`
 
 **Success Status Code:** `201`
@@ -148,7 +159,8 @@
 **Request Body:** Expects JSON with the following keys.
 
 
-**Get nearby stores**
+
+### Get nearby stores
 * GET `/nearbyStores/:zip`
 
 **Success Status Code:** `201`
@@ -164,12 +176,13 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }]
 ```
 
 
-**Get nearby stores that have inventory**
+
+### Get nearby stores that have inventory
 * GET `/nearbyWithInventory/:pid/:zip`
 
 **Success Status Code:** `201`
@@ -185,6 +198,6 @@
   "state": "String",
   "zip": "Number",
   "phone": "Number",
-  "details": "["String"]"
+  "details": ["String"]
 }]
 ```
