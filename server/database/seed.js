@@ -1,4 +1,4 @@
-const faker = require('faker');
+const faker = require('faker/locale/en_US');
 const db = require('./index.js');
 
 for (let i = 1; i <= 100; i += 1) {
@@ -7,7 +7,7 @@ for (let i = 1; i <= 100; i += 1) {
     id: i,
     name: `LEGO® ${faker.commerce.productName()}`,
     product_line: pline,
-    tag: faker.random.number({ min: 0, max: 3 }),
+    tag: faker.random.arrayElement(['New', 'Exclusives', 'Hard to find']),
     price: `${faker.random.number({ min: 10, max: 499 })}.99`,
     online_inventory: faker.random.number({ min: 0, max: 1 }),
     rating: Math.random() * 5,
@@ -34,13 +34,14 @@ for (let i = 1; i <= 20; i += 1) {
 }
 
 for (let i = 1; i <= 20; i += 1) {
+  const state = faker.address.stateAbbr();
   const fakeStore = {
     id: i,
     name: `LEGO® Store ${faker.address.streetName()}`,
     address: faker.address.streetAddress(),
     city: faker.address.city(),
-    state: faker.address.stateAbbr(),
-    zip: faker.address.zipCode('#####'),
+    state: state,
+    zip: faker.address.zipCodeByState(state),
     phone: faker.phone.phoneNumber(),
     details: images[i - 1],
   };
