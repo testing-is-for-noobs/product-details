@@ -2,25 +2,25 @@ DROP DATABASE IF EXISTS legoland;
 
 CREATE DATABASE legoland;
 
-USE legoland;
+\c legoland;
 
-CREATE TABLE [IF NOT EXISTS] products (
+CREATE TABLE IF NOT EXISTS products (
   id SERIAL PRIMARY KEY,
-  name varchar (150) UNIQUE not null,
+  name varchar (150) not null,
   product_line varchar (350),
-  tag varchar (25) not null,
+  tag varchar (25),
   price NUMERIC (10, 2) not null,
   online_inventory BOOLEAN not null,
   rating NUMERIC (3, 2) not null,
-  review_count int (5) not null,
-  customer_limit int (2) not null,
+  review_count int not null,
+  customer_limit int not null,
   liked BOOLEAN not null,
   category_1 varchar (150),
   category_2 varchar (150),
   category_3 varchar (150)
 );
 
-CREATE TABLE [IF NOT EXISTS] stores (
+CREATE TABLE IF NOT EXISTS stores (
   id SERIAL PRIMARY KEY,
   name varchar (150) not null,
   address varchar (250) not null,
@@ -31,11 +31,16 @@ CREATE TABLE [IF NOT EXISTS] stores (
   details varchar (350) not null
 );
 
-CREATE TABLE [IF NOT EXISTS] inventory (
+CREATE TABLE IF NOT EXISTS inventory (
   id SERIAL PRIMARY KEY,
-  inventory int (5) not null,
-  product_id int (3) not null,
-  store_id int (2) not null,
+  inventory int not null,
+  product_id int not null,
+  store_id int not null,
   foreign key (product_id) references products(id),
   foreign key (store_id) references stores(id)
 );
+
+COPY products
+FROM 'C:\Users\jonfu86\work\SDC\product-details\products.csv'
+DELIMITER ','
+CSV HEADER;

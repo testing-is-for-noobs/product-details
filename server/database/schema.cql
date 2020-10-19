@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS legoland;
+
+CREATE DATABASE legoland;
+
+USE legoland;
+
 CREATE KEYSPACE product WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 3};
 
 CREATE TABLE product.product_by_id (
