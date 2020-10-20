@@ -39,18 +39,18 @@ CREATE TABLE store.store_by_id (
 
 
 -- MIGHT BE REDUNDANT FOR UI
-CREATE TABLE store.store_by_state_and_nearby_zip (
-  id INT,
-  name TEXT,
-  street TEXT,
-  city TEXT,
-  state TEXT,
-  zip INT (5),
-  phone TEXT,
-  details TEXT,
-  PRIMARY KEY((state), zip)
-  WITH comment = 'Q3. Find store by state and nearby zip'
-);
+-- CREATE TABLE store.store_by_state_and_nearby_zip (
+--   id INT,
+--   name TEXT,
+--   street TEXT,
+--   city TEXT,
+--   state TEXT,
+--   zip INT (5),
+--   phone TEXT,
+--   details TEXT,
+--   PRIMARY KEY((state), zip)
+--   WITH comment = 'Q3. Find store by state and nearby zip'
+-- );
 -- SELECT * store.store_by_state_and_nearby_zip where state = '?' and zip >= zip - 100 and zip <= zip + 100;
 
 -- create table for getting store by nearby zip and has product in inventory

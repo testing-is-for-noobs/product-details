@@ -44,3 +44,13 @@ COPY products
 FROM 'C:\Users\jonfu86\work\SDC\product-details\products.csv'
 DELIMITER ','
 CSV HEADER;
+
+COPY stores
+FROM 'C:\Users\jonfu86\work\SDC\product-details\stores.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY inventory
+FROM 'C:\Users\jonfu86\work\SDC\product-details\inventory.csv'
+DELIMITER ','
+CSV HEADER;

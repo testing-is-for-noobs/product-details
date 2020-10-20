@@ -10,7 +10,8 @@
     "build": "NODE_ENV=production webpack --config webpack.production.js",
     "react": "NODE_ENV=development webpack -w",
     "server": "nodemon server -w server",
-    "test": "jest"
+    "test": "jest",
+    "csv": "node server/database/seedsv.js"
   },
   "repository": {
     "type": "git",
@@ -41,9 +42,12 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "@fast-csv/format": "^4.3.1",
+    "@fast-csv/parse": "^4.3.2",
     "axios": "^0.20.0",
     "bluebird": "^3.7.2",
     "express": "^4.17.1",
+    "fast-csv": "^4.3.2",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.5",
     "prop-types": "^15.7.2",
