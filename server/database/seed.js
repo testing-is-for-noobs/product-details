@@ -7,7 +7,7 @@ for (let i = 1; i <= 100; i += 1) {
     id: i,
     name: `LEGO® ${faker.commerce.productName()}`,
     product_line: pline,
-    tag: faker.random.arrayElement(['New', 'Exclusives', 'Hard to find']),
+    tag: faker.random.arrayElement(['New', 'Exclusives', 'Hard to find', '']),
     price: `${faker.random.number({ min: 10, max: 499 })}.99`,
     online_inventory: faker.random.number({ min: 0, max: 1 }),
     rating: Math.random() * 5,
