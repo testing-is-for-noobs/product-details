@@ -27,15 +27,15 @@ CREATE TABLE IF NOT EXISTS stores (
   city varchar (150) not null,
   state varchar (2) not null,
   zip varchar (5) not null,
-  phone varchar (10) not null,
+  phone varchar (12) not null,
   details varchar (350) not null
 );
 
 CREATE TABLE IF NOT EXISTS inventory (
   id SERIAL PRIMARY KEY,
-  inventory int not null,
-  product_id int not null,
   store_id int not null,
+  product_id int not null,
+  inventory int not null,
   foreign key (product_id) references products(id),
   foreign key (store_id) references stores(id)
 );

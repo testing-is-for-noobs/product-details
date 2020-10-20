@@ -1,5 +1,8 @@
 const faker = require('faker/locale/en_US');
 const fs = require('fs');
+const productCount = 1000;
+const storeCount = 500;
+const itemsPerStore = 500;
 // const db = require('./index.js');
 
 const productStream = fs.createWriteStream('products.csv');
@@ -7,16 +10,14 @@ productStream.write('id, name, product_line, tag, price, online_inventory, ratin
 
 function writeProducts(stream, encoding, callback) {
 
-  const count = 10000000;
   let i = 0;
 
   function write() {
     let hasMem = true;
 
-    while(i < count && hasMem){
-      const pline = `${faker.commerce.productMaterial()}™`;
-      // const fakeProduct;
+    while(i < productCount && hasMem){
       i++;
+      const pline = `${faker.commerce.productMaterial()}™`;
       const id = i,
         name = `LEGO® ${faker.commerce.productName()}`,
         product_line = pline,
@@ -33,13 +34,13 @@ function writeProducts(stream, encoding, callback) {
 
       const data = `${id},${name},${product_line},${tag},${price},${online_inventory},${rating},${review_count},${customer_limit},${liked},${category_1},${category_2},${category_3}\n`;
 
-      if(i === count) {
+      if(i === productCount) {
         stream.write(data, encoding, callback);
       } else {
         hasMem = stream.write(data, encoding);
       }
     }
-    if(i < count){
+    if(i < productCount){
       stream.once('drain', write);
     }
   }
@@ -60,13 +61,12 @@ storeStream.write('id, name, address, city, state, zip, phone, details\n', 'utf8
 
 function writeStores(stream, encoding, callback) {
 
-  const count = 10000;
   let i = 0;
 
   function writeStore() {
     let hasMem = true;
 
-    while (i < count && hasMem) {
+    while (i < storeCount && hasMem) {
       i++;
 
       const  id = i,
@@ -75,18 +75,18 @@ function writeStores(stream, encoding, callback) {
         city = faker.address.city(),
         state = faker.address.stateAbbr();
         zip = faker.address.zipCodeByState(state),
-        phone = faker.phone.phoneNumber(),
+        phone = faker.phone.phoneNumberFormat(),
         details = faker.random.arrayElement(images);
 
       const data = `${id},${name},${address},${city},${state},${zip},${phone},${details}\n`;
 
-      if(i === count) {
+      if(i === storeCount) {
         stream.write(data, encoding, callback);
       } else {
         hasMem = stream.write(data, encoding);
       }
     }
-    if(i < count) {
+    if(i < storeCount) {
       stream.once('drain', writeStore);
     }
   }
@@ -101,32 +101,30 @@ const invStream = fs.createWriteStream('inventory.csv');
 invStream.write('id, store_id, product_id, inventory\n', 'utf8');
 
 function writeInventory(stream, encoding, callback) {
-  const numStores = 10000;
-  const itemsPerStore = 50000;
-  const count = numStores * itemsPerStore;
-  let i = 0;
+
+  let id = 0;
   let store_id = 0;
 
   function writeInv() {
     let hasMem = true;
 
-    while(store_id < numStores && hasMem) {
+    while(store_id < storeCount && hasMem) {
       store_id++;
 
       for (var j = 0; j < itemsPerStore; j++){
-        i++;
-        const product_id = faker.random.number({min: 1, max: 10000000});
+        id++;
+        const product_id = faker.random.number({min: 1, max: productCount});
         const inv = faker.random.number({min: 1, max: 500});
-        const data = `${i},${store_id},${product_id},${inv}\n`;
+        const data = `${id},${store_id},${product_id},${inv}\n`;
 
-        if(store_id === numStores) {
+        if(store_id === storeCount) {
           stream.write(data, encoding, callback);
         } else {
           hasMem = stream.write(data, encoding);
         }
       }
     }
-    if(store_id < numStores) {
+    if(store_id < storeCount) {
       stream.once('drain', writeInv);
     }
   }
