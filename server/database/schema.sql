@@ -54,3 +54,7 @@ COPY inventory
 FROM 'C:\Users\jonfu86\work\SDC\product-details\inventory.csv'
 DELIMITER ','
 CSV HEADER;
+
+
+
+-- COPY (SELECT stores.id, stores.name, stores.address, stores.city, stores.state, stores.zip, stores.phone, stores.details, inventory.product_id, inventory.inventory FROM stores INNER JOIN inventory ON stores.id = inventory.store_id) TO 'C:\Users\jonfu86\work\SDC\product-details/bridge.csv' WITH CSV DELIMITER ',' HEADER;

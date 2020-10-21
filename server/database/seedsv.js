@@ -1,8 +1,8 @@
 const faker = require('faker/locale/en_US');
 const fs = require('fs');
-const productCount = 10000000;
-const storeCount = 10000;
-const itemsPerStore = 500000;
+const productCount = 20000;
+const storeCount = 1000;
+const itemsPerStore = 10000;
 // const db = require('./index.js');
 
 const productStream = fs.createWriteStream('products.csv');
