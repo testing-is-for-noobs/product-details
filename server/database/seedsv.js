@@ -1,8 +1,8 @@
 const faker = require('faker/locale/en_US');
 const fs = require('fs');
-const productCount = 1000;
-const storeCount = 500;
-const itemsPerStore = 500;
+const productCount = 10000000;
+const storeCount = 10000;
+const itemsPerStore = 500000;
 // const db = require('./index.js');
 
 const productStream = fs.createWriteStream('products.csv');
@@ -42,6 +42,7 @@ function writeProducts(stream, encoding, callback) {
     }
     if(i < productCount){
       stream.once('drain', write);
+      console.log(`product drain at ${i}`);
     }
   }
   write();
@@ -88,6 +89,7 @@ function writeStores(stream, encoding, callback) {
     }
     if(i < storeCount) {
       stream.once('drain', writeStore);
+      console.log(`store drain at ${i}`);
     }
   }
   writeStore();
@@ -126,6 +128,7 @@ function writeInventory(stream, encoding, callback) {
     }
     if(store_id < storeCount) {
       stream.once('drain', writeInv);
+      console.log(`inventory drain at ${store_id}`);
     }
   }
   writeInv();

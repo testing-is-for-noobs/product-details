@@ -69,7 +69,7 @@ WITH DELIMITER=',' AND HEADER=TRUE;
 
 COPY store.store_by_id (id, name, address, city, state, zip, phone, details)
 FROM '/mnt/c/Users/jonfu86/work/sdc/product-details/stores.csv'
-WTIH DELIMITER=',' AND HEADER=TRUE;
+WITH DELIMITER=',' AND HEADER=TRUE;
 
 COPY store.store_by_nearby_zip_and_inventory (id, name, address, city, state, zip, phone, details, product_id, inventory)
 FROM '/mnt/c/Users/jonfu86/work/sdc/product-details/bridge.csv'
