@@ -1,7 +1,7 @@
 // const mysql = require('mysql');
 const Bluebird = require('bluebird');
-const postgresConfig = require('./config');
-// const mysqlConfig = require('./config');
+const postgresConfig = require('./postgres/config');
+const cassandraConfig = require('./cassandra/config');
 
 // const connection = mysql.createConnection(mysqlConfig);
 // const database = Bluebird.promisifyAll(connection);
@@ -18,19 +18,6 @@ pool.on('error', (err, client) => {
 
 //CRUD Product
 const getProduct = (pid) => {
-  // pool.connect((err, client, done) => {
-  //   if (err) throw err
-  //   client.query('SELECT * FROM users WHERE id = $1', [pid], (err, res) => {
-  //     done();
-  //     if (err) {
-  //       console.log(err.stack);
-  //     } else {
-  //       console.log(res.rows[0]);
-  //       callback(res.rows[0]);
-  //     }
-  //   })
-  // })
-  // console.log('hit get Products db');
   return pool
     .connect()
     .then(client => {
@@ -46,8 +33,44 @@ const getProduct = (pid) => {
           console.error(err.stack);
         })
     })
+};
 
-}
+const getStore = (sid) => {
+  return pool
+    .connect()
+    .then(client => {
+      return client
+        .query('SELECT * FROM stores WHERE id = $1', [sid])
+        .then(res => {
+          client.release();
+          return res.rows[0];
+        })
+        .catch(err => {
+          client.release();
+          console.error(err.stack);
+        })
+    })
+};
+
+const getNearbyWithInventory = (pid, zip, callback) => {
+  const zipMin = zip - 500;
+  const zipMax = zip + 500;
+  return pool
+    .connect()
+    .then(client => {
+      return client
+        .query('SELECT * FROM stores LEFT JOIN inventory ON stores.id = inventory.store_id WHERE zip BETWEEN $1 and $2 and product_id = $3',
+        [zipMin, zipMax, pid])
+        .then(res => {
+          client.release();
+          return res.rows;
+        })
+        .catch(err => {
+          client.release();
+          console.error(err.stack);
+        })
+    })
+};
 
 
 
@@ -91,46 +114,46 @@ const getProduct = (pid) => {
 // };
 
 //CRUD Store
-const insertStore = (store, callback) => {
-  database.query(
-    'insert into stores set ?',
-    store,
-    (error) => {
-      callback(error);
-    },
-  );
-};
+// const insertStore = (store, callback) => {
+//   database.query(
+//     'insert into stores set ?',
+//     store,
+//     (error) => {
+//       callback(error);
+//     },
+//   );
+// };
 
-const getStore = (sid, callback) => {
-  database.query(
-    'select * from stores where id = ?',
-    store,
-    (error) => {
-      callback(error);
-    },
-  );
-};
+// const getStore = (sid, callback) => {
+//   database.query(
+//     'select * from stores where id = ?',
+//     store,
+//     (error) => {
+//       callback(error);
+//     },
+//   );
+// };
 
-const updateStore = (store, callback) => {
-  database.query(
-    'update stores set ? where id = ?',
-    [store, store.id],
-    (error) => {
-      callback(error);
-    },
-  );
+// const updateStore = (store, callback) => {
+//   database.query(
+//     'update stores set ? where id = ?',
+//     [store, store.id],
+//     (error) => {
+//       callback(error);
+//     },
+//   );
 
-};
+// };
 
-const deleteStore = (sid, callback) => {
-  database.query(
-    'delete * from stores where id = ?',
-    store,
-    (error) => {
-      callback(error);
-    },
-  );
-};
+// const deleteStore = (sid, callback) => {
+//   database.query(
+//     'delete * from stores where id = ?',
+//     store,
+//     (error) => {
+//       callback(error);
+//     },
+//   );
+// };
 
 //CRUD Inventory
 const insertInventory = (inventory, callback) => {
@@ -197,17 +220,17 @@ const getNearbyStores = (zip, callback) => {
 };
 
 //get nearby stores with inventory
-const getNearbyWithInventory = (pid, zip, callback) => {
-  const zipMin = zip - 100;
-  const zipMax = zip + 100;
-  database.query(
-    'select * from stores left join inventory on stores.id = inventory.store_id where zip >= ? and zip <= ? and product_id = ?',
-    [zipMin, zipMax, pid],
-    (error) => {
-      callback(error);
-    },
-  );
-};
+// const getNearbyWithInventory = (pid, zip, callback) => {
+//   const zipMin = zip - 100;
+//   const zipMax = zip + 100;
+//   database.query(
+//     'select * from stores left join inventory on stores.id = inventory.store_id where zip >= ? and zip <= ? and product_id = ?',
+//     [zipMin, zipMax, pid],
+//     (error) => {
+//       callback(error);
+//     },
+//   );
+// };
 
 const seedData = () => (
   Promise.all([
@@ -226,9 +249,9 @@ const initialData = (pid) => (
 
 
 module.exports = {
-  insertStore,
-  insertInventory,
   seedData,
   initialData,
   getProduct,
+  getStore,
+  getNearbyWithInventory
 };
