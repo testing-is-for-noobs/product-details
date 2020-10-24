@@ -1,49 +1,94 @@
-const mysql = require('mysql');
+// const mysql = require('mysql');
 const Bluebird = require('bluebird');
-const mysqlConfig = require('./config');
+const postgresConfig = require('./config');
+// const mysqlConfig = require('./config');
 
-const connection = mysql.createConnection(mysqlConfig);
-const database = Bluebird.promisifyAll(connection);
+// const connection = mysql.createConnection(mysqlConfig);
+// const database = Bluebird.promisifyAll(connection);
 
-//CRUB Product
-const insertProduct = (product, callback) => {
-  database.query(
-    'insert into products set ?',
-    product,
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
+//postgress connect
+const { Pool } = require('pg');
+const pool = new Pool(postgresConfig);
+// the pool will emit an error on behalf of any idle clients
+// it contains if a backend error or network partition happens
+pool.on('error', (err, client) => {
+  console.error('Unexpected error on idle client', err)
+  process.exit(-1)
+})
 
-const getProduct = (pid, callback) => {
-  database.query(
-    'select * from products where id = ?',
-    [pid],
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
+//CRUD Product
+const getProduct = (pid) => {
+  // pool.connect((err, client, done) => {
+  //   if (err) throw err
+  //   client.query('SELECT * FROM users WHERE id = $1', [pid], (err, res) => {
+  //     done();
+  //     if (err) {
+  //       console.log(err.stack);
+  //     } else {
+  //       console.log(res.rows[0]);
+  //       callback(res.rows[0]);
+  //     }
+  //   })
+  // })
+  // console.log('hit get Products db');
+  return pool
+    .connect()
+    .then(client => {
+      return client
+        .query('SELECT * FROM products WHERE id = $1', [pid])
+        .then(res => {
+          client.release();
+          return res.rows[0];
+          // console.log(res.rows[0]);
+        })
+        .catch(err => {
+          client.release();
+          console.error(err.stack);
+        })
+    })
 
-const deleteProduct = (pid, callback) => {
-  database.query(
-    'delete * from products where id = ?',
-    [pid],
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
-const updateProduct = (product, callback) => {
-  database.query(
-    'update products set ? where id = ?',
-    [product, product.id],
-    (error, results) => {
-      callback(error, results);
-    },
-  );
-};
+}
+
+
+
+// const insertProduct = (product, callback) => {
+//   database.query(
+//     'insert into products set ?',
+//     product,
+//     (error, results) => {
+//       callback(error, results);
+//     },
+//   );
+// };
+
+// const getProduct = (pid, callback) => {
+//   database.query(
+//     'select * from products where id = ?',
+//     [pid],
+//     (error, results) => {
+//       callback(error, results);
+//     },
+//   );
+// };
+
+// const deleteProduct = (pid, callback) => {
+//   database.query(
+//     'delete * from products where id = ?',
+//     [pid],
+//     (error, results) => {
+//       callback(error, results);
+//     },
+//   );
+// };
+// const updateProduct = (product, callback) => {
+//   database.query(
+//     'update products set ? where id = ?',
+//     [product, product.id],
+//     (error, results) => {
+//       callback(error, results);
+//     },
+//   );
+// };
 
 //CRUD Store
 const insertStore = (store, callback) => {
@@ -181,8 +226,6 @@ const initialData = (pid) => (
 
 
 module.exports = {
-  connection,
-  insertProduct,
   insertStore,
   insertInventory,
   seedData,
