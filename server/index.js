@@ -1,5 +1,7 @@
+require('newrelic');
 const express = require('express');
 const db = require('./database');
+
 
 const server = express();
 server.use(express.static(`${__dirname}/../client/dist`));
@@ -16,7 +18,7 @@ server.get('/product/:pid', (req, res) => {
   //     console.log('initialData error:', error);
   //   });
   const id = req.params.pid;
-
+  console.log('product request hit');
   db.getProduct(id)
   .then((product) => {
     if (!product) {
