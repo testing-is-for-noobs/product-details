@@ -17,13 +17,14 @@ server.get('/product/:pid', (req, res) => {
   //     res.status(404).send(error);
   //     console.log('initialData error:', error);
   //   });
-  const id = req.params.pid;
-  console.log('product request hit');
-  db.getProduct(id)
+  // const id = req.params.pid;
+
+  db.getProduct(req.params.pid)
   .then((product) => {
     if (!product) {
       res.status(400).send(`error finding product with id: ${id}`);
     }
+
     res.status(200).send(product);
   });
 });

@@ -26,7 +26,6 @@ const getProduct = (pid) => {
         .then(res => {
           client.release();
           return res.rows[0];
-          // console.log(res.rows[0]);
         })
         .catch(err => {
           client.release();
