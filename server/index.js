@@ -10,6 +10,9 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended:true}));
 
 
+server.get('/loaderio-6dc356704755fd041e75b36dacf8f3d9/', (req, res) => [
+  res.send('loaderio-6dc356704755fd041e75b36dacf8f3d9');
+]);
 //CRUD for products
 server.get('/product/:pid', (req, res) => {
 
