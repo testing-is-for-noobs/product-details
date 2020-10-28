@@ -41,16 +41,19 @@ CREATE TABLE IF NOT EXISTS inventory (
 );
 
 COPY products
-FROM '/Users/jonfu/Desktop/hack-reactor/SDC/product-details/products.csv'
+FROM 'C:\Users\jonfu86\work\SDC\product-details\products.csv'
 DELIMITER ','
 CSV HEADER;
 
 COPY stores
-FROM '/Users/jonfu/Desktop/hack-reactor/SDC/product-details/stores.csv'
+FROM 'C:\Users\jonfu86\work\SDC\product-details\stores.csv'
 DELIMITER ','
 CSV HEADER;
 
 COPY inventory
-FROM '/Users/jonfu/Desktop/hack-reactor/SDC/product-details/inventory.csv'
+FROM 'C:\Users\jonfu86\work\SDC\product-details\inventory.csv'
 DELIMITER ','
 CSV HEADER;
+
+
+-- COPY (SELECT stores.id, stores.name, stores.address, stores.city, stores.state,stores.zip, stores.phone, stores.details, inventory.product_id, inventory.inventory FROM stores INNER JOIN inventory ON stores.id = inventory.store_id) TO 'C:\Users\jonfu86\work\SDC\product-details\bridge.csv' DELIMITER ',' CSV HEADER;
