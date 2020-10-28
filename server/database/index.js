@@ -34,6 +34,76 @@ const getProduct = (pid) => {
     })
 };
 
+const addProduct = (product) => {
+  return pool
+    .connect()
+    .then(client => {
+      const values = Object.values(product);
+      console.log(product);
+      return client
+        .query('INSERT INTO products VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)', values)
+        .then(res => {
+          client.release();
+          return res;
+        })
+        .catch(err => {
+          client.release();
+          console.error(err.stack);
+        })
+    })
+};
+
+const updateProduct = (pid, product) => {
+  return pool
+    .connect()
+    .then(client => {
+      const columns = Object.keys(product);
+      const values = Object.values(product);
+      let query = 'UPDATE products SET ';
+
+      for(var i = 0; i < columns.length; i++) {
+        query += `${columns[i]} = $${i+2}`;
+        if(i < columns.length - 1) {
+          query += ', ';
+        }
+      }
+
+      query += ' WHERE id = $1';
+
+      const params = [pid, ...values];
+
+      return client
+        .query(query, params)
+        .then(res => {
+          client.release();
+          return res;
+        })
+        .catch(err => {
+          client.release();
+          console.error(err.stack);
+        })
+    })
+};
+
+const deleteProduct = (pid) => {
+  return pool
+    .connect()
+    .then(client => {
+      return client
+        .query('DELETE FROM products WHERE id = $1', [pid])
+        .then(res => {
+          client.release();
+          return res;
+        })
+        .catch(err => {
+          client.release();
+          console.error(err.stack);
+        })
+    })
+};
+
+
+//STORE CRUD
 const getStore = (sid) => {
   return pool
     .connect()
@@ -51,6 +121,74 @@ const getStore = (sid) => {
     })
 };
 
+const addStore = (store) => {
+  return pool
+    .connect()
+    .then(client => {
+      const values = Object.values(product);
+      return client
+        .query('INSERT INTO products VALUES ($1, $2, $3, $4, $5, $6, $7, $8', values)
+        .then(res => {
+          client.release();
+          return res;
+        })
+        .catch(err => {
+          client.release();
+          console.error(err.stack);
+        })
+    })
+};
+
+const updateStore = (sid, store) => {
+  return pool
+    .connect()
+    .then(client => {
+      const columns = Object.keys(store);
+      const values = Object.values(store);
+      let query = 'UPDATE stores SET ';
+
+      for(var i = 0; i < columns.length; i++) {
+        query += `${columns[i]} = $${i+2}`;
+        if(i < columns.length - 1) {
+          query += ', ';
+        }
+      }
+
+      query += ' WHERE id = $1';
+
+      const params = [sid, ...values];
+
+      return client
+        .query(query, params)
+        .then(res => {
+          client.release();
+          return res;
+        })
+        .catch(err => {
+          client.release();
+          console.error(err.stack);
+        })
+    })
+};
+
+const deleteStore = (sid) => {
+  return pool
+    .connect()
+    .then(client => {
+      return client
+        .query('DELETE FROM stores WHERE id = $1', [sid])
+        .then(res => {
+          client.release();
+          return res;
+        })
+        .catch(err => {
+          client.release();
+          console.error(err.stack);
+        })
+    })
+};
+
+//Inventory
 const getNearbyWithInventory = (pid, zip, callback) => {
   const zipMin = zip - 500;
   const zipMax = zip + 500;
@@ -72,164 +210,57 @@ const getNearbyWithInventory = (pid, zip, callback) => {
 };
 
 
-
-// const insertProduct = (product, callback) => {
-//   database.query(
-//     'insert into products set ?',
-//     product,
-//     (error, results) => {
-//       callback(error, results);
-//     },
-//   );
-// };
-
-// const getProduct = (pid, callback) => {
-//   database.query(
-//     'select * from products where id = ?',
-//     [pid],
-//     (error, results) => {
-//       callback(error, results);
-//     },
-//   );
-// };
-
-// const deleteProduct = (pid, callback) => {
-//   database.query(
-//     'delete * from products where id = ?',
-//     [pid],
-//     (error, results) => {
-//       callback(error, results);
-//     },
-//   );
-// };
-// const updateProduct = (product, callback) => {
-//   database.query(
-//     'update products set ? where id = ?',
-//     [product, product.id],
-//     (error, results) => {
-//       callback(error, results);
-//     },
-//   );
-// };
-
-//CRUD Store
-// const insertStore = (store, callback) => {
-//   database.query(
-//     'insert into stores set ?',
-//     store,
-//     (error) => {
-//       callback(error);
-//     },
-//   );
-// };
-
-// const getStore = (sid, callback) => {
-//   database.query(
-//     'select * from stores where id = ?',
-//     store,
-//     (error) => {
-//       callback(error);
-//     },
-//   );
-// };
-
-// const updateStore = (store, callback) => {
-//   database.query(
-//     'update stores set ? where id = ?',
-//     [store, store.id],
-//     (error) => {
-//       callback(error);
-//     },
-//   );
-
-// };
-
-// const deleteStore = (sid, callback) => {
-//   database.query(
-//     'delete * from stores where id = ?',
-//     store,
-//     (error) => {
-//       callback(error);
-//     },
-//   );
-// };
-
 //CRUD Inventory
-const insertInventory = (inventory, callback) => {
-  database.query(
-    'insert into inventory set ?',
-    inventory,
-    (error) => {
-      callback(error);
-    },
-  );
-};
-
-const deleteInventoryByStore = (sid, callback) => {
-  database.query(
-    'delete * from inventory where store_id = ?',
-    sid,
-    (error) => {
-      callback(error);
-    },
-  );
-};
-
-const deleteInventoryByProduct = (pid, callback) => {
-  database.query(
-    'delete * from inventory where product_id = ?',
-    pid,
-    (error) => {
-      callback(error);
-    },
-  );
-};
-
-const getInventory = (pid, sid, callback) => {
-  database.query(
-    'select * from inventory where product_id = ? and store_id = ?',
-    [pid, sid],
-    (error) => {
-      callback(error);
-    },
-  );
-};
-
-const updateInventory = (inventory, callback) => {
-  database.query(
-    'update inventory set ? where id = ?',
-    [inventory, inventory.id],
-    (error) => {
-      callback(error);
-    },
-  );
-};
-
-//get nearby stores
-const getNearbyStores = (zip, callback) => {
-  const zipMin = zip - 100;
-  const zipMax = zip + 100;
-  database.query(
-    'select * from stores where zip >= ? and zip <= ?',
-    [zipMin, zipMax],
-    (error) => {
-      callback(error);
-    },
-  );
-};
-
-//get nearby stores with inventory
-// const getNearbyWithInventory = (pid, zip, callback) => {
-//   const zipMin = zip - 100;
-//   const zipMax = zip + 100;
+// const insertInventory = (inventory, callback) => {
 //   database.query(
-//     'select * from stores left join inventory on stores.id = inventory.store_id where zip >= ? and zip <= ? and product_id = ?',
-//     [zipMin, zipMax, pid],
+//     'insert into inventory set ?',
+//     inventory,
 //     (error) => {
 //       callback(error);
 //     },
 //   );
 // };
+
+// const deleteInventoryByStore = (sid, callback) => {
+//   database.query(
+//     'delete * from inventory where store_id = ?',
+//     sid,
+//     (error) => {
+//       callback(error);
+//     },
+//   );
+// };
+
+// const deleteInventoryByProduct = (pid, callback) => {
+//   database.query(
+//     'delete * from inventory where product_id = ?',
+//     pid,
+//     (error) => {
+//       callback(error);
+//     },
+//   );
+// };
+
+// const getInventory = (pid, sid, callback) => {
+//   database.query(
+//     'select * from inventory where product_id = ? and store_id = ?',
+//     [pid, sid],
+//     (error) => {
+//       callback(error);
+//     },
+//   );
+// };
+
+// const updateInventory = (inventory, callback) => {
+//   database.query(
+//     'update inventory set ? where id = ?',
+//     [inventory, inventory.id],
+//     (error) => {
+//       callback(error);
+//     },
+//   );
+// };
+
 
 const seedData = () => (
   Promise.all([
@@ -251,6 +282,12 @@ module.exports = {
   seedData,
   initialData,
   getProduct,
+  addProduct,
+  updateProduct,
+  deleteProduct,
   getStore,
+  addStore,
+  updateStore,
+  deleteStore,
   getNearbyWithInventory
 };
