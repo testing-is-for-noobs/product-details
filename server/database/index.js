@@ -146,9 +146,6 @@ const getNearbyWithInventory = (pid, zip, callback) => {
     .then(res => {
       return res.rows;
     })
-    .catch(err => {
-      console.error(err.stack);
-    })
 };
 
 
