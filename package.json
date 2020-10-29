@@ -9,7 +9,7 @@
     "seed": "mysql -u root < server/database/schema.sql && NODE_ENV=development node server/database/seed.js",
     "build": "NODE_ENV=production webpack --config webpack.production.js",
     "react": "NODE_ENV=development webpack -w",
-    "server": "nodemon server -w server",
+    "server": "NODE_ENV=production nodemon server -w server",
     "test": "jest",
     "csv": "node server/database/seedsv.js"
   },
@@ -50,6 +50,7 @@
     "express": "^4.17.1",
     "express-promise-router": "^4.0.1",
     "fast-csv": "^4.3.2",
+    "k6": "0.0.0",
     "mysql": "^2.18.1",
     "newrelic": "^6.13.2",
     "nodemon": "^2.0.5",

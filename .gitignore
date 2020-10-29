@@ -107,4 +107,6 @@ bundle.js
 # TernJS port file
 .tern-port
 
+# Connection configuration
+connect_config.js
 
