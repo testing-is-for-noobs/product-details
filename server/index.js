@@ -107,12 +107,13 @@ server.get('/nearbyWithInventory/:pid/:zip', (req, res) => {
   db.getNearbyWithInventory(pid, zip)
   .then((inventory) => {
     if (!inventory) {
-      res.status(400).send(`error finding inventory with pid: ${pid} and zip: ${zip}`);
+      res.status(404).send('no inventory found');
     }
     res.status(200).send(inventory);
   })
   .catch(err => {
     console.error(err.stack);
+    res.status(500).send(`error finding inventory with pid: ${pid} and zip: ${zip}`);
   });
 
 });
