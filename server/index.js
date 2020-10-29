@@ -21,9 +21,9 @@ server.get('/product/:pid', (req, res) => {
   .then((product) => {
     if (!product) {
       res.status(400).send(`error finding product with id: ${req.params.pid}`);
+    } else {
+      res.status(200).send(product);
     }
-
-    res.status(200).send(product);
   });
 });
 
@@ -32,8 +32,9 @@ server.post('/product', (req, res) => {
   .then((response) => {
     if (!response) {
       res.status(400).send(`error adding product`);
+    } else {
+      res.status(200).send('product successfully added');
     }
-    res.status(200).send('product successfully added');
   });
 });
 
@@ -42,9 +43,9 @@ server.put('/product/:pid', (req, res) => {
   .then((reponse) => {
     if (!reponse) {
       res.status(400).send(`error updating product with id: ${req.params.pid}`);
+    } else {
+      res.status(200).send(`product with id: ${req.params.pid} updated`);
     }
-
-    res.status(200).send(`product with id: ${req.params.pid} updated`);
   });
 });
 
@@ -53,9 +54,9 @@ server.delete('/product/:pid', (req, res) => {
   .then((response) => {
     if (!response) {
       res.status(400).send(`error deleting product with id: ${req.params.pid}`);
+    } else {
+      res.status(200).send(`product with id ${req.params.id} has been deleted`);
     }
-
-    res.status(200).send(`product with id ${req.params.id} has been deleted`);
   });
 });
 
@@ -65,8 +66,9 @@ server.get('/store/:sid', (req, res) => {
   .then((store) => {
     if (!store) {
       res.status(400).send(`error finding store with id: ${req.params.sid}`);
+    } else {
+      res.status(200).send(store);
     }
-    res.status(200).send(store);
   });
 });
 
@@ -75,8 +77,9 @@ server.post('/store', (req, res) => {
   .then((response) => {
     if (!response) {
       res.status(400).send(`error adding new store`);
+    } else {
+      res.status(200).send('new store successfully added');
     }
-    res.status(200).send('new store successfully added');
   });
 });
 
@@ -85,8 +88,9 @@ server.put('/store/:sid', (req, res) => {
   .then((response) => {
     if (!response) {
       res.status(400).send(`error updating store with id: ${req.params.sid}`);
+    } else {
+      res.status(200).send(`store with id: ${req.params.sid} has been updated`);
     }
-    res.status(200).send(`store with id: ${req.params.sid} has been updated`);
   });
 });
 
@@ -95,21 +99,23 @@ server.delete('/store/:sid', (req, res) => {
   .then((response) => {
     if (!response) {
       res.status(400).send(`error deleting store with id: ${req.params.sid}`);
+    } else {
+      res.status(200).send(`store with id: ${req.params.sid} succesfully deleted`);
     }
-    res.status(200).send(`store with id: ${req.params.sid} succesfully deleted`);
   });
 });
 
 //CRUD for inventory
 server.get('/nearbyWithInventory/:pid/:zip', (req, res) => {
   const { pid, zip } = req.params;
-  // console.log(`get request for nearby stores at ${zip} with product ${pid}`);
+
   db.getNearbyWithInventory(pid, zip)
   .then((inventory) => {
     if (!inventory) {
       res.status(404).send('no inventory found');
+    } else {
+      res.status(200).send(inventory);
     }
-    res.status(200).send(inventory);
   })
   .catch(err => {
     console.error(err.stack);
@@ -121,6 +127,5 @@ server.get('/nearbyWithInventory/:pid/:zip', (req, res) => {
 
 const PORT = 8888;
 server.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`listening on port ${PORT}`);
 });
